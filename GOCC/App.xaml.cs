@@ -1,6 +1,7 @@
 ﻿using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using GOCC.View;
 
 namespace GOCC
 {
@@ -10,7 +11,7 @@ namespace GOCC
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+            MainPage = new View.DataFormPage();
         }
 
         protected override void OnStart()
