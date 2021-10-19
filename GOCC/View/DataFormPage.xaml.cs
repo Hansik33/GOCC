@@ -17,7 +17,7 @@ namespace GOCC.View
             InitializeComponent();
         }
 
-        private void CheckCorrectness(object sender, TextChangedEventArgs e)
+        private void CheckCorrectnessRegex(object sender, TextChangedEventArgs e)
         {
             var isValid = Regex.IsMatch(e.NewTextValue, "^[AaĄąBbCcĆćDdEeĘęFfGgHhIiJjKkLlŁłMmNnŃńOoÓóPpRrSsŚśTtUuWwYyZzŹźŻż]+$");
 
