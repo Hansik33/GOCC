@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Text.RegularExpressions;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using GOCC.Model;
 
 namespace GOCC.View
 {
@@ -25,6 +26,15 @@ namespace GOCC.View
             {
                 ((Entry)sender).Text = isValid ? e.NewTextValue : e.NewTextValue.Remove(e.NewTextValue.Length - 1);
             }
+        }
+
+        private void confrim_btn_Clicked(object sender, EventArgs e)
+        {
+            UserDataModel userdata = new UserDataModel(FirstName.Text,LastName.Text,PhoneNumber.Text,Email.Text,Place.Text, Date.Date.Day.ToString(),Date.Date.Year.ToString(),Date.Date.Month.ToString());
+            //DisplayAlert("TITLE",$"{userdata.Name}, {userdata.LastName}, {userdata.PhoneNumber}, {userdata.Email}, {userdata.City}, {userdata.Day},{userdata.Month},{userdata.Year}","OK");
+            //TUTAJ BĘDZIE KOD WYSYŁAJĄCY DANE DO SERWERA
+            Navigation.PopAsync();
+            
         }
     }
 }

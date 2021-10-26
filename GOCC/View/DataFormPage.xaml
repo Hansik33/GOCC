@@ -28,15 +28,6 @@
                 WidthRequest="250"
                 PlaceholderColor="Black"
                 Placeholder="Nazwisko" />
-            <Entry x:Name="Pesel"  
-                Keyboard="Numeric"
-                MaxLength="11"
-                ClearButtonVisibility="WhileEditing"
-                Margin="5"
-                HorizontalOptions="Center"
-                WidthRequest="250"
-                PlaceholderColor="Black"
-                Placeholder="Pesel" />
             <Entry x:Name="PhoneNumber"  
                 Keyboard="Numeric"
                 MaxLength="9"
@@ -63,26 +54,21 @@
                 WidthRequest="250"
                 PlaceholderColor="Black"
                 Placeholder="Miejscowość" />
-            <StackLayout Orientation="Vertical" 
-                         HorizontalOptions="Center">
-                <Label Text="Płeć:"
-                       Margin="5"
-                       TextColor="Black" 
-                       FontSize="Large" 
-                       HorizontalOptions="Center"/>
-                <RadioButton Value="Male"
-                    Content="Mężczyzna" />
-                <RadioButton Value="Female"
-                    Content="Kobieta" />
-            </StackLayout>
-            <Button BackgroundColor="#e93636" 
+            <DatePicker x:Name="Date"
+                        Margin="5"
+                        HorizontalOptions="Center"
+                        WidthRequest="250"
+                        MaximumDate="01.01.2021"/>
+            <Button x:Name="confrim_btn"
+                    BackgroundColor="#e93636" 
                     Margin="0,20,0,0"
                     TextColor="White" 
                     Text="Zatwierdź" 
                     WidthRequest="350"  
                     HeightRequest="50" 
                     HorizontalOptions="Center"
-                    CornerRadius="10"/>
+                    CornerRadius="10"
+                    Clicked="confrim_btn_Clicked"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

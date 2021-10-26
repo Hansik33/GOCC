@@ -11,7 +11,7 @@ namespace GOCC
         {
             InitializeComponent();
 
-            MainPage = new View.DataFormPage();
+            MainPage = new MainFlyoutPage();
         }
 
         protected override void OnStart()

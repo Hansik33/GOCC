@@ -9,6 +9,7 @@
         </Frame>
         <Label Text="Witamy Cię w aplikacji!" FontSize="Title" Padding="30,10,30,10" HorizontalTextAlignment="Center"/>
         <Label Text="W styczniu 2022 roku odbędzie się 30. Finał WOŚP. Pobiegnij razem z nami!" FontSize="16" Padding="30,0,30,0"/>
-        <Button Text ="Zacznij bieg" BackgroundColor="#2196F3"/>
+        <Button x:Name="run_btn" Text ="Zacznij bieg" Background="#e93636" Margin="0,20,0,0" TextColor="White" WidthRequest="350" HeightRequest="50" HorizontalOptions="Center" CornerRadius="10"/>
+        <Button x:Name ="register_btn" Text="Zarejestruj się na bieg!" Clicked="register_btn_Clicked" Background="#e93636" Margin="0,20,0,0" TextColor="White" WidthRequest="350" HeightRequest="50" HorizontalOptions="Center" CornerRadius="10"/>
     </StackLayout>
 </ContentPage>

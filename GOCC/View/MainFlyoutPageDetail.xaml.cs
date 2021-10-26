@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using GOCC.Model;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using Xamarin.Essentials;
 
 namespace GOCC.View
 {
@@ -15,6 +16,11 @@ namespace GOCC.View
         public MainFlyoutPageDetail()
         {
             InitializeComponent();
+        }
+
+        private void register_btn_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new DataFormPage());
         }
     }
 }
