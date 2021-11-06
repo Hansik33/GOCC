@@ -5,7 +5,7 @@
   <!--Pages can be added as references or inline-->
     <ContentPage Title="29.01.2022">
         <StackLayout Padding="20" Spacing="0">
-            <Frame BackgroundColor="White" BorderColor="Black" Padding="0">
+            <Frame BackgroundColor="LightCoral" BorderColor="Black" Padding="0">
             <Grid Padding="0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="1.5*"/>
@@ -21,7 +21,7 @@
                     <BoxView BackgroundColor="Black" WidthRequest="1" Grid.Column="2" HorizontalOptions="EndAndExpand" VerticalOptions="FillAndExpand"/>
                 </Grid>
             </Frame>
-            <ListView ItemsSource="{Binding TableData}" SeparatorVisibility="None" SelectionMode="None">
+            <ListView ItemsSource="{Binding TableData1}" SeparatorVisibility="None" SelectionMode="None">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
@@ -49,7 +49,7 @@
     </ContentPage>
     <ContentPage Title="30.01.2022">
         <StackLayout Padding="20" Spacing="0">
-            <Frame BackgroundColor="White" BorderColor="Black" Padding="0">
+            <Frame BackgroundColor="LightCoral" BorderColor="Black" Padding="0">
                 <Grid Padding="0">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="1.5*"/>
@@ -65,7 +65,7 @@
                     <BoxView BackgroundColor="Black" WidthRequest="1" Grid.Column="2" HorizontalOptions="EndAndExpand" VerticalOptions="FillAndExpand"/>
                 </Grid>
             </Frame>
-            <ListView ItemsSource="{Binding TableData}" SeparatorVisibility="None" SelectionMode="None">
+            <ListView ItemsSource="{Binding TableData2}" SeparatorVisibility="None" SelectionMode="None">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
