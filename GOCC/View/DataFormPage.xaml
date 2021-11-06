@@ -70,23 +70,25 @@
                 HorizontalOptions="Center" 
                 Margin="0,15,0,10" 
                 FontAttributes="Bold" 
-                FontSize="Medium"/>
+                FontSize="Medium"
+                TextColor="Black"/>
             <Label Text="VII. Bieg z sercem WOŚP" 
                    HorizontalOptions="Center"
-                   FontSize="Subtitle"/>
+                   FontSize="Subtitle"
+                   TextColor="Black"/>
             <CheckBox x:Name="RunningCheckBox" 
                    HorizontalOptions="Center" 
                    CheckedChanged="IsRunningChecked"/>
             <Label Text="Bieg wirtualny"
                    FontSize="Subtitle"
-                   HorizontalOptions="Center"/>
+                   HorizontalOptions="Center" TextColor="Black"/>
             <Switch x:Name="VirtualRunning"
                     IsToggled="true" 
                     IsEnabled="False"
                     HorizontalOptions="Center"/>
             <Label Text="Rowerem dla WOŚP"
                    HorizontalOptions="Center"
-                   FontSize="Subtitle"/>
+                   FontSize="Subtitle" TextColor="Black"/>
             <CheckBox x:Name="CyclingCheckBox"
                       HorizontalOptions="Center" />
             <Button x:Name="ConfirmButton"

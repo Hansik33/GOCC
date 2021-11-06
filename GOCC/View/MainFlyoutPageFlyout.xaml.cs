@@ -37,7 +37,6 @@ namespace GOCC.View
                     new MainFlyoutPageFlyoutMenuItem { Id = 1, Title = "Kalendarz wydarzeń", TargetType = typeof(CalendarPage) },
                     new MainFlyoutPageFlyoutMenuItem { Id = 2, Title = "Regulamin", TargetType = typeof(RegulationsPage) },
                     new MainFlyoutPageFlyoutMenuItem { Id = 3, Title = "Sponsorzy", TargetType = typeof(SponsorsPage) },
-                    new MainFlyoutPageFlyoutMenuItem { Id = 4, Title = "Page 5" },
                 });
             }
 

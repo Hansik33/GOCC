@@ -3,17 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using GOCC.Model;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using GOCC.ViewModel;
 
 namespace GOCC.View
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class CalendarPage : ContentPage
+    public partial class CalendarPage : TabbedPage
     {
         public CalendarPage()
         {
+            BindingContext = new CalendarPageViewModel();
             InitializeComponent();
         }
     }
