@@ -1,21 +1,34 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="GOCC.View.CalendarPage">
-  <!--Pages can be added as references or inline-->
-    <ContentPage Title="29.01.2022">
-        <StackLayout Padding="20" Spacing="0">
+    <ContentPage.Content>
+        <StackLayout Padding="0" Spacing="0">
+            <StackLayout Padding="0" Spacing="0">
+            <Frame BackgroundColor="LightYellow" BorderColor="Black" Padding="0">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="50"/>
+                    </Grid.RowDefinitions>
+                    <Label Text="Sobota, 29.01.2021r." FontAttributes="Bold" FontSize="Title" TextColor="Black" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
+                </Grid>
+            </Frame>
             <Frame BackgroundColor="LightCoral" BorderColor="Black" Padding="0">
-            <Grid Padding="0">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="1.5*"/>
-                    <ColumnDefinition Width="3*"/>
-                    <ColumnDefinition Width="2.5*"/>
-                </Grid.ColumnDefinitions>
-                <Label Margin="10,0,10,0" Text="Godzina" VerticalOptions="Center" HorizontalOptions="Center" Grid.Column="0"/>
-                    <Label Margin="10,0,10,0" Text="Wydarzenie" VerticalOptions="Center" HorizontalOptions="Center" Grid.Column="1"/>
-                    <Label Margin="10,0,10,0" Text="Lokalizacja" VerticalOptions="Center" HorizontalOptions="Center" Grid.Column="2"/>
-
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="3*"/>
+                        <ColumnDefinition Width="4*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="40"/>
+                    </Grid.RowDefinitions>
+                    <Label Text="Godzina" FontSize="Subtitle" FontAttributes="Bold"  TextColor="White" VerticalOptions="Center" HorizontalOptions="Center" Grid.Column="0"/>
+                    <Label Text="Wydarzenie" FontSize="Subtitle" FontAttributes="Bold" TextColor="White" VerticalOptions="Center" HorizontalOptions="Center" Grid.Column="1"/>
+                    <Label Text="Lokalizacja" FontSize="Subtitle" FontAttributes="Bold" TextColor="White" VerticalOptions="Center" HorizontalOptions="Center" Grid.Column="2"/>
                     <BoxView BackgroundColor="Black" WidthRequest="1" Grid.Column="0" HorizontalOptions="EndAndExpand" VerticalOptions="FillAndExpand"/>
                     <BoxView BackgroundColor="Black" WidthRequest="1" Grid.Column="1" HorizontalOptions="EndAndExpand" VerticalOptions="FillAndExpand"/>
                     <BoxView BackgroundColor="Black" WidthRequest="1" Grid.Column="2" HorizontalOptions="EndAndExpand" VerticalOptions="FillAndExpand"/>
@@ -25,17 +38,16 @@
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <Frame Padding="0" BorderColor="Black">
+                            <Frame Padding="0" BackgroundColor="FloralWhite" BorderColor="Black">
                                 <Grid Padding="0" RowSpacing="0">
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="1.5*"/>
+                                        <ColumnDefinition Width="2*"/>
                                         <ColumnDefinition Width="3*"/>
-                                        <ColumnDefinition Width="2.5*"/>
+                                        <ColumnDefinition Width="4*"/>
                                     </Grid.ColumnDefinitions>
-                                    <Label Margin="10,0,10,0" Text="{Binding Time}" VerticalOptions="Center" HorizontalOptions="Center" Grid.Column="0"/>
-                                    <Label Margin="10,0,10,0" Text="{Binding Name}" VerticalOptions="Center" HorizontalOptions="Center" Grid.Column="1"/>
-                                    <Label Margin="10,0,10,0" Text="{Binding Localization}" VerticalOptions="Center" HorizontalOptions="Center" Grid.Column="2"/>
-
+                                    <Label Text="{Binding Time}" TextColor="Black" FontAttributes="Bold" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" Grid.Column="0"/>
+                                    <Label Text="{Binding Name}" TextColor="Black" FontAttributes="Bold" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" Grid.Column="1"/>
+                                    <Label Text="{Binding Localization}" TextColor="Black" FontAttributes="Bold" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" Grid.Column="2"/>
                                     <BoxView BackgroundColor="Black" WidthRequest="1" Grid.Column="0" HorizontalOptions="EndAndExpand" VerticalOptions="FillAndExpand"/>
                                     <BoxView BackgroundColor="Black" WidthRequest="1" Grid.Column="1" HorizontalOptions="EndAndExpand" VerticalOptions="FillAndExpand"/>
                                     <BoxView BackgroundColor="Black" WidthRequest="1" Grid.Column="2" HorizontalOptions="EndAndExpand" VerticalOptions="FillAndExpand"/>
@@ -45,21 +57,32 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-        </StackLayout>
-    </ContentPage>
-    <ContentPage Title="30.01.2022">
-        <StackLayout Padding="20" Spacing="0">
-            <Frame BackgroundColor="LightCoral" BorderColor="Black" Padding="0">
-                <Grid Padding="0">
+            </StackLayout>
+            <StackLayout Padding="0" Spacing="0">
+        <Frame BackgroundColor="LightYellow" BorderColor="Black" Padding="0">
+                <Grid>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="1.5*"/>
-                        <ColumnDefinition Width="3*"/>
-                        <ColumnDefinition Width="2.5*"/>
+                        <ColumnDefinition />
                     </Grid.ColumnDefinitions>
-                    <Label Margin="10,0,10,0" Text="Godzina" VerticalOptions="Center" HorizontalOptions="Center" Grid.Column="0"/>
-                    <Label Margin="10,0,10,0" Text="Wydarzenie" VerticalOptions="Center" HorizontalOptions="Center" Grid.Column="1"/>
-                    <Label Margin="10,0,10,0" Text="Lokalizacja" VerticalOptions="Center" HorizontalOptions="Center" Grid.Column="2"/>
-
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="50"/>
+                    </Grid.RowDefinitions>
+                    <Label Text="Niedziela, 30.01.2021r." FontAttributes="Bold" FontSize="Title" TextColor="Black" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
+                </Grid>
+            </Frame>
+            <Frame BackgroundColor="LightCoral" BorderColor="Black" Padding="0">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="3*"/>
+                        <ColumnDefinition Width="4*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="40"/>
+                    </Grid.RowDefinitions>
+                    <Label Text="Godzina" FontSize="Subtitle" FontAttributes="Bold"  TextColor="White" VerticalOptions="Center" HorizontalOptions="Center" Grid.Column="0"/>
+                    <Label Text="Wydarzenie" FontSize="Subtitle" FontAttributes="Bold" TextColor="White" VerticalOptions="Center" HorizontalOptions="Center" Grid.Column="1"/>
+                    <Label Text="Lokalizacja" FontSize="Subtitle" FontAttributes="Bold" TextColor="White" VerticalOptions="Center" HorizontalOptions="Center" Grid.Column="2"/>
                     <BoxView BackgroundColor="Black" WidthRequest="1" Grid.Column="0" HorizontalOptions="EndAndExpand" VerticalOptions="FillAndExpand"/>
                     <BoxView BackgroundColor="Black" WidthRequest="1" Grid.Column="1" HorizontalOptions="EndAndExpand" VerticalOptions="FillAndExpand"/>
                     <BoxView BackgroundColor="Black" WidthRequest="1" Grid.Column="2" HorizontalOptions="EndAndExpand" VerticalOptions="FillAndExpand"/>
@@ -69,17 +92,16 @@
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <Frame Padding="0" BorderColor="Black">
+                            <Frame Padding="0" BackgroundColor="FloralWhite" BorderColor="Black">
                                 <Grid Padding="0" RowSpacing="0">
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="1.5*"/>
+                                        <ColumnDefinition Width="2*"/>
                                         <ColumnDefinition Width="3*"/>
-                                        <ColumnDefinition Width="2.5*"/>
+                                        <ColumnDefinition Width="4*"/>
                                     </Grid.ColumnDefinitions>
-                                    <Label Margin="10,0,10,0" Text="{Binding Time}" VerticalOptions="Center" HorizontalOptions="Center" Grid.Column="0"/>
-                                    <Label Margin="10,0,10,0" Text="{Binding Name}" VerticalOptions="Center" HorizontalOptions="Center" Grid.Column="1"/>
-                                    <Label Margin="10,0,10,0" Text="{Binding Localization}" VerticalOptions="Center" HorizontalOptions="Center" Grid.Column="2"/>
-
+                                    <Label Text="{Binding Time}" TextColor="Black" FontAttributes="Bold" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" Grid.Column="0"/>
+                                    <Label Text="{Binding Name}" TextColor="Black" FontAttributes="Bold" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" Grid.Column="1"/>
+                                    <Label Text="{Binding Localization}" TextColor="Black" FontAttributes="Bold" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" Grid.Column="2"/>
                                     <BoxView BackgroundColor="Black" WidthRequest="1" Grid.Column="0" HorizontalOptions="EndAndExpand" VerticalOptions="FillAndExpand"/>
                                     <BoxView BackgroundColor="Black" WidthRequest="1" Grid.Column="1" HorizontalOptions="EndAndExpand" VerticalOptions="FillAndExpand"/>
                                     <BoxView BackgroundColor="Black" WidthRequest="1" Grid.Column="2" HorizontalOptions="EndAndExpand" VerticalOptions="FillAndExpand"/>
@@ -90,5 +112,6 @@
                 </ListView.ItemTemplate>
             </ListView>
         </StackLayout>
-    </ContentPage>
-</TabbedPage>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
