@@ -4,7 +4,7 @@
              x:Class="GOCC.View.CalendarPage">
     <ContentPage.Content>
         <StackLayout Padding="0" Spacing="0">
-            <StackLayout Padding="0" Spacing="0">
+            <StackLayout Padding="0" Spacing="0" Margin="0,20,0,0">
             <Frame BackgroundColor="LightYellow" BorderColor="Black" Padding="0">
                 <Grid>
                     <Grid.ColumnDefinitions>
@@ -58,7 +58,7 @@
                 </ListView.ItemTemplate>
             </ListView>
             </StackLayout>
-            <StackLayout Padding="0" Spacing="0">
+            <StackLayout Padding="0" Spacing="0" Margin="0,-110,0,0">
         <Frame BackgroundColor="LightYellow" BorderColor="Black" Padding="0">
                 <Grid>
                     <Grid.ColumnDefinitions>
