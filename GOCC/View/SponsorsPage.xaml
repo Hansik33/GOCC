@@ -1,12 +1,24 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="GOCC.View.SponsorsPage">
+             x:Class="GOCC.View.SponsorsPage"
+             BackgroundColor="White">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        <ScrollView Orientation="Vertical">
+            <StackLayout Orientation="Vertical">
+                <Image Source="allegro.png"/>
+                <Image Source="dawtona.png"/>
+                <Image Source="esri.png"/>
+                <Image Source="kds.png"/>
+                <Image Source="mastercard.png"/>
+                <Image Source="mbank.png"/>
+                <Image Source="play.png"/>
+                <Image Source="ricoh.png"/>
+                <Image Source="sms.png"/>
+                <Image Source="stora.png"/>
+                <Image Source="tvn.png"/>
+                <Image Source="ups.png"/>
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>
