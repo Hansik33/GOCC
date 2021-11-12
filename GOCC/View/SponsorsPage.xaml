@@ -6,18 +6,6 @@
     <ContentPage.Content>
         <ScrollView Orientation="Vertical">
             <StackLayout Orientation="Vertical">
-                <Image Source="allegro.png"/>
-                <Image Source="dawtona.png"/>
-                <Image Source="esri.png"/>
-                <Image Source="kds.png"/>
-                <Image Source="mastercard.png"/>
-                <Image Source="mbank.png"/>
-                <Image Source="play.png"/>
-                <Image Source="ricoh.png"/>
-                <Image Source="sms.png"/>
-                <Image Source="stora.png"/>
-                <Image Source="tvn.png"/>
-                <Image Source="ups.png"/>
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>
