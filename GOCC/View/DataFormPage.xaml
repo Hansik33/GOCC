@@ -1,23 +1,20 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="GOCC.View.DataFormPage">
+             x:Class="GOCC.View.DataFormPage"
+             BackgroundImageSource="background.png"
+             Title="Uzupełnij swoje dane:">
     <ContentPage.Content>
         <ScrollView Orientation="Vertical">
-        <StackLayout>
-            <Label Text="Uzupełnij swoje dane:" 
-                FontSize="Title" 
-                TextColor="Black" 
-                HorizontalOptions="Center" 
-                Margin="0,20,0,20" 
-                FontAttributes="Bold"/>
-            <Entry x:Name="FirstName" 
+            <StackLayout>
+                <Entry x:Name="FirstName" 
                 TextChanged="CheckCorrectnessRegex"
                 Keyboard="Text"
                 ClearButtonVisibility="WhileEditing"
                 Margin="5"
                 HorizontalOptions="Center"
-                WidthRequest="270"
+                WidthRequest="210"
+                   HorizontalTextAlignment="Center"
                 PlaceholderColor="Black"
                 Placeholder="Imię" />
             <Entry x:Name="LastName"  
@@ -26,7 +23,7 @@
                 ClearButtonVisibility="WhileEditing"
                 Margin="5"
                 HorizontalOptions="Center"
-                WidthRequest="270"
+                WidthRequest="210"
                 PlaceholderColor="Black"
                 Placeholder="Nazwisko" />
             <Entry x:Name="PhoneNumber"  
@@ -35,7 +32,7 @@
                 ClearButtonVisibility="WhileEditing"
                 Margin="5"
                 HorizontalOptions="Center"
-                WidthRequest="270"
+                WidthRequest="210"
                 PlaceholderColor="Black"
                 Placeholder="Numer telefonu" />
             <Entry x:Name="Email"  
@@ -43,7 +40,7 @@
                 ClearButtonVisibility="WhileEditing"
                 Margin="5"
                 HorizontalOptions="Center"
-                WidthRequest="270"
+                WidthRequest="210"
                 PlaceholderColor="Black"
                 Placeholder="E-mail" />
             <Entry x:Name="Place" 
@@ -52,15 +49,23 @@
                 ClearButtonVisibility="WhileEditing"
                 Margin="5"
                 HorizontalOptions="Center"
-                WidthRequest="270"
+                WidthRequest="210"
                 PlaceholderColor="Black"
                 Placeholder="Miejscowość" />
-            <StackLayout Orientation="Horizontal" 
+            <Entry x:Name="Address" 
+                   Keyboard="Text" 
+                   ClearButtonVisibility="WhileEditing"
+                   Margin="5"
+                   HorizontalOptions="Center"
+                   WidthRequest="210"
+                   PlaceholderColor="Black"
+                   Placeholder="Adres zamieszkania"/>
+                <StackLayout Orientation="Horizontal" 
                 HorizontalOptions="Center">
             <DatePicker x:Name="Date"
                 Margin="5"
                 HorizontalOptions="Center"
-                WidthRequest="270"
+                WidthRequest="210"
                 MaximumDate="01.01.2021"/>
              <Label Text="Data urodzenia" 
                     FontSize="15" Margin="-120,20,15,0" 
@@ -76,22 +81,28 @@
                    HorizontalOptions="Center"
                    FontSize="Subtitle"
                    TextColor="Black"/>
-            <CheckBox x:Name="RunningCheckBox" 
-                   HorizontalOptions="Center" 
-                   CheckedChanged="IsRunningChecked"/>
-            <Label Text="Bieg wirtualny"
-                   FontSize="Subtitle"
-                   HorizontalOptions="Center" TextColor="Black"/>
-            <Switch x:Name="VirtualRunning"
-                    IsToggled="true" 
-                    IsEnabled="False"
-                    HorizontalOptions="Center"/>
-            <Label Text="Rowerem dla WOŚP"
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                    <StackLayout Orientation="Vertical" HorizontalOptions="Center" VerticalOptions="Center" Margin="0,0,0,0">
+                        <CheckBox x:Name="RunningCheckBoxOffline" 
+                                  HorizontalOptions="Center"/>
+                        <Label Text="Online" HorizontalOptions="Center" TextColor="Black" Margin="0,-15,0,0"/>
+                    </StackLayout>
+                    <StackLayout Orientation="Vertical" Margin="0,0,-15,0" Padding="15,0,0,0">
+                        <CheckBox x:Name="RunningChceclBoxOnline" HorizontalOptions="Center"/>
+                        <Label Text="Stacjonarny" HorizontalOptions="Center" TextColor="Black" Margin="0,-15,0,0"/>
+                    </StackLayout>
+                </StackLayout>
+                <Label Text="Rowerem dla WOŚP"
                    HorizontalOptions="Center"
-                   FontSize="Subtitle" TextColor="Black"/>
+                   FontSize="Subtitle" TextColor="Black" Margin="0,10,0,0"/>
             <CheckBox x:Name="CyclingCheckBox"
                       HorizontalOptions="Center" />
-            <Button x:Name="ConfirmButton"
+                <StackLayout HorizontalOptions="Center" Orientation="Horizontal">
+                    <CheckBox HorizontalOptions="Center" VerticalOptions="Center"/>
+                    <Label Text="Akceptuję warunki regulaminu" TextColor="Black" FontSize="Subtitle" HorizontalTextAlignment="Center" VerticalOptions="Center"/>
+                </StackLayout>
+                <Button Text="regulamin" BackgroundColor="#0000" WidthRequest="5" HeightRequest="45" Margin="0,-20,0,0" TextColor="#0000EE" FontAttributes="Italic" Clicked="MoveToRegulations" />
+                <Button x:Name="ConfirmButton"
                 BackgroundColor="#e93636" 
                 Margin="0,10,0,20"
                 TextColor="White" 

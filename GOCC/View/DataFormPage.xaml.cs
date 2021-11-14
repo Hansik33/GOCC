@@ -36,11 +36,9 @@ namespace GOCC.View
             Navigation.PopAsync();
         }
 
-        private void IsRunningChecked(object sender, CheckedChangedEventArgs e)
+        private void MoveToRegulations(object sender, EventArgs e)
         {
-            if (RunningCheckBox.IsChecked) VirtualRunning.IsEnabled = true;
-          
-            else  VirtualRunning.IsEnabled = false;
+            Navigation.PushAsync(new RegulationsPage());
         }
     }
 }
