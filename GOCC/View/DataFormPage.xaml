@@ -19,6 +19,12 @@
     <ContentPage.Content>
         <ScrollView Orientation="Vertical">
             <StackLayout>
+                <Label Text="Podaj swoje dane: "
+                HorizontalOptions="Center"
+                TextColor="White"
+                FontAttributes="Bold"
+                FontSize="Title"
+                Padding="0,20,0,10"/>
                 <Entry x:Name="FirstName"
                 Style="{StaticResource DefaultEntryStyle}"
                 TextChanged="CheckCorrectnessRegex"
@@ -64,34 +70,34 @@
                 Margin="0,15,0,10" 
                 FontAttributes="Bold" 
                 FontSize="Medium"
-                TextColor="Black"/>
+                TextColor="White"/>
             <Label Text="VII. Bieg z sercem WOŚP" 
                    HorizontalOptions="Center"
                    FontSize="Subtitle"
-                   TextColor="Black"/>
+                   TextColor="White"/>
                 <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
                     <StackLayout Orientation="Vertical" HorizontalOptions="Center" VerticalOptions="Center" Margin="0,0,0,0">
                         <CheckBox x:Name="RunningCheckBoxOffline" 
                                   HorizontalOptions="Center"/>
-                        <Label Text="Online" HorizontalOptions="Center" TextColor="Black" Margin="0,-15,0,0"/>
+                        <Label Text="Online" HorizontalOptions="Center" TextColor="White" Margin="0,-10,0,0"/>
                     </StackLayout>
                     <StackLayout Orientation="Vertical" Margin="0,0,-15,0" Padding="15,0,0,0">
-                        <CheckBox x:Name="RunningChceclBoxOnline" HorizontalOptions="Center"/>
-                        <Label Text="Stacjonarny" HorizontalOptions="Center" TextColor="Black" Margin="0,-15,0,0"/>
+                        <CheckBox x:Name="RunningCheckBoxOnline" HorizontalOptions="Center"/>
+                        <Label Text="Stacjonarny" HorizontalOptions="Center" TextColor="White" Margin="0,-10,0,0"/>
                     </StackLayout>
                 </StackLayout>
                 <Label Text="Rowerem dla WOŚP"
                    HorizontalOptions="Center"
-                   FontSize="Subtitle" TextColor="Black" Margin="0,10,0,0"/>
-            <CheckBox x:Name="CyclingCheckBox"
+                   FontSize="Subtitle" TextColor="White" Margin="0,15,0,0"/>
+                <CheckBox x:Name="CyclingCheckBox"
                       HorizontalOptions="Center" />
                 <StackLayout HorizontalOptions="Center" Orientation="Horizontal">
                     <CheckBox HorizontalOptions="Center" VerticalOptions="Center"/>
-                    <Label Text="Akceptuję warunki regulaminu" TextColor="Black" FontSize="Subtitle" HorizontalTextAlignment="Center" VerticalOptions="Center"/>
+                    <Label Text="Akceptuję warunki" TextColor="White" FontSize="Subtitle" HorizontalTextAlignment="Center" VerticalOptions="Center"/>
+                    <Button Text="regulaminu" BackgroundColor="#0000" FontAttributes="Bold" TextColor="#E21912" Margin="-14,0,0,3" FontSize="Subtitle" TextTransform="Lowercase" Clicked="MoveToRegulations" />
                 </StackLayout>
-                <Button Text="regulamin" BackgroundColor="#0000" WidthRequest="5" HeightRequest="45" Margin="0,-20,0,0" TextColor="#0000EE" FontAttributes="Italic" Clicked="MoveToRegulations" />
                 <Button x:Name="ConfirmButton"
-                BackgroundColor="#e93636" 
+                BackgroundColor="#E21912" 
                 Margin="0,10,0,20"
                 TextColor="White" 
                 Text="Zatwierdź" 
