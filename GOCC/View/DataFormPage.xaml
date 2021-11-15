@@ -13,6 +13,7 @@
                 <Setter Property="HorizontalOptions" Value="Center" />
                 <Setter Property="WidthRequest" Value="210" />
                 <Setter Property="HorizontalTextAlignment" Value="Center" />
+                <Setter Property="TextColor" Value="White" />
             </Style>
         </ResourceDictionary>
     </ContentPage.Resources>
@@ -30,71 +31,106 @@
                 TextChanged="CheckCorrectnessRegex"
                 Keyboard="Text"
                 Placeholder="Imię" />
-            <Entry x:Name="LastName"  
+                <Entry x:Name="LastName"  
                 Style="{StaticResource DefaultEntryStyle}"
                 TextChanged="CheckCorrectnessRegex"
                 Keyboard="Text"
                 Placeholder="Nazwisko" />
-            <Entry x:Name="PhoneNumber"  
+                <Entry x:Name="PhoneNumber"  
                 Style="{StaticResource DefaultEntryStyle}"
                 Keyboard="Numeric"
                 MaxLength="9"
                 Placeholder="Numer telefonu" />
-            <Entry x:Name="Email"  
+                <Entry x:Name="Email"  
                 Style="{StaticResource DefaultEntryStyle}"
                 Keyboard="Email"
                 Placeholder="E-mail" />
-            <Entry x:Name="Place" 
+                <Entry x:Name="Place" 
                 Style="{StaticResource DefaultEntryStyle}"
                 TextChanged="CheckCorrectnessRegex"
                 Keyboard="Text"
                 Placeholder="Miejscowość" />
-            <Entry x:Name="Address" 
+                <Entry x:Name="Address" 
                    Style="{StaticResource DefaultEntryStyle}"
                    Keyboard="Text" 
                    Placeholder="Adres zamieszkania"/>
                 <StackLayout Orientation="Horizontal" 
                 HorizontalOptions="Center">
-            <DatePicker x:Name="Date"
+                    <DatePicker x:Name="Date"
                 TextColor="White"
                 Margin="5"
                 HorizontalOptions="Center"
                 WidthRequest="210"
-                MaximumDate="01.01.2021"/>
-             <Label Text="Data urodzenia" 
+                MaximumDate="01.01.2021"
+                Format="dd.MM.yyyy"/>
+                    <Label Text="Data urodzenia" 
                     FontSize="15" Margin="-120,20,15,0" 
                     TextColor="White"/>
-            </StackLayout>
+                </StackLayout>
+
                 <Label Text="Jakie dyscypliny wybierasz?" 
                 HorizontalOptions="Center" 
                 Margin="0,15,0,10" 
                 FontAttributes="Bold" 
                 FontSize="Medium"
                 TextColor="White"/>
-            <Label Text="VII. Bieg z sercem WOŚP" 
+                <Label Text="VII. Bieg z sercem WOŚP" 
                    HorizontalOptions="Center"
                    FontSize="Subtitle"
                    TextColor="White"/>
-                <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
-                    <StackLayout Orientation="Vertical" HorizontalOptions="Center" VerticalOptions="Center" Margin="0,0,0,0">
-                        <CheckBox x:Name="RunningCheckBoxOffline" 
+                <StackLayout Orientation="Horizontal" 
+                             HorizontalOptions="Center" >
+                    <StackLayout Orientation="Vertical" Padding="0,0,5,0">
+                        <CheckBox x:Name="RunningCheckBoxOnline" 
+                                  CheckedChanged="BlockOfflineCheckBox"
                                   HorizontalOptions="Center"/>
-                        <Label Text="Online" HorizontalOptions="Center" TextColor="White" Margin="0,-10,0,0"/>
+                        <Label Text="Online" 
+                               HorizontalOptions="Center" 
+                               TextColor="White" 
+                               Margin="0,-10,0,0"
+                               FontSize="Caption"/>
                     </StackLayout>
-                    <StackLayout Orientation="Vertical" Margin="0,0,-15,0" Padding="15,0,0,0">
-                        <CheckBox x:Name="RunningCheckBoxOnline" HorizontalOptions="Center"/>
-                        <Label Text="Stacjonarny" HorizontalOptions="Center" TextColor="White" Margin="0,-10,0,0"/>
+                    <StackLayout Orientation="Vertical" 
+                                 Padding="5,0,0,0">
+                        <CheckBox x:Name="RunningCheckBoxOffline" 
+                                  CheckedChanged="BlockOnlineCheckBox"
+                                  HorizontalOptions="Center"/>
+                        <Label Text="Stacjonarny" 
+                               HorizontalOptions="Center" 
+                               TextColor="White" 
+                               Margin="0,-10,0,0"
+                               FontSize="Caption"/>
                     </StackLayout>
                 </StackLayout>
-                <Label Text="Rowerem dla WOŚP"
-                   HorizontalOptions="Center"
-                   FontSize="Subtitle" TextColor="White" Margin="0,15,0,0"/>
-                <CheckBox x:Name="CyclingCheckBox"
-                      HorizontalOptions="Center" />
-                <StackLayout HorizontalOptions="Center" Orientation="Horizontal">
-                    <CheckBox HorizontalOptions="Center" VerticalOptions="Center"/>
-                    <Label Text="Akceptuję warunki" TextColor="White" FontSize="Subtitle" HorizontalTextAlignment="Center" VerticalOptions="Center"/>
-                    <Button Text="regulaminu" BackgroundColor="#0000" FontAttributes="Bold" TextColor="#E21912" Margin="-14,0,0,3" FontSize="Subtitle" TextTransform="Lowercase" Clicked="MoveToRegulations" />
+                <StackLayout Orientation="Horizontal" 
+                             HorizontalOptions="Center" Spacing="0">
+                    <CheckBox x:Name="CyclingCheckBox" 
+                              HorizontalOptions="Center"
+                              VerticalOptions="Center"/>
+                    <Label Text="Rowerem dla WOŚP"
+                           FontSize="Subtitle" 
+                           TextColor="White"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center"/>
+                </StackLayout>
+                <StackLayout HorizontalOptions="Center" 
+                             Orientation="Horizontal" 
+                             Spacing="0">
+                    <CheckBox HorizontalOptions="Center" 
+                              VerticalOptions="Center"/>
+                    <Label Text="Akceptuję warunki" 
+                           TextColor="White" 
+                           FontSize="Subtitle" 
+                           HorizontalTextAlignment="Center" 
+                           VerticalOptions="Center"/>
+                    <Button Text="regulaminu" 
+                            BackgroundColor="#0000" 
+                            FontAttributes="Bold" 
+                            TextColor="#E21912" 
+                            FontSize="Subtitle" 
+                            TextTransform="Lowercase"
+                            Margin="-8,0,0,0"
+                            Clicked="MoveToRegulations" />
                 </StackLayout>
                 <Button x:Name="ConfirmButton"
                 BackgroundColor="#E21912" 
@@ -106,7 +142,7 @@
                 HorizontalOptions="Center"
                 CornerRadius="10"
                 Clicked="ConfirmData"/>
-        </StackLayout>
+            </StackLayout>
         </ScrollView>
     </ContentPage.Content>
 </ContentPage>

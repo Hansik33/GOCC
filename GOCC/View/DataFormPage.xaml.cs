@@ -20,17 +20,27 @@ namespace GOCC.View
 
         private void CheckCorrectnessRegex(object sender, TextChangedEventArgs e)
         {
-            var isValid = Regex.IsMatch(e.NewTextValue, "^[AaĄąBbCcĆćDdEeĘęFfGgHhIiJjKkLlŁłMmNnŃńOoÓóPpRrSsŚśTtUuWwYyZzŹźŻż]+$");
+            var isValid = Regex.IsMatch(e.NewTextValue,
+                "^[AaĄąBbCcĆćDdEeĘęFfGgHhIiJjKkLlŁłMmNnŃńOoÓóPpRrSsŚśTtUuWwYyZzŹźŻż]+$");
 
-            if (e.NewTextValue.Length > 0)
-            {
-                ((Entry)sender).Text = isValid ? e.NewTextValue : e.NewTextValue.Remove(e.NewTextValue.Length - 1);
-            }
+            if (e.NewTextValue.Length > 0) ((Entry)sender).Text = isValid ? e.NewTextValue : e.NewTextValue.Remove(e.NewTextValue.Length - 1);
+        }
+
+        private void BlockOfflineCheckBox(object sender, CheckedChangedEventArgs e)
+        {
+            if (RunningCheckBoxOnline.IsChecked) RunningCheckBoxOffline.IsEnabled = false;
+            else RunningCheckBoxOffline.IsEnabled = true;
+        }
+
+        private void BlockOnlineCheckBox(object sender, CheckedChangedEventArgs e)
+        {
+            if (RunningCheckBoxOffline.IsChecked) RunningCheckBoxOnline.IsEnabled = false;
+            else RunningCheckBoxOnline.IsEnabled = true;
         }
 
         private void ConfirmData(object sender, EventArgs e)
         {
-            UserDataModel userdata = new UserDataModel(FirstName.Text,LastName.Text,PhoneNumber.Text,Email.Text,Place.Text, Date.Date.Day.ToString(),Date.Date.Year.ToString(),Date.Date.Month.ToString());
+            UserDataModel userdata = new UserDataModel(FirstName.Text, LastName.Text, PhoneNumber.Text, Email.Text, Place.Text, Date.Date.Day.ToString(), Date.Date.Year.ToString(), Date.Date.Month.ToString());
             //DisplayAlert("TITLE",$"{userdata.Name}, {userdata.LastName}, {userdata.PhoneNumber}, {userdata.Email}, {userdata.City}, {userdata.Day},{userdata.Month},{userdata.Year}","OK");
             //TUTAJ BĘDZIE KOD WYSYŁAJĄCY DANE DO SERWERA
             Navigation.PopAsync();
