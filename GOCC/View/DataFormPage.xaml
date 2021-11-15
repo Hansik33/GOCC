@@ -2,74 +2,62 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="GOCC.View.DataFormPage"
-             BackgroundImageSource="background.png"
-             Title="Uzupełnij swoje dane:">
+             BackgroundColor="#333231"
+             Title="Rejestracja">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style TargetType="Entry" x:Key="DefaultEntryStyle">
+                <Setter Property="Margin" Value="5" />
+                <Setter Property="PlaceholderColor" Value="White" />
+                <Setter Property="ClearButtonVisibility" Value="WhileEditing" />
+                <Setter Property="HorizontalOptions" Value="Center" />
+                <Setter Property="WidthRequest" Value="210" />
+                <Setter Property="HorizontalTextAlignment" Value="Center" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
     <ContentPage.Content>
         <ScrollView Orientation="Vertical">
             <StackLayout>
-                <Entry x:Name="FirstName" 
+                <Entry x:Name="FirstName"
+                Style="{StaticResource DefaultEntryStyle}"
                 TextChanged="CheckCorrectnessRegex"
                 Keyboard="Text"
-                ClearButtonVisibility="WhileEditing"
-                Margin="5"
-                HorizontalOptions="Center"
-                WidthRequest="210"
-                   HorizontalTextAlignment="Center"
-                PlaceholderColor="Black"
                 Placeholder="Imię" />
             <Entry x:Name="LastName"  
+                Style="{StaticResource DefaultEntryStyle}"
                 TextChanged="CheckCorrectnessRegex"
                 Keyboard="Text"
-                ClearButtonVisibility="WhileEditing"
-                Margin="5"
-                HorizontalOptions="Center"
-                WidthRequest="210"
-                PlaceholderColor="Black"
                 Placeholder="Nazwisko" />
             <Entry x:Name="PhoneNumber"  
+                Style="{StaticResource DefaultEntryStyle}"
                 Keyboard="Numeric"
                 MaxLength="9"
-                ClearButtonVisibility="WhileEditing"
-                Margin="5"
-                HorizontalOptions="Center"
-                WidthRequest="210"
-                PlaceholderColor="Black"
                 Placeholder="Numer telefonu" />
             <Entry x:Name="Email"  
+                Style="{StaticResource DefaultEntryStyle}"
                 Keyboard="Email"
-                ClearButtonVisibility="WhileEditing"
-                Margin="5"
-                HorizontalOptions="Center"
-                WidthRequest="210"
-                PlaceholderColor="Black"
                 Placeholder="E-mail" />
             <Entry x:Name="Place" 
+                Style="{StaticResource DefaultEntryStyle}"
                 TextChanged="CheckCorrectnessRegex"
                 Keyboard="Text"
-                ClearButtonVisibility="WhileEditing"
-                Margin="5"
-                HorizontalOptions="Center"
-                WidthRequest="210"
-                PlaceholderColor="Black"
                 Placeholder="Miejscowość" />
             <Entry x:Name="Address" 
+                   Style="{StaticResource DefaultEntryStyle}"
                    Keyboard="Text" 
-                   ClearButtonVisibility="WhileEditing"
-                   Margin="5"
-                   HorizontalOptions="Center"
-                   WidthRequest="210"
-                   PlaceholderColor="Black"
                    Placeholder="Adres zamieszkania"/>
                 <StackLayout Orientation="Horizontal" 
                 HorizontalOptions="Center">
             <DatePicker x:Name="Date"
+                TextColor="White"
                 Margin="5"
                 HorizontalOptions="Center"
                 WidthRequest="210"
                 MaximumDate="01.01.2021"/>
              <Label Text="Data urodzenia" 
                     FontSize="15" Margin="-120,20,15,0" 
-                    TextColor="Black"/>
+                    TextColor="White"/>
             </StackLayout>
                 <Label Text="Jakie dyscypliny wybierasz?" 
                 HorizontalOptions="Center" 

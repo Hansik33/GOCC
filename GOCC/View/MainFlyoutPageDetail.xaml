@@ -4,7 +4,7 @@
              x:Class="GOCC.View.MainFlyoutPageDetail"
              Title="Strona główna">
     <StackLayout>
-        <Frame BackgroundColor="#2196F3" Padding="24" CornerRadius="0">
+        <Frame BackgroundColor="#333231" Padding="24" CornerRadius="0">
             <Label Text="30. Finał WOŚP" HorizontalTextAlignment="Center" TextColor="White" FontSize="36"/>
         </Frame>
         <Label Text="Witamy Cię w aplikacji!" FontSize="Title" Padding="30,10,30,10" HorizontalTextAlignment="Center"/>

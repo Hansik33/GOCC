@@ -12,6 +12,7 @@ namespace GOCC
             InitializeComponent();
 
             MainPage = new MainFlyoutPage();
+
         }
 
         protected override void OnStart()
