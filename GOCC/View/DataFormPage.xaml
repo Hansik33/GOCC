@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="GOCC.View.DataFormPage"
-             BackgroundColor="#333231"
+             BackgroundImageSource="background.png"
              Title="Rejestracja">
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -120,14 +120,14 @@
                               VerticalOptions="Center"/>
                     <Label Text="Akceptuję warunki" 
                            TextColor="White" 
-                           FontSize="Subtitle" 
+                           FontSize="Small" 
                            HorizontalTextAlignment="Center" 
                            VerticalOptions="Center"/>
                     <Button Text="regulaminu" 
                             BackgroundColor="#0000" 
                             FontAttributes="Bold" 
                             TextColor="#E21912" 
-                            FontSize="Subtitle" 
+                            FontSize="Small" 
                             TextTransform="Lowercase"
                             Margin="-8,0,0,0"
                             Clicked="MoveToRegulations" />
@@ -137,10 +137,10 @@
                 Margin="0,10,0,20"
                 TextColor="White" 
                 Text="Zatwierdź" 
-                WidthRequest="350"  
+                WidthRequest="250"  
                 HeightRequest="50" 
                 HorizontalOptions="Center"
-                CornerRadius="10"
+                CornerRadius="20"
                 Clicked="ConfirmData"/>
             </StackLayout>
         </ScrollView>

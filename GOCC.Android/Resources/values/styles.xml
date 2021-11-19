@@ -16,5 +16,9 @@
     <!--<item name="colorAccent">#FF4081</item>-->
     <item name="colorAccent">#E21912</item>
 	<item name="colorControlNormal">#FFF</item>"
-  </style>
+	<item name="android:datePickerDialogTheme">@style/AppCompatDialogStyle</item>
+   </style>
+	<style name="AppCompatDialogStyle" parent="Theme.AppCompat.Light.Dialog">
+		<item name="colorAccent">#E21912</item>
+	</style>
 </resources>
