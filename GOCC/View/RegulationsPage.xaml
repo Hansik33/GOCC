@@ -8,6 +8,6 @@
              x:Class="GOCC.View.RegulationsPage">
 
     <StackLayout BackgroundColor="Gray" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
-        <controls:PDFview x:Name="pdfView" IsPDF="True" HeightRequest="1000" WidthRequest="1000" VerticalOptions="CenterAndExpand"/>
+        <controls:PDFview x:Name="pdfView" Uri="regulamin.pdf" HeightRequest="1000" WidthRequest="1000" VerticalOptions="CenterAndExpand"/>
     </StackLayout>
 </ContentPage>

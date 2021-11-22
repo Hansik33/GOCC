@@ -17,11 +17,11 @@ namespace GOCC.View
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class RegulationsPage : ContentPage
     {
-        string url = "https://drive.google.com/file/d/1PkHjIS2jrzWic3-c2jKQwWjF02mxqmkQ/view";
+        //string url = "https://drive.google.com/file/d/1PkHjIS2jrzWic3-c2jKQwWjF02mxqmkQ/view";
         public RegulationsPage()
         {
             InitializeComponent();
-            if (Device.RuntimePlatform == Device.Android)
+            /*if (Device.RuntimePlatform == Device.Android)
             {
                 pdfView.Uri = url;
                 pdfView.On<Android>().EnableZoomControls(true);
@@ -30,7 +30,7 @@ namespace GOCC.View
             else
             {
                 pdfView.Source = url;
-            }
+            }*/
         }
     }
 }
