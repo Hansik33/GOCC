@@ -17,20 +17,9 @@ namespace GOCC.View
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class RegulationsPage : ContentPage
     {
-        //string url = "https://drive.google.com/file/d/1PkHjIS2jrzWic3-c2jKQwWjF02mxqmkQ/view";
         public RegulationsPage()
         {
             InitializeComponent();
-            /*if (Device.RuntimePlatform == Device.Android)
-            {
-                pdfView.Uri = url;
-                pdfView.On<Android>().EnableZoomControls(true);
-                pdfView.On<Android>().DisplayZoomControls(false);
-            }
-            else
-            {
-                pdfView.Source = url;
-            }*/
         }
     }
 }
