@@ -26,6 +26,14 @@ namespace GOCC.View
             if (e.NewTextValue.Length > 0) ((Entry)sender).Text = isValid ? e.NewTextValue : e.NewTextValue.Remove(e.NewTextValue.Length - 1);
         }
 
+        private void CheckCorrectnessTownEntryRegex(object sender, TextChangedEventArgs e)
+        {
+            var isValid = Regex.IsMatch(e.NewTextValue,
+                "^[AaĄąBbCcĆćDdEeĘęFfGgHhIiJjKkLlŁłMmNnŃńOoÓóPpRrSsŚśTtUuWwYyZzŹźŻż ]+$");
+
+            if (e.NewTextValue.Length > 0) ((Entry)sender).Text = isValid ? e.NewTextValue : e.NewTextValue.Remove(e.NewTextValue.Length - 1);
+        }
+
         private void CheckCorrectnessPostcodeRegex(object sender, TextChangedEventArgs e)
         {
             var isValid = Regex.IsMatch(e.NewTextValue,
@@ -44,25 +52,25 @@ namespace GOCC.View
                 if (Postcode.IsReadOnly)
                 {
                     Postcode.IsReadOnly = false;
-                    Postcode.PlaceholderColor = Color.White;
+                    Postcode.Opacity = 1;
                 }
 
                 if (Address.IsReadOnly)
                 {
                     Address.IsReadOnly = false;
-                    Address.PlaceholderColor = Color.White;
+                    Address.Opacity = 1;
                 }
 
                 if (HouseNumber.IsReadOnly)
                 {
                     HouseNumber.IsReadOnly = false;
-                    HouseNumber.PlaceholderColor = Color.White;
+                    HouseNumber.Opacity = 1;
                 }
 
                 if (ApartmentNumber.IsReadOnly)
                 {
                     ApartmentNumber.IsReadOnly = false;
-                    ApartmentNumber.PlaceholderColor = Color.White;
+                    ApartmentNumber.Opacity = 1;
                 }
 
             }
@@ -76,28 +84,28 @@ namespace GOCC.View
                 {
                     Postcode.Text = String.Empty;
                     Postcode.IsReadOnly = true;
-                    Postcode.PlaceholderColor = Color.FromHex("#4D4D4D");
+                    Postcode.Opacity = 0.3;
                 }
 
                 if (!(Address.IsReadOnly))
                 {
                     Address.Text = String.Empty;
                     Address.IsReadOnly = true;
-                    Address.PlaceholderColor = Color.FromHex("#4D4D4D");
+                    Address.Opacity = 0.3;
                 }
 
                 if (!(HouseNumber.IsReadOnly))
                 {
                     HouseNumber.Text = String.Empty;
                     HouseNumber.IsReadOnly = true;
-                    HouseNumber.PlaceholderColor = Color.FromHex("#4D4D4D");
+                    HouseNumber.Opacity = 0.3;
                 }
 
                 if (!(ApartmentNumber.IsReadOnly))
                 {
                     ApartmentNumber.Text = String.Empty;
                     ApartmentNumber.IsReadOnly = true;
-                    ApartmentNumber.PlaceholderColor = Color.FromHex("#4D4D4D");
+                    ApartmentNumber.Opacity = 0.3;
                 }
             }
         }

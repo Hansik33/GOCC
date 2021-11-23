@@ -9,7 +9,7 @@
         <ResourceDictionary>
             <Style TargetType="Entry" x:Key="DefaultEntryStyle">
                 <Setter Property="Margin" Value="5" />
-                <Setter Property="PlaceholderColor" Value="White" />
+                <Setter Property="PlaceholderColor" Value="#8E8E8E" />
                 <Setter Property="ClearButtonVisibility" Value="WhileEditing" />
                 <Setter Property="HorizontalOptions" Value="Center" />
                 <Setter Property="WidthRequest" Value="210" />
@@ -87,7 +87,7 @@
                 Placeholder="Nazwisko" />
                     <Entry x:Name="Town" 
                 Style="{StaticResource DefaultEntryStyle}"
-                TextChanged="CheckCorrectnessTextEntryRegex"
+                TextChanged="CheckCorrectnessTownEntryRegex"
                 Keyboard="Text"
                 Placeholder="Miasto" />
                     <Entry x:Name="Postcode"         
@@ -95,7 +95,7 @@
                 TextChanged="CheckCorrectnessPostcodeRegex"
                 Keyboard="Numeric"
                 MaxLength="6"
-                PlaceholderColor="#4d4d4d"
+                Opacity="0.3"
                 IsReadOnly="True"
                 Placeholder="Kod pocztowy">
                         <Entry.Behaviors>
@@ -105,21 +105,21 @@
                     <Entry x:Name="Address" 
                    Style="{StaticResource DefaultEntryStyle}"
                    TextChanged="CheckCorrectnessTextEntryRegex"
-                   PlaceholderColor="#4d4d4d"
+                   Opacity="0.3"
                    IsReadOnly="True"
-                   Placeholder="Adres zamieszkania" />
+                   Placeholder="Ulica" />
                     <Entry x:Name="HouseNumber" 
                    Style="{StaticResource DefaultEntryStyle}"
                    Keyboard="Numeric"
                    MaxLength="3"
-                   PlaceholderColor="#4d4d4d"
                    IsReadOnly="True"
+                   Opacity="0.3"
                    Placeholder="Numer domu" />
                     <Entry x:Name="ApartmentNumber" 
                    Style="{StaticResource DefaultEntryStyle}"
                    Keyboard="Numeric" 
                    MaxLength="3"
-                   PlaceholderColor="#4d4d4d"
+                   Opacity="0.3"
                    IsReadOnly="True"
                    Placeholder="Numer lokalu" />
                     <Entry x:Name="PhoneNumber"  
@@ -143,11 +143,10 @@
                 Margin="5"
                 HorizontalOptions="Center"
                 WidthRequest="210"
-                MaximumDate="01.01.2021"
                 Format="dd.MM.yyyy"/>
                         <Label Text="Data urodzenia" 
                     FontSize="15" Margin="-120,20,15,0" 
-                    TextColor="White"/>
+                    TextColor="LightGray"/>
                     </StackLayout>
                 </StackLayout>
 
