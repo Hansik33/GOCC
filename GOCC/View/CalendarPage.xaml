@@ -4,7 +4,7 @@
              x:Class="GOCC.View.CalendarPage">
     <ContentPage.Content>
         <StackLayout>
-           
+
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

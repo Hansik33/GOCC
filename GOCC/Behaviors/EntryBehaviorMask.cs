@@ -5,7 +5,7 @@ using Xamarin.Forms;
 
 namespace GOCC.Behaviors
 {
-    public class DataFormPostcodeEntryMaskedBehavior : Behavior<Entry>
+    public class EntryBehaviorMask : Behavior<Entry>
     {
         private string _mask = String.Empty;
         public string Mask

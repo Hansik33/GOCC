@@ -1,20 +1,73 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:PostcodeEntryBehavior="clr-namespace:GOCC.Behaviors"
+             xmlns:Behaviors="clr-namespace:GOCC.Behaviors"
              x:Class="GOCC.View.DataFormPage"
              BackgroundImageSource="background.png"
              Title="Rejestracja">
     <ContentPage.Resources>
         <ResourceDictionary>
-            <Style TargetType="Entry" x:Key="DefaultEntryStyle">
-                <Setter Property="Margin" Value="5" />
-                <Setter Property="PlaceholderColor" Value="#8E8E8E" />
-                <Setter Property="ClearButtonVisibility" Value="WhileEditing" />
-                <Setter Property="HorizontalOptions" Value="Center" />
-                <Setter Property="WidthRequest" Value="210" />
-                <Setter Property="HorizontalTextAlignment" Value="Center" />
-                <Setter Property="TextColor" Value="White" />
+            <Style x:Key="DefaultEntryStyle"
+                   TargetType="Entry">
+                <Setter Property="Margin"
+                        Value="5" />
+                <Setter Property="PlaceholderColor"
+                        Value="#8E8E8E" />
+                <Setter Property="ClearButtonVisibility"
+                        Value="WhileEditing" />
+                <Setter Property="HorizontalOptions"
+                        Value="Center" />
+                <Setter Property="WidthRequest"
+                        Value="210" />
+                <Setter Property="HorizontalTextAlignment"
+                        Value="Center" />
+                <Setter Property="TextColor"
+                        Value="White" />
+                <Setter Property="FontSize"
+                        Value="Medium" />
+                <Setter Property="Opacity"
+                        Value="1" />
+            </Style>
+            <Style x:Key="DisabledEntryStyle"
+                   BasedOn="{StaticResource DefaultEntryStyle}"
+                   TargetType="Entry">
+                <Setter Property="IsReadOnly"
+                        Value="True" />
+                <Setter Property="Opacity"
+                        Value="0.3" />
+            </Style>
+            <Style x:Key="EmptyEntryStyle"
+                   BasedOn="{StaticResource DefaultEntryStyle}"
+                   TargetType="Entry">
+                <Setter Property="FontAttributes"
+                        Value="Bold" />
+                <Setter Property="PlaceholderColor"
+                        Value="Yellow" />
+            </Style>
+            <Style x:Key="DefaultCheckBoxStyle"
+                   TargetType="CheckBox">
+                <Setter Property="IsEnabled"
+                        Value="True" />
+                <Setter Property="Color"
+                        Value="Default" />
+                <Setter Property="VerticalOptions"
+                        Value="Center" />
+                <Setter Property="HorizontalOptions"
+                        Value="Center" />
+            </Style>
+            <Style x:Key="DisabledCheckBoxStyle"
+                   BasedOn="{StaticResource DefaultCheckBoxStyle}"
+                   TargetType="CheckBox">
+                <Setter Property="IsEnabled"
+                        Value="False" />
+                <Setter Property="Color"
+                        Value="#4D4D4D" />
+            </Style>
+            <Style x:Key="EmptyCheckBoxStyle"
+                   BasedOn="{StaticResource DefaultCheckBoxStyle}"
+                   TargetType="CheckBox">
+                <Setter Property="Color"
+                        Value="Yellow" />
             </Style>
         </ResourceDictionary>
     </ContentPage.Resources>
@@ -22,164 +75,189 @@
         <ScrollView Orientation="Vertical">
             <StackLayout>
                 <StackLayout>
-                    <Label Text="Wybierz dyscypliny:" 
-                HorizontalOptions="Center"
-                TextColor="White"
-                FontAttributes="Bold"
-                FontSize="Title"
-                Padding="0,20,0,10"/>
-                    <Label Text="VII. Bieg z sercem WOŚP" 
-                   HorizontalOptions="Center"
-                   FontSize="Subtitle"
-                   TextColor="White"/>
-                    <StackLayout Orientation="Horizontal" 
-                             HorizontalOptions="Center" >
-                        <StackLayout Orientation="Vertical" Padding="0,0,5,0">
-                            <CheckBox x:Name="RunningCheckBoxOnline" 
-                                  CheckedChanged="ChooseOnlineCheckBox"
-                                  HorizontalOptions="Center"/>
-                            <Label Text="Online" 
-                               HorizontalOptions="Center" 
-                               TextColor="White" 
-                               Margin="0,-10,0,0"
-                               FontSize="Caption"/>
+                    <Label Text="Wybierz dyscypliny:"
+                           HorizontalOptions="Center"
+                           TextColor="White"
+                           FontAttributes="Bold"
+                           FontSize="Title"
+                           Padding="0,20,0,10" />
+                    <Label Text="VII. Bieg z sercem WOŚP"
+                           HorizontalOptions="Center"
+                           FontSize="Subtitle"
+                           TextColor="White" />
+                    <StackLayout Orientation="Horizontal"
+                                 HorizontalOptions="Center">
+                        <StackLayout Orientation="Vertical"
+                                     Padding="0,0,5,0">
+                            <CheckBox x:Name="RunningCheckBoxOnline"
+                                      Style="{StaticResource DefaultCheckBoxStyle}"
+                                      CheckedChanged="ChooseRunningCheckBox" />
+                            <Label Text="Online"
+                                   HorizontalOptions="Center"
+                                   TextColor="White"
+                                   Margin="0,-10,0,0"
+                                   FontSize="Caption" />
                         </StackLayout>
-                        <StackLayout Orientation="Vertical" 
-                                 Padding="5,0,0,0">
-                            <CheckBox x:Name="RunningCheckBoxOffline" 
-                                  CheckedChanged="ChooseOfflineCheckBox"
-                                  HorizontalOptions="Center"/>
-                            <Label Text="Stacjonarny" 
-                               HorizontalOptions="Center" 
-                               TextColor="White" 
-                               Margin="0,-10,0,0"
-                               FontSize="Caption"/>
+                        <StackLayout Orientation="Vertical"
+                                     Padding="5,0,0,0">
+                            <CheckBox x:Name="RunningCheckBoxOffline"
+                                      Style="{StaticResource DefaultCheckBoxStyle}"
+                                      CheckedChanged="ChooseRunningCheckBox" />
+                            <Label Text="Stacjonarny"
+                                   HorizontalOptions="Center"
+                                   TextColor="White"
+                                   Margin="0,-10,0,0"
+                                   FontSize="Caption" />
                         </StackLayout>
                     </StackLayout>
-                    <StackLayout Orientation="Horizontal" 
-                             HorizontalOptions="Center" Spacing="0">
-                        <CheckBox x:Name="CyclingCheckBox" 
-                              HorizontalOptions="Center"
-                              VerticalOptions="Center"/>
+                    <StackLayout Orientation="Horizontal"
+                                 HorizontalOptions="Center"
+                                 Spacing="0">
+                        <CheckBox x:Name="CyclingCheckBox"
+                                  HorizontalOptions="Center"
+                                  VerticalOptions="Center" />
                         <Label Text="Rowerem dla WOŚP"
-                           FontSize="Subtitle" 
-                           TextColor="White"
-                           HorizontalOptions="Center"
-                           VerticalOptions="Center"/>
+                               FontSize="Subtitle"
+                               TextColor="White"
+                               HorizontalOptions="Center"
+                               VerticalOptions="Center" />
                     </StackLayout>
                 </StackLayout>
                 <StackLayout>
                     <Label Text="Podaj swoje dane: "
-                HorizontalOptions="Center"
-                TextColor="White"
-                FontAttributes="Bold"
-                FontSize="Title"
-                Padding="0,20,0,10"/>
+                           HorizontalOptions="Center"
+                           TextColor="White"
+                           FontAttributes="Bold"
+                           FontSize="Title"
+                           Padding="0,10,0,10" />
                     <Entry x:Name="FirstName"
-                Style="{StaticResource DefaultEntryStyle}"
-                TextChanged="CheckCorrectnessTextEntryRegex"
-                Keyboard="Text"
-                Placeholder="Imię" />
-                    <Entry x:Name="LastName"  
-                Style="{StaticResource DefaultEntryStyle}"
-                TextChanged="CheckCorrectnessTextEntryRegex"
-                Keyboard="Text"
-                Placeholder="Nazwisko" />
-                    <Entry x:Name="Town" 
-                Style="{StaticResource DefaultEntryStyle}"
-                TextChanged="CheckCorrectnessTownEntryRegex"
-                Keyboard="Text"
-                Placeholder="Miasto" />
-                    <Entry x:Name="Postcode"         
-                Style="{StaticResource DefaultEntryStyle}"
-                TextChanged="CheckCorrectnessPostcodeRegex"
-                Keyboard="Numeric"
-                MaxLength="6"
-                Opacity="0.3"
-                IsReadOnly="True"
-                Placeholder="Kod pocztowy">
+                           Style="{StaticResource DefaultEntryStyle}"
+                           TextChanged="CheckCorrectnessTextEntryRegex"
+                           Focused="RestoreDefaultStyleEntry"
+                           MaxLength="15"
+                           Keyboard="Text"
+                           Placeholder="Imię" />
+                    <Entry x:Name="LastName"
+                           Style="{StaticResource DefaultEntryStyle}"
+                           TextChanged="CheckCorrectnessTextEntryRegex"
+                           MaxLength="35"
+                           Focused="RestoreDefaultStyleEntry"
+                           Keyboard="Text"
+                           Placeholder="Nazwisko" />
+                    <Entry x:Name="Town"
+                           Style="{StaticResource DefaultEntryStyle}"
+                           TextChanged="CheckCorrectnessTextEntryRegex"
+                           Focused="RestoreDefaultStyleEntry"
+                           MaxLength="30"
+                           Keyboard="Text"
+                           Placeholder="Miasto" />
+                    <Entry x:Name="Postcode"
+                           Style="{StaticResource DisabledEntryStyle}"
+                           TextChanged="CheckCorrectnessTextEntryRegex"
+                           Focused="RestoreDefaultStyleEntry"
+                           Keyboard="Numeric"
+                           MaxLength="6"
+                           Placeholder="Kod pocztowy">
                         <Entry.Behaviors>
-                            <PostcodeEntryBehavior:DataFormPostcodeEntryMaskedBehavior Mask="XX-XXX" />
+                            <Behaviors:EntryBehaviorMask Mask="XX-XXX" />
                         </Entry.Behaviors>
                     </Entry>
-                    <Entry x:Name="Address" 
-                   Style="{StaticResource DefaultEntryStyle}"
-                   TextChanged="CheckCorrectnessTextEntryRegex"
-                   Opacity="0.3"
-                   IsReadOnly="True"
-                   Placeholder="Ulica" />
-                    <Entry x:Name="HouseNumber" 
-                   Style="{StaticResource DefaultEntryStyle}"
-                   Keyboard="Numeric"
-                   MaxLength="3"
-                   IsReadOnly="True"
-                   Opacity="0.3"
-                   Placeholder="Numer domu" />
-                    <Entry x:Name="ApartmentNumber" 
-                   Style="{StaticResource DefaultEntryStyle}"
-                   Keyboard="Numeric" 
-                   MaxLength="3"
-                   Opacity="0.3"
-                   IsReadOnly="True"
-                   Placeholder="Numer lokalu" />
-                    <Entry x:Name="PhoneNumber"  
-                Style="{StaticResource DefaultEntryStyle}"
-                Keyboard="Telephone"
-                MaxLength="9"
-                Placeholder="Numer telefonu" />
-                    <Entry x:Name="Email"  
-                Style="{StaticResource DefaultEntryStyle}"
-                Keyboard="Email"
-                Placeholder="E-mail" />
-                    <Entry x:Name="Password"  
-                Style="{StaticResource DefaultEntryStyle}"
-                Keyboard="Text"
-                Placeholder="Hasło" 
-                IsPassword="True"/>
-                    <StackLayout Orientation="Horizontal" 
-                HorizontalOptions="Center">
-                        <DatePicker x:Name="Date"
-                TextColor="White"
-                Margin="5"
-                HorizontalOptions="Center"
-                WidthRequest="210"
-                Format="dd.MM.yyyy"/>
-                        <Label Text="Data urodzenia" 
-                    FontSize="15" Margin="-120,20,15,0" 
-                    TextColor="LightGray"/>
+                    <Entry x:Name="Address"
+                           Style="{StaticResource DisabledEntryStyle}"
+                           TextChanged="CheckCorrectnessTextEntryRegex"
+                           Focused="RestoreDefaultStyleEntry"
+                           Placeholder="Ulica" />
+                    <Entry x:Name="HouseNumber"
+                           Style="{StaticResource DisabledEntryStyle}"
+                           Focused="RestoreDefaultStyleEntry"
+                           Keyboard="Numeric"
+                           MaxLength="3"
+                           Placeholder="Numer domu" />
+                    <Entry x:Name="ApartmentNumber"
+                           Style="{StaticResource DisabledEntryStyle}"
+                           Focused="RestoreDefaultStyleEntry"
+                           Keyboard="Numeric"
+                           MaxLength="3"
+                           Placeholder="Numer lokalu" />
+                    <Entry x:Name="PhoneNumber"
+                           Style="{StaticResource DefaultEntryStyle}"
+                           TextChanged="CheckCorrectnessTextEntryRegex"
+                           Focused="RestoreDefaultStyleEntry"
+                           Keyboard="Telephone"
+                           MaxLength="11"
+                           Placeholder="Numer telefonu">
+                        <Entry.Behaviors>
+                            <Behaviors:EntryBehaviorMask Mask="XXX-XXX-XXX" />
+                        </Entry.Behaviors>
+                    </Entry>
+                    <Entry x:Name="Email"
+                           Style="{StaticResource DefaultEntryStyle}"
+                           TextChanged="CheckCorrectnessTextEntryRegex"
+                           Focused="RestoreDefaultStyleEntry"
+                           MaxLength="32"
+                           Keyboard="Email"
+                           Placeholder="E-mail" />
+                    <Entry x:Name="Password"
+                           Style="{StaticResource DefaultEntryStyle}"
+                           TextChanged="CheckCorrectnessTextEntryRegex"
+                           Focused="RestoreDefaultStyleEntry"
+                           MaxLength="32"
+                           Keyboard="Text"
+                           Placeholder="Hasło*"
+                           IsPassword="True" />
+                    <Label Text="*Minimalna długość hasła to 8 znaków"
+                           FontSize="Caption"
+                           TextColor="White"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center"
+                           HorizontalTextAlignment="Center"/>
+                    <StackLayout Orientation="Horizontal"
+                                 HorizontalOptions="Center">
+                        <DatePicker x:Name="DateDatePicker"
+                                    DateSelected="SelectDate"
+                                    Format="dd.MM.yyyy"
+                                    MaximumDate="01.01.2018"
+                                    TextColor="White"
+                                    Margin="5"
+                                    HorizontalOptions="Center"
+                                    WidthRequest="210" />
+                        <Label x:Name="BirthDateLabel"
+                               Text="Data urodzenia"
+                               FontSize="15"
+                               Margin="-120,20,15,0"
+                               TextColor="LightGray" />
                     </StackLayout>
                 </StackLayout>
-
-                <StackLayout HorizontalOptions="Center" 
-                             Orientation="Horizontal" 
+                <StackLayout HorizontalOptions="Center"
+                             Orientation="Horizontal"
                              Spacing="0">
                     <CheckBox x:Name="AcceptanceRegulationsCheckBox"
-                              HorizontalOptions="Center" 
-                              VerticalOptions="Center"/>
-                    <Label Text="Akceptuję warunki" 
-                           TextColor="White" 
-                           FontSize="Small" 
-                           HorizontalTextAlignment="Center" 
-                           VerticalOptions="Center"/>
-                    <Button Text="regulaminu" 
-                            BackgroundColor="#0000" 
-                            FontAttributes="Bold" 
-                            TextColor="#E21912" 
-                            FontSize="Small" 
+                              Style="{StaticResource DefaultCheckBoxStyle}"
+                              CheckedChanged="RestoreDefaultStyleCheckBox" />
+                    <Label Text="Akceptuję warunki"
+                           TextColor="White"
+                           FontSize="Small"
+                           HorizontalTextAlignment="Center"
+                           VerticalOptions="Center" />
+                    <Button Text="regulaminu"
+                            BackgroundColor="#0000"
+                            FontAttributes="Bold"
+                            TextColor="#E21912"
+                            FontSize="Small"
                             TextTransform="Lowercase"
                             Margin="-8,0,0,0"
                             Clicked="MoveToRegulations" />
                 </StackLayout>
                 <Button x:Name="ConfirmDataFormButton"
-                BackgroundColor="#E21912" 
-                Margin="0,10,0,20"
-                TextColor="White" 
-                Text="Zatwierdź" 
-                WidthRequest="250"  
-                HeightRequest="50" 
-                HorizontalOptions="Center"
-                CornerRadius="20"
-                Clicked="ConfirmData"/>
+                        Clicked="SendData"
+                        BackgroundColor="#E21912"
+                        Margin="0,10,0,20"
+                        TextColor="White"
+                        Text="Zatwierdź"
+                        WidthRequest="250"
+                        HeightRequest="50"
+                        HorizontalOptions="Center"
+                        CornerRadius="20" />
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>
