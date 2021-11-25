@@ -3,20 +3,24 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Globalization;
 using System.Text.RegularExpressions;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using GOCC.Model;
 using Xamarin.CommunityToolkit.Extensions;
 
+
 namespace GOCC.View
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class DataFormPage : ContentPage
     {
+        TextInfo TextInformation = new CultureInfo("pl-PL", false).TextInfo;
+
         // DATA
-        public string WhatWayRunningValue;
-        public bool IsCyclingValue;
+        public string FirstDisciplineValue;
+        public string SecondDisciplineValue;
         public string FirstNameValue;
         public string LastNameValue;
         public string TownValue;
@@ -43,15 +47,14 @@ namespace GOCC.View
 
             if (GivenObject.Text != null)
             {
-                if (ObjectName == "FirstName"
-                    || ObjectName == "LastName"
-                    || ObjectName == "Address")
+                if (ObjectName == "FirstName" || ObjectName == "LastName")
                 {
                     var isValid = Regex.IsMatch(e.NewTextValue,
                         "^[AaĄąBbCcĆćDdEeĘęFfGgHhIiJjKkLlŁłMmNnŃńOoÓóPpRrSsŚśTtUuWwYyZzŹźŻż]+$");
 
                     if (e.NewTextValue.Length > 0)
-                        GivenObject.Text = isValid ? e.NewTextValue : e.NewTextValue.Remove(e.NewTextValue.Length - 1);
+                        GivenObject.Text
+                            = isValid ? e.NewTextValue : e.NewTextValue.Remove(e.NewTextValue.Length - 1);
                 }
 
                 else if (ObjectName == "Town")
@@ -60,7 +63,8 @@ namespace GOCC.View
                         "^[AaĄąBbCcĆćDdEeĘęFfGgHhIiJjKkLlŁłMmNnŃńOoÓóPpRrSsŚśTtUuWwYyZzŹźŻż ]+$");
 
                     if (e.NewTextValue.Length > 0)
-                        GivenObject.Text = isValid ? e.NewTextValue : e.NewTextValue.Remove(e.NewTextValue.Length - 1);
+                        GivenObject.Text
+                            = isValid ? e.NewTextValue : e.NewTextValue.Remove(e.NewTextValue.Length - 1);
                 }
 
                 else if (ObjectName == "Postcode" || ObjectName == "PhoneNumber")
@@ -69,30 +73,53 @@ namespace GOCC.View
                         "^[0123456789-]+$");
 
                     if (e.NewTextValue.Length > 0)
-                        GivenObject.Text = isValid ? e.NewTextValue : e.NewTextValue.Remove(e.NewTextValue.Length - 1);
+                        GivenObject.Text
+                            = isValid ? e.NewTextValue : e.NewTextValue.Remove(e.NewTextValue.Length - 1);
+                }
+
+                else if (ObjectName == "Address")
+                {
+                    var isValid = Regex.IsMatch(e.NewTextValue,
+                        "^[AaĄąBbCcĆćDdEeĘęFfGgHhIiJjKkLlŁłMmNnŃńOoÓóPpRrSsŚśTtUuWwYyZzŹźŻż ]+$");
+
+                    if (e.NewTextValue.Length > 0)
+                        GivenObject.Text
+                            = isValid ? e.NewTextValue : e.NewTextValue.Remove(e.NewTextValue.Length - 1);
+                }
+
+                else if (ObjectName == "HouseNumber")
+                {
+                    var isValid = Regex.IsMatch(e.NewTextValue,
+                        "^[A-Za-z0123456789]+$");
+
+                    if (e.NewTextValue.Length > 0)
+                        GivenObject.Text
+                            = isValid ? e.NewTextValue : e.NewTextValue.Remove(e.NewTextValue.Length - 1);
                 }
 
                 else if (ObjectName == "Email")
                 {
                     var isValid = Regex.IsMatch(e.NewTextValue,
-                        "^[AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpRrSsTtUuWwYyZz0123456789!@#$%&'*+-/=?^_`{|}~.]+$");
+                        "^[A-Za-z0123456789!@#$%&'*+/=?^_`{|}~.]+$");
 
                     if (e.NewTextValue.Length > 0)
-                        GivenObject.Text = isValid ? e.NewTextValue : e.NewTextValue.Remove(e.NewTextValue.Length - 1);
+                        GivenObject.Text =
+                            isValid ? e.NewTextValue : e.NewTextValue.Remove(e.NewTextValue.Length - 1);
                 }
 
                 else if (ObjectName == "Password")
                 {
                     var isValid = Regex.IsMatch(e.NewTextValue,
-                        "^[AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpRrSsTtUuWwYyZz0123456789~`!@#$%^&*()_+-={[}]|:;'<,>.?/ ]+$");
+                        "^[A-Za-z~`!@#$%^&*()_+={[}|:;'<,>.?/ ]+$");
 
                     if (e.NewTextValue.Length > 0)
-                        GivenObject.Text = isValid ? e.NewTextValue : e.NewTextValue.Remove(e.NewTextValue.Length - 1);
+                        GivenObject.Text
+                            = isValid ? e.NewTextValue : e.NewTextValue.Remove(e.NewTextValue.Length - 1);
                 }
             }
         }
 
-        private void ChooseRunningCheckBox(object sender, CheckedChangedEventArgs e)
+        private void ChooseDisciplineCheckBox(object sender, CheckedChangedEventArgs e)
         {
             var GivenObject = sender as CheckBox;
 
@@ -104,13 +131,20 @@ namespace GOCC.View
                 {
                     RunningCheckBoxOffline.Style = Resources["DisabledCheckBoxStyle"] as Style;
 
-                    if (Postcode.IsReadOnly) Postcode.Style = Resources["DefaultEntryStyle"] as Style;
+                    if (Postcode.IsReadOnly)
+                        Postcode.Style = Resources["DefaultEntryStyle"] as Style;
 
-                    if (Address.IsReadOnly) Address.Style = Resources["DefaultEntryStyle"] as Style;
+                    if (Address.IsReadOnly)
+                        Address.Style = Resources["DefaultEntryStyle"] as Style;
 
-                    if (HouseNumber.IsReadOnly) HouseNumber.Style = Resources["DefaultEntryStyle"] as Style;
+                    if (HouseNumber.IsReadOnly)
+                        HouseNumber.Style = Resources["DefaultEntryStyle"] as Style;
 
-                    if (ApartmentNumber.IsReadOnly) ApartmentNumber.Style = Resources["DefaultEntryStyle"] as Style;
+                    if (ApartmentNumber.IsReadOnly)
+                        ApartmentNumber.Style = Resources["DefaultEntryStyle"] as Style;
+
+                    if (CyclingCheckBox.Style == Resources["EmptyCheckBoxStyle"])
+                        CyclingCheckBox.Style = Resources["DefaultCheckBoxStyle"] as Style;
                 }
 
                 else
@@ -148,6 +182,19 @@ namespace GOCC.View
                 if (RunningCheckBoxOffline.IsChecked)
                     RunningCheckBoxOnline.Style = Resources["DisabledCheckBoxStyle"] as Style;
                 else RunningCheckBoxOnline.Style = Resources["DefaultCheckBoxStyle"] as Style;
+
+                if (CyclingCheckBox.Style == Resources["EmptyCheckBoxStyle"])
+                    CyclingCheckBox.Style = Resources["DefaultCheckBoxStyle"] as Style;
+            }
+
+            else if (ObjectName == "CyclingCheckBox")
+            {
+                if (RunningCheckBoxOnline.Style == Resources["EmptyCheckBoxStyle"]
+                    || RunningCheckBoxOffline.Style == Resources["EmptyCheckBoxStyle"])
+                {
+                    RunningCheckBoxOnline.Style = Resources["DefaultCheckBoxStyle"] as Style;
+                    RunningCheckBoxOffline.Style = Resources["DefaultCheckBoxStyle"] as Style;
+                }
             }
 
             if (GivenObject.Style == Resources["EmptyCheckBoxStyle"])
@@ -221,145 +268,195 @@ namespace GOCC.View
 
             if (Email.Text.Contains('@'))
             {
-                if (!(Email.Text.Contains(".com")) && !(Email.Text.Contains(".pl"))) 
+                if (!(Email.Text.Contains(".com")) && !(Email.Text.Contains(".pl")))
                     isCorrect = false;
             }
             else isCorrect = false;
-              
+
             return isCorrect;
         }
 
-        public bool IsDataCorrectBeforeSending()
+        public bool IsHouseNumberCorrect()
         {
             bool isCorrect = true;
 
-            if (!(RunningCheckBoxOnline.IsChecked) && !(RunningCheckBoxOffline.IsChecked))
+            if (HouseNumber.Text.Length > 0)
             {
-                isCorrect = false;
+                if (!(Char.IsDigit(HouseNumber.Text[0])) || HouseNumber.Text[0] == '0') isCorrect = false;
+                else if (Char.IsDigit(HouseNumber.Text[0]) && HouseNumber.Text[0] != '0')
+                {
+                    var DoesAddressContainLetter = HouseNumber.Text.Any(x => char.IsLetter(x));
+
+                    if (DoesAddressContainLetter)
+                    {
+                        if (HouseNumber.Text.Length == 3)
+                            if (Char.IsLetter(HouseNumber.Text[1])
+                            && Char.IsLetter(HouseNumber.Text[2]))
+                                isCorrect = false;
+                    }
+                }
+            }
+
+            return isCorrect;
+        }
+
+        public bool AreAllEntriesFilled()
+        {
+            bool Result = true;
+
+            if (!(RunningCheckBoxOnline.IsChecked)
+                && !(RunningCheckBoxOffline.IsChecked)
+                && !(CyclingCheckBox.IsChecked))
+            {
+                Result = false;
 
                 RunningCheckBoxOnline.Style = Resources["EmptyCheckBoxStyle"] as Style;
                 RunningCheckBoxOffline.Style = Resources["EmptyCheckBoxStyle"] as Style;
+                CyclingCheckBox.Style = Resources["EmptyCheckBoxStyle"] as Style;
             }
 
             if (FirstName.Text == null)
             {
-                isCorrect = false;
+                Result = false;
                 FirstName.Style = Resources["EmptyEntryStyle"] as Style;
             }
+            else FirstName.Text = TextInformation.ToTitleCase(FirstName.Text);
 
             if (LastName.Text == null)
             {
-                isCorrect = false;
+                Result = false;
                 LastName.Style = Resources["EmptyEntryStyle"] as Style;
             }
+            else LastName.Text = TextInformation.ToTitleCase(LastName.Text);
 
             if (Town.Text == null)
             {
-                isCorrect = false;
+                Result = false;
                 Town.Style = Resources["EmptyEntryStyle"] as Style;
             }
+            else Town.Text = TextInformation.ToTitleCase(Town.Text);
 
             if (RunningCheckBoxOnline.IsChecked)
             {
                 if (Postcode.Text == null)
                 {
-                    isCorrect = false;
+                    Result = false;
                     Postcode.Style = Resources["EmptyEntryStyle"] as Style;
                 }
                 else if (!(IsPostcodeCorrect()))
                 {
-                    isCorrect = false;
+                    Result = false;
                     Postcode.Text = null;
                     Postcode.Style = Resources["EmptyEntryStyle"] as Style;
                 }
 
                 if (Address.Text == null)
                 {
-                    isCorrect = false;
+                    Result = false;
                     Address.Style = Resources["EmptyEntryStyle"] as Style;
                 }
+                else Address.Text = TextInformation.ToTitleCase(Address.Text);
 
                 if (HouseNumber.Text == null)
                 {
-                    isCorrect = false;
+                    Result = false;
                     HouseNumber.Style = Resources["EmptyEntryStyle"] as Style;
                 }
-
-                if (ApartmentNumber.Text == null)
+                else if (!(IsHouseNumberCorrect()))
                 {
-                    isCorrect = false;
-                    ApartmentNumber.Style = Resources["EmptyEntryStyle"] as Style;
+                    Result = false;
+                    HouseNumber.Text = null;
+                    HouseNumber.Style = Resources["EmptyEntryStyle"] as Style;
                 }
             }
 
             if (PhoneNumber.Text == null)
             {
-                isCorrect = false;
+                Result = false;
                 PhoneNumber.Text = null;
                 PhoneNumber.Style = Resources["EmptyEntryStyle"] as Style;
             }
             else if (!(IsPhoneNumberCorrect()))
             {
-                isCorrect = false;
+                Result = false;
                 PhoneNumber.Text = null;
                 PhoneNumber.Style = Resources["EmptyEntryStyle"] as Style;
             }
 
             if (Email.Text == null)
             {
-                isCorrect = false;
+                Result = false;
                 Email.Style = Resources["EmptyEntryStyle"] as Style;
             }
             else if (!(IsEmailCorrect()))
             {
-                isCorrect = false;
+                Result = false;
                 Email.Text = null;
                 Email.Style = Resources["EmptyEntryStyle"] as Style;
             }
 
             if (Password.Text == null || Password.Text.Length < 8)
             {
-                isCorrect = false;
+                Result = false;
                 Password.Text = null;
                 Password.Style = Resources["EmptyEntryStyle"] as Style;
             }
 
             if (DateDatePicker.Date == DateDatePicker.MaximumDate)
             {
-                isCorrect = false;
+                Result = false;
                 BirthDateLabel.TextColor = Color.Yellow;
             }
 
             if (!(AcceptanceRegulationsCheckBox.IsChecked))
             {
-                isCorrect = false;
+                Result = false;
                 AcceptanceRegulationsCheckBox.Style = Resources["EmptyCheckBoxStyle"] as Style;
             }
 
-            return isCorrect;
+            return Result;
         }
 
         public void SetValuesToVariables()
         {
-            if (RunningCheckBoxOnline.IsChecked) WhatWayRunningValue = "Online";
-            else if (RunningCheckBoxOffline.IsChecked) WhatWayRunningValue = "Offline";
-            if (CyclingCheckBox.IsChecked) IsCyclingValue = true;
+            if (RunningCheckBoxOnline.IsChecked)
+            {
+                FirstDisciplineValue = "VII. Bieg z sercem WOŚP (Online)";
+                if (CyclingCheckBox.IsChecked) SecondDisciplineValue = "Rowerem dla WOŚP";
+                else SecondDisciplineValue = "Nie dotyczy";
+            }
+            if (RunningCheckBoxOffline.IsChecked)
+            {
+                FirstDisciplineValue = "VII. Bieg z sercem WOŚP (Offline)";
+                if (CyclingCheckBox.IsChecked) SecondDisciplineValue = "Rowerem dla WOŚP";
+                else SecondDisciplineValue = "Nie dotyczy";
+            }
+            if (CyclingCheckBox.IsChecked
+                && !(RunningCheckBoxOnline.IsChecked)
+                && !(RunningCheckBoxOffline.IsChecked))
+            {
+                FirstDisciplineValue = "Rowerem dla WOŚP";
+                SecondDisciplineValue = "Nie dotyczy";
+            }
             FirstNameValue = FirstName.Text;
             LastNameValue = LastName.Text;
             TownValue = Town.Text;
-            PostcodeValue = Postcode.Text;
-            AddressValue = Address.Text;
-            HouseNumberValue = HouseNumber.Text;
-            ApartmentNumberValue = ApartmentNumber.Text;
+            if (Postcode.Text != null) PostcodeValue = Postcode.Text;
+            else PostcodeValue = "Nie dotyczy";
+            if (Address.Text != null) AddressValue = Address.Text;
+            else AddressValue = "Nie dotyczy";
+            if (HouseNumber.Text != null) HouseNumberValue = HouseNumber.Text;
+            else HouseNumberValue = "Nie dotyczy";
+            if (ApartmentNumber.Text != null) ApartmentNumberValue = ApartmentNumber.Text;
+            else ApartmentNumberValue = "Nie dotyczy";
             PhoneNumberValue = PhoneNumber.Text;
             EmailValue = Email.Text;
             PasswordValue = Password.Text;
             BirthDateValue = DateDatePicker.Date.ToString("d");
 
             //       /*
-            Console.WriteLine("VII. Bieg z sercem WOŚP: " + WhatWayRunningValue);
-            if (IsCyclingValue) Console.WriteLine("Rowerem dla WOŚP: Tak");
-            else Console.WriteLine("Rowerem dla WOŚP: Nie");
+            Console.WriteLine("Pierwsza dyscyplina" + FirstDisciplineValue);
+            Console.WriteLine("Druga dyscyplina: " + SecondDisciplineValue);
             Console.WriteLine("Imię: " + FirstNameValue);
             Console.WriteLine("Nazwisko: " + LastNameValue);
             Console.WriteLine("Miasto: " + TownValue);
@@ -376,13 +473,13 @@ namespace GOCC.View
 
         private async void SendData(object sender, EventArgs e)
         {
-            if (IsDataCorrectBeforeSending())
+            if (AreAllEntriesFilled())
             {
                 SetValuesToVariables();
 
                 await Navigation.PopAsync();
             }
-            else await this.DisplayToastAsync("Należy poprawnie uzupełnić wymagane pola!", 3000);
+            else await this.DisplayToastAsync("Nie wszystkie wymagane pola są wypełnione prawidłowo!", 3000);
         }
     }
 }
