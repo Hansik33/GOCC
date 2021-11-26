@@ -16,14 +16,14 @@ namespace GOCC.View
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class DataFormPage : ContentPage
     {
-        TextInfo TextInformation = new CultureInfo("pl-PL", false).TextInfo;
+        readonly TextInfo TextInformation = new CultureInfo("pl-PL", false).TextInfo;
 
         // DATA
         public string FirstDisciplineValue;
         public string SecondDisciplineValue;
         public string FirstNameValue;
         public string LastNameValue;
-        public string TownValue;
+        public string PlaceValue;
         public string PostcodeValue;
         public string AddressValue;
         public string HouseNumberValue;
@@ -50,17 +50,17 @@ namespace GOCC.View
                 if (ObjectName == "FirstName" || ObjectName == "LastName")
                 {
                     var isValid = Regex.IsMatch(e.NewTextValue,
-                        "^[AaĄąBbCcĆćDdEeĘęFfGgHhIiJjKkLlŁłMmNnŃńOoÓóPpRrSsŚśTtUuWwYyZzŹźŻż]+$");
+                        "^[A-Za-zĄąĆćĘęŁłŃńOoÓóŚśŹźŻż]+$");
 
                     if (e.NewTextValue.Length > 0)
                         GivenObject.Text
                             = isValid ? e.NewTextValue : e.NewTextValue.Remove(e.NewTextValue.Length - 1);
                 }
 
-                else if (ObjectName == "Town")
+                else if (ObjectName == "Place")
                 {
                     var isValid = Regex.IsMatch(e.NewTextValue,
-                        "^[AaĄąBbCcĆćDdEeĘęFfGgHhIiJjKkLlŁłMmNnŃńOoÓóPpRrSsŚśTtUuWwYyZzŹźŻż ]+$");
+                        "^[A-Za-zĄąĆćĘęŁłŃńOoÓóŚśŹźŻż ]+$");
 
                     if (e.NewTextValue.Length > 0)
                         GivenObject.Text
@@ -80,7 +80,7 @@ namespace GOCC.View
                 else if (ObjectName == "Address")
                 {
                     var isValid = Regex.IsMatch(e.NewTextValue,
-                        "^[AaĄąBbCcĆćDdEeĘęFfGgHhIiJjKkLlŁłMmNnŃńOoÓóPpRrSsŚśTtUuWwYyZzŹźŻż ]+$");
+                        "^[A-Za-zĄąĆćĘęŁłŃńOoÓóŚśŹźŻż ]+$");
 
                     if (e.NewTextValue.Length > 0)
                         GivenObject.Text
@@ -110,7 +110,7 @@ namespace GOCC.View
                 else if (ObjectName == "Password")
                 {
                     var isValid = Regex.IsMatch(e.NewTextValue,
-                        "^[A-Za-z~`!@#$%^&*()_+={[}|:;'<,>.?/ ]+$");
+                        "^[A-Za-z0123456789~`!@#$%^&*()_+={[}|:;'<,>.?/ ]+$");
 
                     if (e.NewTextValue.Length > 0)
                         GivenObject.Text
@@ -129,7 +129,9 @@ namespace GOCC.View
             {
                 if (RunningCheckBoxOnline.IsChecked)
                 {
-                    RunningCheckBoxOffline.Style = Resources["DisabledCheckBoxStyle"] as Style;
+                    if (RunningCheckBoxOffline.IsChecked) RunningCheckBoxOffline.IsChecked = false;
+
+                    RunningCheckBoxOffline.Style = Resources["DefaultCheckBoxStyle"] as Style;
 
                     if (Postcode.IsReadOnly)
                         Postcode.Style = Resources["DefaultEntryStyle"] as Style;
@@ -180,8 +182,10 @@ namespace GOCC.View
             else if (ObjectName == "RunningCheckBoxOffline")
             {
                 if (RunningCheckBoxOffline.IsChecked)
-                    RunningCheckBoxOnline.Style = Resources["DisabledCheckBoxStyle"] as Style;
-                else RunningCheckBoxOnline.Style = Resources["DefaultCheckBoxStyle"] as Style;
+                {
+                    RunningCheckBoxOnline.Style = Resources["DefaultCheckBoxStyle"] as Style;
+                    if (RunningCheckBoxOnline.IsChecked) RunningCheckBoxOnline.IsChecked = false;
+                }
 
                 if (CyclingCheckBox.Style == Resources["EmptyCheckBoxStyle"])
                     CyclingCheckBox.Style = Resources["DefaultCheckBoxStyle"] as Style;
@@ -329,12 +333,12 @@ namespace GOCC.View
             }
             else LastName.Text = TextInformation.ToTitleCase(LastName.Text);
 
-            if (Town.Text == null)
+            if (Place.Text == null)
             {
                 Result = false;
-                Town.Style = Resources["EmptyEntryStyle"] as Style;
+                Place.Style = Resources["EmptyEntryStyle"] as Style;
             }
-            else Town.Text = TextInformation.ToTitleCase(Town.Text);
+            else Place.Text = TextInformation.ToTitleCase(Place.Text);
 
             if (RunningCheckBoxOnline.IsChecked)
             {
@@ -421,54 +425,57 @@ namespace GOCC.View
         {
             if (RunningCheckBoxOnline.IsChecked)
             {
-                FirstDisciplineValue = "VII. Bieg z sercem WOŚP (Online)";
-                if (CyclingCheckBox.IsChecked) SecondDisciplineValue = "Rowerem dla WOŚP";
-                else SecondDisciplineValue = "Nie dotyczy";
+                FirstDisciplineValue = "Bieg (Online)";
+                if (CyclingCheckBox.IsChecked) SecondDisciplineValue = "Jazda rowerem";
+                else SecondDisciplineValue = "N/A";
             }
             if (RunningCheckBoxOffline.IsChecked)
             {
-                FirstDisciplineValue = "VII. Bieg z sercem WOŚP (Offline)";
-                if (CyclingCheckBox.IsChecked) SecondDisciplineValue = "Rowerem dla WOŚP";
-                else SecondDisciplineValue = "Nie dotyczy";
+                FirstDisciplineValue = "Bieg (Offline)";
+                if (CyclingCheckBox.IsChecked) SecondDisciplineValue = "Jazda rowerem";
+                else SecondDisciplineValue = "N/A";
             }
             if (CyclingCheckBox.IsChecked
                 && !(RunningCheckBoxOnline.IsChecked)
                 && !(RunningCheckBoxOffline.IsChecked))
             {
-                FirstDisciplineValue = "Rowerem dla WOŚP";
-                SecondDisciplineValue = "Nie dotyczy";
+                FirstDisciplineValue = "Jazda rowerem";
+                SecondDisciplineValue = "N/A";
             }
             FirstNameValue = FirstName.Text;
             LastNameValue = LastName.Text;
-            TownValue = Town.Text;
+            PlaceValue = Place.Text;
             if (Postcode.Text != null) PostcodeValue = Postcode.Text;
-            else PostcodeValue = "Nie dotyczy";
+            else PostcodeValue = "N/A";
             if (Address.Text != null) AddressValue = Address.Text;
-            else AddressValue = "Nie dotyczy";
-            if (HouseNumber.Text != null) HouseNumberValue = HouseNumber.Text;
-            else HouseNumberValue = "Nie dotyczy";
-            if (ApartmentNumber.Text != null) ApartmentNumberValue = ApartmentNumber.Text;
-            else ApartmentNumberValue = "Nie dotyczy";
+            else AddressValue = "N/A";
+            if (HouseNumber.Text != null) HouseNumberValue = HouseNumber.Text.ToString();
+            else HouseNumberValue = "N/A";
+            if (ApartmentNumber.Text != null) ApartmentNumberValue = ApartmentNumber.Text.ToString();
+            else ApartmentNumberValue = "N/A";
             PhoneNumberValue = PhoneNumber.Text;
             EmailValue = Email.Text;
             PasswordValue = Password.Text;
-            BirthDateValue = DateDatePicker.Date.ToString("d");
+            BirthDateValue = DateDatePicker.Date.ToString("d") + "r.";
+        }
 
-            //       /*
-            Console.WriteLine("Pierwsza dyscyplina" + FirstDisciplineValue);
-            Console.WriteLine("Druga dyscyplina: " + SecondDisciplineValue);
-            Console.WriteLine("Imię: " + FirstNameValue);
-            Console.WriteLine("Nazwisko: " + LastNameValue);
-            Console.WriteLine("Miasto: " + TownValue);
-            Console.WriteLine("Kod pocztowy: " + PostcodeValue);
-            Console.WriteLine("Ulica: " + AddressValue);
-            Console.WriteLine("Numer domu: " + HouseNumberValue);
-            Console.WriteLine("Numer lokalu: " + ApartmentNumberValue);
-            Console.WriteLine("Numer telefonu: " + PhoneNumberValue);
-            Console.WriteLine("E-mail: " + EmailValue);
-            Console.WriteLine("Hasło: " + PasswordValue);
-            Console.WriteLine("Data urodzenia: " + BirthDateValue);
-            //       */
+        public async void DisplayAlertWithUserData()
+        {
+            var Contents =
+                "\nImię: " + FirstNameValue
+                + "\n\nNazwisko: " + LastNameValue
+                + "\n\nData urodzenia: " + BirthDateValue
+                + "\n\nPierwsza dyscyplina: " + FirstDisciplineValue
+                + "\n\nDruga dyscyplina: " + SecondDisciplineValue
+                + "\n\nMiejscowość: " + PlaceValue
+                + "\n\nKod pocztowy: " + PostcodeValue
+                + "\n\nUlica: " + AddressValue
+                + "\n\nNumer domu: " + HouseNumber.Text
+                + "\n\nNumer lokalu: " + ApartmentNumber.Text
+                + "\n\nNumer telefonu: " + PhoneNumberValue
+                + "\n\nE-mail: " + EmailValue;
+
+            await DisplayAlert("Podane informacje użytkownika: ", Contents, "OK");
         }
 
         private async void SendData(object sender, EventArgs e)
@@ -476,6 +483,8 @@ namespace GOCC.View
             if (AreAllEntriesFilled())
             {
                 SetValuesToVariables();
+
+                DisplayAlertWithUserData();
 
                 await Navigation.PopAsync();
             }

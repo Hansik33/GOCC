@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:Behaviors="clr-namespace:GOCC.Behaviors"
+             xmlns:controls="clr-namespace:GOCC.Controls"
              x:Class="GOCC.View.DataFormPage"
              BackgroundImageSource="background.png"
              Title="Rejestracja">
@@ -18,7 +19,7 @@
                 <Setter Property="HorizontalOptions"
                         Value="Center" />
                 <Setter Property="WidthRequest"
-                        Value="210" />
+                        Value="200" />
                 <Setter Property="HorizontalTextAlignment"
                         Value="Center" />
                 <Setter Property="TextColor"
@@ -54,14 +55,6 @@
                         Value="Center" />
                 <Setter Property="HorizontalOptions"
                         Value="Center" />
-            </Style>
-            <Style x:Key="DisabledCheckBoxStyle"
-                   BasedOn="{StaticResource DefaultCheckBoxStyle}"
-                   TargetType="CheckBox">
-                <Setter Property="IsEnabled"
-                        Value="False" />
-                <Setter Property="Color"
-                        Value="#4D4D4D" />
             </Style>
             <Style x:Key="EmptyCheckBoxStyle"
                    BasedOn="{StaticResource DefaultCheckBoxStyle}"
@@ -145,7 +138,7 @@
                            Focused="RestoreDefaultStyleEntry"
                            Keyboard="Text"
                            Placeholder="Nazwisko" />
-                    <Entry x:Name="Town"
+                    <Entry x:Name="Place"
                            Style="{StaticResource DefaultEntryStyle}"
                            TextChanged="CheckCorrectnessTextEntryRegex"
                            Focused="RestoreDefaultStyleEntry"
@@ -215,21 +208,19 @@
                            HorizontalOptions="Center"
                            VerticalOptions="Center"
                            HorizontalTextAlignment="Center" />
-                    <StackLayout Orientation="Horizontal"
+                    <StackLayout Orientation="Vertical"
                                  HorizontalOptions="Center">
-                        <DatePicker x:Name="DateDatePicker"
-                                    DateSelected="SelectDate"
-                                    Format="dd.MM.yyyy"
-                                    MaximumDate="01.01.2018"
-                                    TextColor="White"
-                                    Margin="5"
-                                    HorizontalOptions="Center"
-                                    WidthRequest="210" />
                         <Label x:Name="BirthDateLabel"
                                Text="Data urodzenia"
-                               FontSize="15"
-                               Margin="-120,20,15,0"
-                               TextColor="LightGray" />
+                               FontSize="Subtitle"
+                               Margin="0,10,0,0"
+                               TextColor="LightGray"
+                               HorizontalOptions="Center" />
+                        <controls:BorderlessDatePicker x:Name="DateDatePicker"
+                                                       MaximumDate="01.01.2018"
+                                                       WidthRequest="200"
+                                                       TextColor="White"
+                                                       DateSelected="SelectDate" />
                     </StackLayout>
                 </StackLayout>
                 <StackLayout HorizontalOptions="Center"
