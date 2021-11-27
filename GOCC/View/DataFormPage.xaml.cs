@@ -20,14 +20,14 @@ namespace GOCC.View
 
         // DATA
         public string FirstDisciplineValue;
-        public string SecondDisciplineValue;
+        public string SecondDisciplineValue = "N/A";
         public string FirstNameValue;
         public string LastNameValue;
         public string PlaceValue;
-        public string PostcodeValue;
-        public string AddressValue;
-        public string HouseNumberValue;
-        public string ApartmentNumberValue;
+        public string PostcodeValue = "N/A";
+        public string AddressValue = "N/A";
+        public string HouseNumberValue = "N/A";
+        public string ApartmentNumberValue = "N/A";
         public string PhoneNumberValue;
         public string EmailValue;
         public string PasswordValue;
@@ -427,32 +427,23 @@ namespace GOCC.View
             {
                 FirstDisciplineValue = "Bieg (Online)";
                 if (CyclingCheckBox.IsChecked) SecondDisciplineValue = "Jazda rowerem";
-                else SecondDisciplineValue = "N/A";
             }
             if (RunningCheckBoxOffline.IsChecked)
             {
                 FirstDisciplineValue = "Bieg (Offline)";
                 if (CyclingCheckBox.IsChecked) SecondDisciplineValue = "Jazda rowerem";
-                else SecondDisciplineValue = "N/A";
             }
             if (CyclingCheckBox.IsChecked
                 && !(RunningCheckBoxOnline.IsChecked)
-                && !(RunningCheckBoxOffline.IsChecked))
-            {
-                FirstDisciplineValue = "Jazda rowerem";
-                SecondDisciplineValue = "N/A";
-            }
+                && !(RunningCheckBoxOffline.IsChecked)) FirstDisciplineValue = "Jazda rowerem";
+
             FirstNameValue = FirstName.Text;
             LastNameValue = LastName.Text;
             PlaceValue = Place.Text;
             if (Postcode.Text != null) PostcodeValue = Postcode.Text;
-            else PostcodeValue = "N/A";
             if (Address.Text != null) AddressValue = Address.Text;
-            else AddressValue = "N/A";
             if (HouseNumber.Text != null) HouseNumberValue = HouseNumber.Text.ToString();
-            else HouseNumberValue = "N/A";
             if (ApartmentNumber.Text != null) ApartmentNumberValue = ApartmentNumber.Text.ToString();
-            else ApartmentNumberValue = "N/A";
             PhoneNumberValue = PhoneNumber.Text;
             EmailValue = Email.Text;
             PasswordValue = Password.Text;
@@ -470,8 +461,8 @@ namespace GOCC.View
                 + "\n\nMiejscowość: " + PlaceValue
                 + "\n\nKod pocztowy: " + PostcodeValue
                 + "\n\nUlica: " + AddressValue
-                + "\n\nNumer domu: " + HouseNumber.Text
-                + "\n\nNumer lokalu: " + ApartmentNumber.Text
+                + "\n\nNumer domu: " + HouseNumberValue
+                + "\n\nNumer lokalu: " + ApartmentNumberValue
                 + "\n\nNumer telefonu: " + PhoneNumberValue
                 + "\n\nE-mail: " + EmailValue;
 
