@@ -144,7 +144,7 @@
                            Focused="RestoreDefaultStyleEntry"
                            MaxLength="30"
                            Keyboard="Text"
-                           Placeholder="Miasto" />
+                           Placeholder="Miejscowość" />
                     <Entry x:Name="Postcode"
                            Style="{StaticResource DisabledEntryStyle}"
                            TextChanged="CheckCorrectnessTextEntryRegex"
