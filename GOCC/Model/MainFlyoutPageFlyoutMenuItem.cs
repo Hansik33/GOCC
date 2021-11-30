@@ -16,5 +16,6 @@ namespace GOCC.Model
         public string Title { get; set; }
 
         public Type TargetType { get; set; }
+        public string IconName { get; set; }
     }
 }

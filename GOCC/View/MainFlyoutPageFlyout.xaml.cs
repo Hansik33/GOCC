@@ -33,10 +33,10 @@ namespace GOCC.View
             {
                 MenuItems = new ObservableCollection<MainFlyoutPageFlyoutMenuItem>(new[]
                 {
-                    new MainFlyoutPageFlyoutMenuItem { Id = 0, Title = "Strona główna", TargetType = typeof(MainFlyoutPageDetail) },
-                    new MainFlyoutPageFlyoutMenuItem { Id = 1, Title = "Wydarzenia", TargetType = typeof(CalendarPage) },
-                    new MainFlyoutPageFlyoutMenuItem { Id = 2, Title = "Regulamin", TargetType = typeof(RegulationsPage) },
-                    new MainFlyoutPageFlyoutMenuItem { Id = 3, Title = "Partnerzy", TargetType = typeof(SponsorsPage) },
+                    new MainFlyoutPageFlyoutMenuItem { Id = 0, Title = "Strona główna", TargetType = typeof(MainFlyoutPageDetail),IconName = "home.png" },
+                    new MainFlyoutPageFlyoutMenuItem { Id = 1, Title = "Wydarzenia", TargetType = typeof(CalendarPage),IconName = "calendar.png"  },
+                    new MainFlyoutPageFlyoutMenuItem { Id = 2, Title = "Regulamin", TargetType = typeof(RegulationsPage),IconName="regulations.png" },
+                    new MainFlyoutPageFlyoutMenuItem { Id = 3, Title = "Partnerzy", TargetType = typeof(SponsorsPage), IconName="patrons.png" },
                 });
             }
 

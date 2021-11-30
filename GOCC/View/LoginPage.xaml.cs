@@ -16,5 +16,15 @@ namespace GOCC.View
         {
             InitializeComponent();
         }
+
+        private void Login_btn_click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Forgot_passworld_clicked(object sender, EventArgs e)
+        {
+
+        }
     }
 }
