@@ -229,7 +229,7 @@ namespace GOCC.View
 
         private void MoveToRegulations(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new RegulationsPage());
+            Navigation.PushAsync(new RegulationPages());
         }
 
         public bool IsPostcodeCorrect()
