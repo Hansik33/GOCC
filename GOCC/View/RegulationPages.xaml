@@ -6,7 +6,9 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              xmlns:controls="clr-namespace:GOCC.Controls"
-             BarBackgroundColor="#E21912">
+             xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
+             BarBackgroundColor="#E21912"
+             android:TabbedPage.IsSwipePagingEnabled="False">
   <!--Pages can be added as references or inline-->
     <ContentPage Title="Bieg z Sercem Wośp">
         <StackLayout>

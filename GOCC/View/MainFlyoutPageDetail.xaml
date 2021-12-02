@@ -15,7 +15,7 @@
                    HorizontalTextAlignment="Center"
                    Margin="0,-65,0,0"
                    FontFamily="RoadRage" />
-            <Label Text="Witamy cię w autorskiej aplikacji Sztabu #714 Chorzów! &#10; zapewnienia najwyższych &#10; standardów diagnostyki &#10; i leczenia wzroku u dzieci."
+            <Label Text="Witamy cię w autorskiej aplikacji Sztabu &#10; #714 Chorzów! &#10; Aplikacja została stworzona z myślą &#10; o uczestnikach biegu oraz rajdu rowerowego &#10; To dzięki niej, wiemy ile kilometrów zrobiliście &#10; z serduchem dla WOŚP i dzieciaków"
                    FontSize="32"
                    Margin="0,-10,0,0"
                    HorizontalTextAlignment="Center"
@@ -23,6 +23,20 @@
                    LineBreakMode="WordWrap"
                    FontFamily="RoadRage">
             </Label>
+            <Label FontSize="32"
+                   Margin="0,10,0,0"
+                   HorizontalTextAlignment="Center"
+                   TextColor="White"
+                   LineBreakMode="WordWrap"
+                   FontFamily="RoadRage"
+                   Text="Dziękujemy za jej pobranie &#10; (My nic z tego nie mamy) &#10; miłej zabawy, a za błędy, &#10; od razu przepraszamy! &#10; To nasz pierwszy tego typu projekt"/>
+            <Label FontSize="32"
+                   Margin="0,10,0,0"
+                   HorizontalTextAlignment="Center"
+                   TextColor="White"
+                   LineBreakMode="WordWrap"
+                   FontFamily="RoadRage"
+                   Text="3...2...1...ZACZYNAMY ZABAWĘ!"/>
             <Button x:Name="StartEventButton"
                     Text="Zacznij bieg"
                     Background="#E21912"
@@ -32,6 +46,7 @@
                     HeightRequest="50"
                     HorizontalOptions="Center"
                     CornerRadius="20"
+                    
                     Clicked="start_btn_Clicked"/>
             <Button x:Name="RegisterButton"
                     Text="Zarejestruj się"
