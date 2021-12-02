@@ -15,7 +15,7 @@
                    HorizontalTextAlignment="Center"
                    Margin="0,-65,0,0"
                    FontFamily="RoadRage" />
-            <Label Text="W tej edycji gramy dla &#10; okulistyki dziecięcej dla &#10; zapewnienia najwyższych &#10; standardów diagnostyki &#10; i leczenia wzroku u dzieci."
+            <Label Text="Witamy cię w autorskiej aplikacji Sztabu #714 Chorzów! &#10; zapewnienia najwyższych &#10; standardów diagnostyki &#10; i leczenia wzroku u dzieci."
                    FontSize="32"
                    Margin="0,-10,0,0"
                    HorizontalTextAlignment="Center"

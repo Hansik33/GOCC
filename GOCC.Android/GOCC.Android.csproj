@@ -370,7 +370,8 @@
     <AndroidAsset Include="Assets\pdfjs\web\standard_fonts\LiberationSans-Regular.ttf" />
     <AndroidAsset Include="Assets\pdfjs\web\standard_fonts\LICENSE_FOXIT" />
     <AndroidAsset Include="Assets\pdfjs\web\standard_fonts\LICENSE_LIBERATION" />
-    <AndroidAsset Include="Assets\Content\regulamin.pdf" />
+    <AndroidAsset Include="Assets\Content\regulamin_bieg.pdf" />
+    <AndroidAsset Include="Assets\Content\Regulamin_rajd.pdf" />
     <None Include="Resources\AboutResources.txt" />
     <None Include="Assets\AboutAssets.txt" />
     <None Include="Properties\AndroidManifest.xml" />
