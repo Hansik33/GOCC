@@ -2,10 +2,62 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="GOCC.View.SponsorsPage"
-             BackgroundColor="White">
+             BackgroundImageSource="background.png">
     <ContentPage.Content>
         <ScrollView Orientation="Vertical">
             <StackLayout Orientation="Vertical">
+                <Frame Margin="50,20,50,0"
+                       CornerRadius="40">
+                    <StackLayout>
+                        <Label Text="Organizatorzy" 
+                       HorizontalOptions="Center" 
+                       FontSize="64"
+                       TextColor="Black"
+                       FontFamily="RoadRage"/>
+                        <Image Source="logosztabu.png"
+                       WidthRequest="250"/>
+                        <Image Source="ZST1.png"
+                       WidthRequest="250"/>
+                        <Image Source="miastochorzow.png"
+                       WidthRequest="250"/>
+                    </StackLayout>
+
+                </Frame>
+                <Frame CornerRadius="40"
+                       Margin="50,20,50,20">
+                    <StackLayout>
+                        <Label Text="Współorganizatorzy" 
+                       HorizontalOptions="Center"
+                       FontSize="50"
+                       TextColor="Black"
+                       FontFamily="RoadRage"/>
+                        <Image Source="CHCK.png"
+                       WidthRequest="250"/>
+                        <Image Source="klubrowerowy.png"
+                       WidthRequest="250"/>
+                        <Image Source="chbsd.png"
+                       WidthRequest="250"/>
+                        <Image Source="moris.png"
+                       WidthRequest="250"/>
+                    </StackLayout>
+                </Frame>
+                <Frame CornerRadius="40"
+                       Margin="50,20,50,20">
+                    <StackLayout>
+                        <Label Text="Partnerzy" 
+                       HorizontalOptions="Center"
+                       FontSize="64"
+                       TextColor="Black"
+                       FontFamily="RoadRage"/>
+                        <Image Source="zstio2.png"
+                       WidthRequest="250"/>
+                        <Image Source="miwimed.png"
+                       WidthRequest="250"/>
+                    </StackLayout>
+                </Frame>
+
+
+
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>
