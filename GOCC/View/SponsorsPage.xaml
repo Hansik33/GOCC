@@ -42,7 +42,7 @@
                     </StackLayout>
                 </Frame>
                 <Frame CornerRadius="40"
-                       Margin="50,20,50,20">
+                       Margin="50,0,50,20">
                     <StackLayout>
                         <Label Text="Partnerzy" 
                        HorizontalOptions="Center"
@@ -55,7 +55,37 @@
                        WidthRequest="250"/>
                     </StackLayout>
                 </Frame>
-
+                <Frame CornerRadius="40"
+                       Margin="50,0,50,20">
+                    <StackLayout>
+                        <Label Text="Twórcy aplikacji" 
+                            HorizontalOptions="Center"
+                            FontSize="50"
+                            TextColor="Black"
+                            FontFamily="RoadRage"/>
+                        <Label Text="Programiści:"
+                               FontFamily="RoadRage"
+                               HorizontalOptions="Center" 
+                               FontSize="24"/>
+                        <Label Text="Mateusz Piłat &#10; Adam Franz &#10; Artur Rudzik" 
+                               FontSize="24" 
+                               HorizontalOptions="Center"/>
+                        <Label Text="Grafik:"
+                               FontFamily="RoadRage"
+                               HorizontalOptions="Center"
+                               FontSize="24"/>
+                        <Label Text="Daniel Kowalski"
+                               HorizontalOptions="Center"
+                               FontSize="24"/>
+                        <Label Text="Devops:"
+                               FontFamily="RoadRage"
+                               HorizontalOptions="Center"
+                               FontSize="24"/>
+                        <Label Text="Bartosz Holeczek"
+                               HorizontalOptions="Center"
+                               FontSize="24"/>
+                    </StackLayout>
+                </Frame>
 
 
             </StackLayout>

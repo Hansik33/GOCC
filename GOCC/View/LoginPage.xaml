@@ -60,7 +60,8 @@
                     <Entry VerticalOptions="Center"
                            Placeholder="Hasło"
                            Style="{StaticResource DefaultEntryStyle}" 
-                           x:Name="Passworld_entry"/>
+                           x:Name="Passworld_entry"
+                           IsPassword="True"/>
                     <Button Text="zapomniałem hasła"
                             BackgroundColor="#1C001C"
                             TextColor="#8E8E8E"

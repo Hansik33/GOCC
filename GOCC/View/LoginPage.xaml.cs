@@ -19,6 +19,9 @@ namespace GOCC.View
 
         private void Login_btn_click(object sender, EventArgs e)
         {
+            string email = Email_entry.Text;
+            string passworld = Passworld_entry.Text;
+            
             //Sprawdzenie prawdziwości podanych danych na serwerze
 
             Navigation.PushAsync(new RunningPage());
