@@ -473,11 +473,20 @@ namespace GOCC.View
         {
             if (AreAllEntriesFilled())
             {
+
                 SetValuesToVariables();
 
                 DisplayAlertWithUserData();
 
-                await Navigation.PopAsync();
+                if(Connector.Register(FirstNameValue,LastNameValue,BirthDateValue,EmailValue,PasswordValue,PhoneNumberValue,PlaceValue,AddressValue + " " + HouseNumberValue))
+                {
+                    await Navigation.PopAsync();
+                }
+                else
+                {
+                    await DisplayAlert("Błąd",Connector.lastError.ToString(),"OK");
+                }
+                
             }
             else await this.DisplayToastAsync("Nie wszystkie wymagane pola są wypełnione prawidłowo!", 3000);
         }

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using GOCC.View;
+using GOCC.Model;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -19,12 +20,21 @@ namespace GOCC.View
 
         private void Login_btn_click(object sender, EventArgs e)
         {
-            string email = Email_entry.Text;
-            string passworld = Passworld_entry.Text;
-            
+            user User = new user();
+            User.email = Email_entry.Text;
+            User.password = Passworld_entry.Text;
             //Sprawdzenie prawdziwości podanych danych na serwerze
+            if (Connector.LogIn(Email_entry.Text,Passworld_entry.Text))
+            {
+                Navigation.PushAsync(new RunningPage());
+            }
+            else
+            {
+                DisplayAlert("BLĄD",Connector.lastError.ToString(),"OK");
+            }
+            
 
-            Navigation.PushAsync(new RunningPage());
+            
         }
 
         private void Forgot_passworld_clicked(object sender, EventArgs e)
