@@ -1,10 +1,44 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="GOCC.View.CalendarPage">
+             x:Class="GOCC.View.CalendarPage"
+             BackgroundImageSource="background.png">
     <ContentPage.Content>
-        <StackLayout>
-
+        <StackLayout Orientation="Vertical">
+            <Frame Margin="30,20,30,0"
+                   CornerRadius="30"
+                   VerticalOptions="Center"
+                   HorizontalOptions="Center">
+                <StackLayout>
+                    <StackLayout Orientation="Vertical" HorizontalOptions="Center" Margin="0,0,0,0">
+                        <Label Text="29.01.2022 - Rajd Rowerowy&#10;Gdzie: Ulicami Miasta Chorzów&#10;Godzina: 12:00"  
+                           FontFamily="RoadRage"
+                           FontSize="30"
+                           HorizontalOptions="Start"
+                           TextColor="#E21912"/>
+                        <Label Text="30.01.2022 - Pływamy dla WOŚP!&#10;Gdzie: Plac Powstańców Śląskich 1, Chorzów&#10;Godzina: 10:00 - 18:00"  
+                           FontFamily="RoadRage"
+                           FontSize="30"
+                           HorizontalOptions="Start"
+                           TextColor="Black"/>
+                        <Label Text="29.01.2022 - VII. Bieg z sercem WOŚP&#10;Gdzie: ul. Lompy 10 A, Chorzów&#10;Godzina: 12:00 - 18:00"  
+                           FontFamily="RoadRage"
+                           FontSize="30"
+                           HorizontalOptions="Start"
+                           TextColor="#E21912"/>
+                        <Label Text="30.01.2022 - Bieg dzieci dla WOŚP&#10;Gdzie: ul. Lompy 10 A, Chorzów&#10;Godzina: 9:00 - 12:00"  
+                           FontFamily="RoadRage"
+                           FontSize="30"
+                           HorizontalOptions="Start"
+                           TextColor="Black"/>
+                        <Label Text="20.12.2021 - 30.01.2022 - VII Bieg z sercem WOŚP i Nordic Walking edycja wirtualna&#10;Gdzie: ul. Lompy 10 A, Chorzów&#10;Godzina: 9:00 - 12:00"  
+                           FontFamily="RoadRage"
+                           FontSize="30"
+                           HorizontalOptions="Start"
+                           TextColor="#E21912"/>
+                    </StackLayout>
+                </StackLayout>
+            </Frame>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
