@@ -28,4 +28,13 @@
                           VerticalOptions="CenterAndExpand" />
         </StackLayout>
     </ContentPage>
+    <ContentPage Title="Bieg Wirtualny">
+        <StackLayout>
+            <controls:PDFview x:Name="pdfView3"
+                          Uri="Regulamin_bieg_online.pdf"
+                          HeightRequest="1000"
+                          WidthRequest="1000"
+                          VerticalOptions="CenterAndExpand" />
+        </StackLayout>
+    </ContentPage>
 </TabbedPage>

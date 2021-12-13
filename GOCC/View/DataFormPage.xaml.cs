@@ -450,7 +450,7 @@ namespace GOCC.View
             BirthDateValue = DateDatePicker.Date.ToString("d") + "r.";
         }
 
-        public async void DisplayAlertWithUserData()
+        public async Task<bool> DisplayAlertWithUserData()
         {
             var Contents =
                 "\nImię: " + FirstNameValue
@@ -466,7 +466,8 @@ namespace GOCC.View
                 + "\n\nNumer telefonu: " + PhoneNumberValue
                 + "\n\nE-mail: " + EmailValue;
 
-            await DisplayAlert("Podane informacje użytkownika: ", Contents, "OK");
+            bool result = await DisplayAlert("Podane informacje użytkownika: ", Contents, "Ok","Anuluj");
+            return result;
         }
 
         private async void SendData(object sender, EventArgs e)
@@ -476,17 +477,19 @@ namespace GOCC.View
 
                 SetValuesToVariables();
 
-                DisplayAlertWithUserData();
-
-                if(Connector.Register(FirstNameValue,LastNameValue,BirthDateValue,EmailValue,PasswordValue,PhoneNumberValue,PlaceValue,AddressValue + " " + HouseNumberValue))
+                Task<bool> Alert = DisplayAlertWithUserData();
+                bool result = await Alert;
+                if (result)
                 {
-                    await Navigation.PopAsync();
+                    if (Connector.Register(FirstNameValue, LastNameValue, BirthDateValue, EmailValue, PasswordValue, PhoneNumberValue, PlaceValue, AddressValue + " " + HouseNumberValue))
+                    {
+                        await Navigation.PopAsync();
+                    }
+                    else
+                    {
+                        await DisplayAlert("Błąd", Connector.lastError.ToString(), "OK");
+                    }
                 }
-                else
-                {
-                    await DisplayAlert("Błąd",Connector.lastError.ToString(),"OK");
-                }
-                
             }
             else await this.DisplayToastAsync("Nie wszystkie wymagane pola są wypełnione prawidłowo!", 3000);
         }
