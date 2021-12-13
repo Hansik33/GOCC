@@ -60,30 +60,111 @@
                     <StackLayout>
                         <Label Text="Twórcy aplikacji" 
                             HorizontalOptions="Center"
-                            FontSize="50"
+                            FontSize="52"
                             TextColor="Black"
                             FontFamily="RoadRage"/>
                         <Label Text="Programiści:"
                                FontFamily="RoadRage"
                                HorizontalOptions="Center" 
-                               FontSize="24"/>
-                        <Label Text="Mateusz Piłat &#10; Adam Franz &#10; Artur Rudzik" 
-                               FontSize="24" 
+                               FontSize="48"/>
+                        <Label Text="Adam Franz" 
+                               FontSize="32" 
                                HorizontalOptions="Center"/>
+                        <Label HorizontalOptions="Center"
+                               VerticalOptions="Center">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="www.hansik.pl" 
+                                          TextColor="#E21912"
+                                          FontSize="24">
+                                        <Span.GestureRecognizers>
+                                            <TapGestureRecognizer  Command="{Binding TapCommand}" 
+                                                                   CommandParameter="https://www.hansik.pl/"/>
+                                        </Span.GestureRecognizers>
+                                    </Span>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <Label Text="Artur Rudzik"
+                               FontSize="32" 
+                               HorizontalOptions="Center"/>
+                        <Label HorizontalOptions="Center"
+                               VerticalOptions="Center">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="artur.rudzik" 
+                                          TextColor="#E21912"
+                                          FontSize="24">
+                                        <Span.GestureRecognizers>
+                                            <TapGestureRecognizer  Command="{Binding TapCommand}" 
+                                                                   CommandParameter="mailto:artur.rudzik@o2.pl"/>
+                                        </Span.GestureRecognizers>
+                                    </Span>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <Label Text="Mateusz Piłat"
+                               FontSize="32" 
+                               HorizontalOptions="Center"/>
+                        <Label HorizontalOptions="Center"
+                               VerticalOptions="Center">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="mateuszpilat012003" 
+                                          TextColor="#E21912"
+                                          FontSize="24">
+                                        <Span.GestureRecognizers>
+                                            <TapGestureRecognizer  Command="{Binding TapCommand}" 
+                                                                   CommandParameter="mailto:mateuszpilat012003@gmail.com"/>
+                                        </Span.GestureRecognizers>
+                                    </Span>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
                         <Label Text="Grafik:"
                                FontFamily="RoadRage"
                                HorizontalOptions="Center"
-                               FontSize="24"/>
+                               FontSize="48"/>
                         <Label Text="Daniel Kowalski"
-                               HorizontalOptions="Center"
-                               FontSize="24"/>
+                               FontSize="32" 
+                               HorizontalOptions="Center"/>
+                        <Label HorizontalOptions="Center"
+                               VerticalOptions="Center">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="d.kowal.business" 
+                                          TextColor="#E21912"
+                                          FontSize="24">
+                                        <Span.GestureRecognizers>
+                                            <TapGestureRecognizer  Command="{Binding TapCommand}" 
+                                                                   CommandParameter="mailto:d.kowal.business@gmail.com"/>
+                                        </Span.GestureRecognizers>
+                                    </Span>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
                         <Label Text="Devops:"
                                FontFamily="RoadRage"
                                HorizontalOptions="Center"
-                               FontSize="24"/>
+                               FontSize="48"/>
                         <Label Text="Bartosz Holeczek"
                                HorizontalOptions="Center"
-                               FontSize="24"/>
+                               FontSize="32"/>
+                        <Label HorizontalOptions="Center"
+                               VerticalOptions="Center">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="bartosz.holeczek" 
+                                          TextColor="#E21912"
+                                          FontSize="24">
+                                        <Span.GestureRecognizers>
+                                            <TapGestureRecognizer  Command="{Binding TapCommand}" 
+                                                                   CommandParameter="mailto:bartosz.holeczek@gmail.com"/>
+                                        </Span.GestureRecognizers>
+                                    </Span>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
                     </StackLayout>
                 </Frame>
 
