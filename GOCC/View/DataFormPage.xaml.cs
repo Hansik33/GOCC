@@ -32,6 +32,7 @@ namespace GOCC.View
         public string EmailValue;
         public string PasswordValue;
         public string BirthDateValue;
+        public string serveroption1;
         //*
 
         public DataFormPage()
@@ -425,25 +426,32 @@ namespace GOCC.View
         {
             if (RunningCheckBoxOnline.IsChecked)
             {
-                FirstDisciplineValue = "Bieg (Online)";
-                if (CyclingCheckBox.IsChecked) SecondDisciplineValue = "Jazda rowerem";
+                FirstDisciplineValue = "2";
+                serveroption1 = "true";
+                if (CyclingCheckBox.IsChecked) SecondDisciplineValue = "true"; else SecondDisciplineValue = "false";
             }
             if (RunningCheckBoxOffline.IsChecked)
             {
-                FirstDisciplineValue = "Bieg (Offline)";
-                if (CyclingCheckBox.IsChecked) SecondDisciplineValue = "Jazda rowerem";
+                FirstDisciplineValue = "1";
+                serveroption1 = "true";
+                if (CyclingCheckBox.IsChecked) SecondDisciplineValue = "true"; else SecondDisciplineValue = "false";
             }
             if (CyclingCheckBox.IsChecked
                 && !(RunningCheckBoxOnline.IsChecked)
-                && !(RunningCheckBoxOffline.IsChecked)) FirstDisciplineValue = "Jazda rowerem";
+                && !(RunningCheckBoxOffline.IsChecked))
+            {
+                FirstDisciplineValue = "1";
+                SecondDisciplineValue = "true";
+                serveroption1 = "false";
+            }
 
             FirstNameValue = FirstName.Text;
             LastNameValue = LastName.Text;
             PlaceValue = Place.Text;
-            if (Postcode.Text != null) PostcodeValue = Postcode.Text;
-            if (Address.Text != null) AddressValue = Address.Text;
-            if (HouseNumber.Text != null) HouseNumberValue = HouseNumber.Text.ToString();
-            if (ApartmentNumber.Text != null) ApartmentNumberValue = ApartmentNumber.Text.ToString();
+            if (Postcode.Text != null) PostcodeValue = Postcode.Text; else PostcodeValue = "";
+            if (Address.Text != null) AddressValue = Address.Text; else AddressValue = "";
+            if (HouseNumber.Text != null) HouseNumberValue = HouseNumber.Text.ToString(); else HouseNumberValue = "";
+            if (ApartmentNumber.Text != null) ApartmentNumberValue = ApartmentNumber.Text.ToString(); else ApartmentNumberValue = "";
             PhoneNumberValue = PhoneNumber.Text;
             EmailValue = Email.Text;
             PasswordValue = Password.Text;
@@ -481,13 +489,18 @@ namespace GOCC.View
                 bool result = await Alert;
                 if (result)
                 {
-                    if (Connector.Register(FirstNameValue, LastNameValue, BirthDateValue, EmailValue, PasswordValue, PhoneNumberValue, PlaceValue, AddressValue + " " + HouseNumberValue))
+                    if (Connector.Register(FirstDisciplineValue,SecondDisciplineValue,serveroption1,FirstNameValue, LastNameValue, BirthDateValue, EmailValue, PasswordValue, PhoneNumberValue, PlaceValue, AddressValue + " " + HouseNumberValue + " " + ApartmentNumberValue + " " + PostcodeValue))
                     {
                         await Navigation.PopAsync();
+                        await DisplayAlert("Brawo!", "Zostałeś zarejestrowany!", "OK");
+                    }
+                    else if(Connector.lastError.ToString() == "1" || Connector.lastError.ToString() == "2")
+                    {
+                        await DisplayAlert("Błąd", "Jest już taki użytkownik", "OK");
                     }
                     else
                     {
-                        await DisplayAlert("Błąd", Connector.lastError.ToString(), "OK");
+                        await DisplayAlert("Błąd",Connector.lastError.ToString(),"OK");
                     }
                 }
             }
