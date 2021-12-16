@@ -460,12 +460,29 @@ namespace GOCC.View
 
         public async Task<bool> DisplayAlertWithUserData()
         {
+            string FirstDisciplineName, SecondDisciplineName;
+            if(FirstDisciplineValue == "1")
+            {
+                FirstDisciplineName = "Bieg Stacjonarny";
+            }
+            else
+            {
+                FirstDisciplineName = "Bieg Wirtualny";
+            }
+            if (SecondDisciplineValue == "true")
+            {
+                SecondDisciplineName = "Rajd Rowerowy";
+            }
+            else
+            {
+                SecondDisciplineName = "Nie wybrano";
+            }
             var Contents =
                 "\nImię: " + FirstNameValue
                 + "\n\nNazwisko: " + LastNameValue
                 + "\n\nData urodzenia: " + BirthDateValue
-                + "\n\nPierwsza dyscyplina: " + FirstDisciplineValue
-                + "\n\nDruga dyscyplina: " + SecondDisciplineValue
+                + "\n\nPierwsza dyscyplina: " + FirstDisciplineName
+                + "\n\nDruga dyscyplina: " + SecondDisciplineName
                 + "\n\nMiejscowość: " + PlaceValue
                 + "\n\nKod pocztowy: " + PostcodeValue
                 + "\n\nUlica: " + AddressValue

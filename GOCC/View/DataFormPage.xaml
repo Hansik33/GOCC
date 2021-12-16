@@ -85,7 +85,7 @@
                             <CheckBox x:Name="RunningCheckBoxOnline"
                                       Style="{StaticResource DefaultCheckBoxStyle}"
                                       CheckedChanged="ChooseDisciplineCheckBox" />
-                            <Label Text="Online"
+                            <Label Text="Wirtualny"
                                    HorizontalOptions="Center"
                                    TextColor="White"
                                    Margin="0,-10,0,0"
