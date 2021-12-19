@@ -13,7 +13,7 @@
     <ContentPage Title="Bieg z Sercem Wośp">
         <StackLayout>
             <controls:PDFview x:Name="pdfView1"
-                          Uri="regulamin_bieg.pdf"
+                          Uri="Regulamin_bieg.pdf"
                           HeightRequest="1000"
                           WidthRequest="1000"
                           VerticalOptions="CenterAndExpand" />
