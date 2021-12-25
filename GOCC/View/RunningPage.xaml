@@ -1,12 +1,62 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="GOCC.View.RunningPage">
+             x:Class="GOCC.View.RunningPage"
+             BackgroundImageSource="background.png"
+             Title="Bieg">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+        <StackLayout Orientation="Vertical"
+                     VerticalOptions="Center">
+            <Frame BackgroundColor="#1C001C"
+                   CornerRadius="30"
+                   BorderColor="White"
+                   Margin="40">
+                <StackLayout VerticalOptions="CenterAndExpand">
+                    <StackLayout>
+                        <Label Text="Czas:"
+                   HorizontalTextAlignment="Center"
+                   TextColor="White"
+                   FontSize="48" 
+                   Margin="0,10,0,0" />
+                        <Label x:Name="TimeLabel"
+                   Text="00:00:00" 
+                   FontAttributes="Bold"
+                   HorizontalTextAlignment="Center"
+                   TextColor="White"
+                   FontSize="64" />
+                        <Label Text="Dystans:" 
+                   HorizontalTextAlignment="Center"
+                   TextColor="White"
+                   FontSize="48" />
+                        <StackLayout Orientation="Horizontal"
+                         HorizontalOptions="Center">
+                            <Label x:Name="DistanceLabel"
+                   Text="000"
+                   FontAttributes="Bold"
+                   HorizontalTextAlignment="Center"
+                   TextColor="White"
+                   FontSize="64"
+                   Margin="50,0,0,0"/>
+                            <Label Text="km" 
+                   HorizontalTextAlignment="Center"
+                   VerticalTextAlignment="Center"
+                   TextColor="White"
+                   FontSize="32" />
+                        </StackLayout>
+                    </StackLayout>
+                </StackLayout>
+            </Frame>
+            <Button x:Name="StopRunningButton"
+                    BackgroundColor="#E21912"
+                    CornerRadius="100"
+                    TextColor="White"
+                    Text="⬜"
+                    FontSize="60"
+                    HorizontalOptions="Center"
+                    HeightRequest="150"
+                    WidthRequest="150"
+                    FontAttributes="Bold"
+                    />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
