@@ -56,6 +56,7 @@
                     HeightRequest="150"
                     WidthRequest="150"
                     FontAttributes="Bold"
+                    Clicked="Stop_clicked"
                     />
         </StackLayout>
     </ContentPage.Content>
