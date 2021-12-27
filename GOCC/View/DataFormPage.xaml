@@ -111,9 +111,9 @@
                            TextColor="White"
                            HorizontalOptions="Center"
                            FontSize="Subtitle"/>
-                            <RadioButton Content="12:00 - 14:00" TextColor="White" HorizontalOptions="CenterAndExpand"/>
-                            <RadioButton Content="14:00 - 16:00" TextColor="White" HorizontalOptions="Center"/>
-                            <RadioButton Content="16:00 - 18:00" TextColor="White" HorizontalOptions="Center"/>
+                            <RadioButton Content="12:00 - 14:00" TextColor="White" HorizontalOptions="CenterAndExpand" x:Name="hour12_radiobtn"/>
+                            <RadioButton Content="14:00 - 16:00" TextColor="White" HorizontalOptions="Center" x:Name="hour14_radiobtn"/>
+                            <RadioButton Content="16:00 - 18:00" TextColor="White" HorizontalOptions="Center" x:Name="hour16_radiobtn"/>
                         </StackLayout>
                     </StackLayout>
                     <StackLayout Orientation="Horizontal"
