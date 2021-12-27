@@ -37,9 +37,10 @@
                    TextColor="White"
                    FontSize="64"
                    Margin="50,0,0,0"/>
-                            <Label Text="km" 
+                            <Label Text="{Binding Unit}" 
                    HorizontalTextAlignment="Center"
                    VerticalTextAlignment="Center"
+                                   x:Name="lbl_unit"
                    TextColor="White"
                    FontSize="32" />
                         </StackLayout>

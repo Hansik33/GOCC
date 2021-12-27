@@ -10,10 +10,12 @@ namespace GOCC.ViewModel
     {
         private string _time;
         private string _distance;
+        private string _unit;
         public RunningPageViewModel()
         {
             _time = "00:00:00";
             _distance = "0000";
+            _unit = "km";
         }
         public string Time
         {
@@ -24,6 +26,11 @@ namespace GOCC.ViewModel
         {
             get { return _distance; }
             set { _distance = value; OnPropertyChanged("Distance"); }
+        }
+        public string Unit
+        {
+            get { return _unit; }
+            set { _unit = value; OnPropertyChanged("Unit"); }
         }
     }
 }

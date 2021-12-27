@@ -29,29 +29,59 @@ namespace GOCC.View
             InitializeComponent();
         }
 
-        private void Stop_clicked(object sender, EventArgs e)
+        private async void Stop_clicked(object sender, EventArgs e)
         {
-            isdoing = false;
+            bool result = await DisplayAlert("UWAGA","Czy napewno chcesz już zakończyć bieg i wysłać wynik?","Ok","Anuluj");
+            if (result == true)
+            {
+                isdoing = false;
+                Application.Current.MainPage = new MainFlyoutPage();
+            }
+            else
+            {
+
+            }
+            
         }
         public async void DistanceCalculatorTask()
         {
-            var prevlocation = await Geolocation.GetLocationAsync(new GeolocationRequest(GeolocationAccuracy.Best, TimeSpan.FromMinutes(1)));
+            Location prevlocation = await Geolocation.GetLocationAsync(new GeolocationRequest(GeolocationAccuracy.Best, TimeSpan.FromMinutes(1)));
             await Task.Delay(500);
             while (isdoing)
             {
-                var newlocation = await Geolocation.GetLocationAsync(new GeolocationRequest(GeolocationAccuracy.Best, TimeSpan.FromSeconds(1)));//pobranie danych
+                Location newlocation = await Geolocation.GetLocationAsync(new GeolocationRequest(GeolocationAccuracy.Best, TimeSpan.FromMinutes(1)));//pobranie danych
                 newdistance = Location.CalculateDistance(newlocation, prevlocation, DistanceUnits.Kilometers);//obliczenie dystansu
                 distanceToCheck = newdistance * 1000;
-                /*if (distanceToCheck >= 5)//sprawdza czy nie ma błędu wynikającego z GPS
+
+                if (distanceToCheck >= 10)//sprawdza czy nie ma błędu wynikającego z GPS
                 {
                     totaldistance += 0.002;
-                    viewModel.Distance = $"{totaldistance * 1000}";
+                    if (totaldistance < 1)
+                    {
+                        viewModel.Distance = $"{Math.Round(totaldistance * 1000)}";
+                        viewModel.Unit = "m";
+                    }
+                    else
+                    {
+                        viewModel.Distance = $"{Math.Round(totaldistance)}";
+                        viewModel.Unit = "km";
+                    }
                 }
-                else*/
-                //{
+                else
+                {
                     totaldistance = totaldistance + newdistance;//dodanie do wyniku
-                    viewModel.Distance = $"{Math.Round(totaldistance * 1000)}";
-                //}
+                    if(totaldistance < 1)
+                    {
+                        viewModel.Distance = $"{Math.Round(totaldistance * 1000)}";
+                        viewModel.Unit = "m";
+                    }
+                    else
+                    {
+                        viewModel.Distance = $"{Math.Round(totaldistance)}";
+                        viewModel.Unit = "km";
+                    }
+                    
+                }
 
                 prevlocation = newlocation;
                 await Task.Delay(500);

@@ -11,7 +11,7 @@ namespace GOCC
         {
             InitializeComponent();
 
-            MainPage = new RunningPage();
+            MainPage = new MainFlyoutPage();
 
         }
 
