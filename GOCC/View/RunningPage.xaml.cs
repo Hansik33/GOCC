@@ -40,6 +40,7 @@ namespace GOCC.View
             else
             {
 
+
             }
             
         }

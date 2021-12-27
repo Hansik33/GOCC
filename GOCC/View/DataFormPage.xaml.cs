@@ -148,6 +148,7 @@ namespace GOCC.View
 
                     if (CyclingCheckBox.Style == Resources["EmptyCheckBoxStyle"])
                         CyclingCheckBox.Style = Resources["DefaultCheckBoxStyle"] as Style;
+                    HoursRadioButtons.IsVisible = false;
                 }
 
                 else
@@ -177,6 +178,7 @@ namespace GOCC.View
                         ApartmentNumber.Text = null;
                         ApartmentNumber.Style = Resources["DisabledEntryStyle"] as Style;
                     }
+                    HoursRadioButtons.IsVisible=true;
                 }
             }
 

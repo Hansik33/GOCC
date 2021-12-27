@@ -68,6 +68,8 @@
         <ScrollView Orientation="Vertical">
             <StackLayout>
                 <StackLayout>
+                    
+                    
                     <Label Text="Wybierz dyscypliny:"
                            HorizontalOptions="Center"
                            TextColor="White"
@@ -101,6 +103,17 @@
                                    TextColor="White"
                                    Margin="0,-10,0,0"
                                    FontSize="Caption" />
+                        </StackLayout>
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal" x:Name="HoursRadioButtons" IsVisible="false">
+                        <StackLayout Orientation="Vertical" HorizontalOptions="CenterAndExpand">
+                            <Label Text="Wybierz godzinę biegu stacjonarnego!"
+                           TextColor="White"
+                           HorizontalOptions="Center"
+                           FontSize="Subtitle"/>
+                            <RadioButton Content="12:00 - 14:00" TextColor="White" HorizontalOptions="CenterAndExpand"/>
+                            <RadioButton Content="14:00 - 16:00" TextColor="White" HorizontalOptions="Center"/>
+                            <RadioButton Content="16:00 - 18:00" TextColor="White" HorizontalOptions="Center"/>
                         </StackLayout>
                     </StackLayout>
                     <StackLayout Orientation="Horizontal"
