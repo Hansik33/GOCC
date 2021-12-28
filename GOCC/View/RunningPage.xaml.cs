@@ -35,12 +35,20 @@ namespace GOCC.View
             if (result == true)
             {
                 isdoing = false;
-                Application.Current.MainPage = new MainFlyoutPage();
+                totaldistance = Math.Round(totaldistance,2);
+                if (Connector.Send($"{stopwatch.Elapsed.Hours.ToString()}:{stopwatch.Elapsed.Minutes.ToString()}:{stopwatch.Elapsed.Seconds.ToString()} ", totaldistance.ToString()))
+                {
+                    await DisplayAlert("Gratulacje!",$"Udało ci się przejść: {totaldistance} km","Ok");
+                    Application.Current.MainPage = new MainFlyoutPage();
+                }
+                else
+                {
+                    await DisplayAlert("Błąd", Connector.lastError.ToString(), "OK");
+                }
             }
             else
             {
-
-
+                
             }
             
         }

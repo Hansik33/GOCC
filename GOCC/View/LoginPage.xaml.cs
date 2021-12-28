@@ -20,22 +20,14 @@ namespace GOCC.View
 
         private void Login_btn_click(object sender, EventArgs e)
         {
-            user User = new user();
-            User.email = Email_entry.Text;
-            User.password = Passworld_entry.Text;
-            Application.Current.MainPage = new RunningPage();
-            //Sprawdzenie prawdziwości podanych danych na serwerze
-            /*if (Connector.LogIn(Email_entry.Text,Passworld_entry.Text))
+            if (Connector.LogIn(Email_entry.Text,Passworld_entry.Text))
             {
                 Application.Current.MainPage = new RunningPage();
             }
             else
             {
                 DisplayAlert("BLĄD",Connector.lastError.ToString(),"OK");
-            }*/
-
-
-
+            }
         }
 
         private void Forgot_passworld_clicked(object sender, EventArgs e)

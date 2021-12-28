@@ -449,7 +449,7 @@ namespace GOCC.View
                 && !(RunningCheckBoxOnline.IsChecked)
                 && !(RunningCheckBoxOffline.IsChecked))
             {
-                FirstDisciplineValue = "1";
+                FirstDisciplineValue = "0";
                 SecondDisciplineValue = "true";
                 serveroption1 = "false";
             }
@@ -517,7 +517,7 @@ namespace GOCC.View
                 bool result = await Alert;
                 if (result)
                 {
-                    if (Connector.Register(FirstDisciplineValue,SecondDisciplineValue,serveroption1,FirstNameValue, LastNameValue, BirthDateValue, EmailValue, PasswordValue, PhoneNumberValue, PlaceValue, AddressValue + " " + HouseNumberValue + " " + ApartmentNumberValue + " " + PostcodeValue))
+                    if (Connector.Register(RunHourOption,FirstDisciplineValue,SecondDisciplineValue,FirstNameValue, LastNameValue, BirthDateValue, EmailValue, PasswordValue, PhoneNumberValue, PlaceValue, AddressValue + " " + HouseNumberValue + " " + ApartmentNumberValue + " " + PostcodeValue))
                     {
                         await Navigation.PopAsync();
                         await DisplayAlert("Brawo!", "Zostałeś zarejestrowany!", "OK");
