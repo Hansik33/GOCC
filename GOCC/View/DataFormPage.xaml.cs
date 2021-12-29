@@ -510,10 +510,6 @@ namespace GOCC.View
                         await Navigation.PopAsync();
                         await DisplayAlert("Brawo!", "Zostałeś zarejestrowany!", "OK");
                     }
-                    else if (Connector.lastError.ToString() == "1" || Connector.lastError.ToString() == "2")
-                    {
-                        await DisplayAlert("Błąd", "Jest już taki użytkownik", "OK");
-                    }
                     else
                     {
                         await DisplayAlert("Błąd", Connector.lastError.ToString(), "OK");
