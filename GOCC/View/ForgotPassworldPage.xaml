@@ -61,7 +61,8 @@
                             WidthRequest="234"
                             HeightRequest="55"
                             HorizontalOptions="Center"
-                            CornerRadius="20" />
+                            CornerRadius="20"
+                            Clicked="forgot_password_click"/>
                 </StackLayout>
             </Frame>
         </StackLayout>

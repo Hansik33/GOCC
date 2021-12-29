@@ -12,9 +12,23 @@ namespace GOCC.View
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ForgotPassworldPage : ContentPage
     {
+        string email;
         public ForgotPassworldPage()
         {
             InitializeComponent();
+        }
+
+        private async void forgot_password_click(object sender, EventArgs e)
+        {
+            email = Email_entry.Text;
+            if (Connector.Reset("1",email))
+            {
+                await DisplayAlert("Uwaga!","Wysłano Kod","Ok");
+            }
+            else
+            {
+                await DisplayAlert("Uwaga!", Connector.lastError, "Ok");
+            }
         }
     }
 }

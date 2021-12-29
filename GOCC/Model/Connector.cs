@@ -43,7 +43,7 @@ namespace GOCC
         {
         
             var request = WebRequest.Create("http://wospchorzow.pl/aplikacjaResetHasla.php?bieg=" + bieg +
-               "&=email" + email) as HttpWebRequest;
+               "&email=" + email) as HttpWebRequest;
             // request.Method = "GET";
             request.Method = "GET";
             request.Headers.Add("Cache-Control: max-age=0");
