@@ -38,6 +38,32 @@ namespace GOCC
             
             
         }
+        
+        public static bool Reset(string bieg, string email)
+        {
+        
+            var request = WebRequest.Create("http://wospchorzow.pl/aplikacjaResetHasla.php?bieg=" + bieg +
+               "&=email" + email) as HttpWebRequest;
+            // request.Method = "GET";
+            request.Method = "GET";
+            request.Headers.Add("Cache-Control: max-age=0");
+            request.Headers.Add("Upgrade-Insecure-Requests: 1");
+            request.Headers.Add("Accept-Language: en-US,en;q=0.9");
+            HttpWebResponse Httpresponse = (HttpWebResponse)request.GetResponse();
+            StreamReader reader = new StreamReader(Httpresponse.GetResponseStream());
+            string r = reader.ReadToEnd();
+            if (r[0] == '1')
+            {
+                return true;
+            }
+            else
+            {
+                string message = r.Substring(2);
+                lastError = message;
+                return false;
+            }
+        }
+        
         public static bool Send(string time, string dystans)
         {
             var request = WebRequest.Create("http://wospchorzow.pl/aplikacjaWynik.php?key="+sessionKey +
