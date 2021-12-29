@@ -54,103 +54,115 @@
                 <Setter Property="Color"
                         Value="Yellow" />
             </Style>
+            <Style x:Key="DefaultRadioButtonStyle"
+                   TargetType="RadioButton">
+                <Setter Property="TextColor"
+                        Value="White" />
+                <Setter Property="FontSize"
+                        Value="Subtitle" />
+                <Setter Property="HorizontalOptions"
+                        Value="Center" />
+            </Style>
+            <Style x:Key="EmptyRadioButtonStyle"
+                   BasedOn="{StaticResource DefaultRadioButtonStyle}"
+                   TargetType="RadioButton">
+                <Setter Property="TextColor"
+                        Value="Yellow" />
+            </Style>
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
         <StackLayout>
-        <ScrollView>
-            <StackLayout>
+            <ScrollView>
                 <StackLayout>
-                    <Label Text="Wybierz dyscypliny:"
+                    <StackLayout>
+                        <Label Text="Wybierz dyscypliny:"
                            HorizontalOptions="Center"
                            TextColor="White"
                            FontAttributes="Bold"
                            FontSize="Title"
                            Padding="0,20,0,10" />
-                    <Label Text="VII. Bieg z sercem WOŚP"
+                        <Label Text="VII. Bieg z sercem WOŚP"
                            HorizontalOptions="Center"
                            FontSize="Subtitle"
                            TextColor="White" />
-                    <StackLayout Orientation="Horizontal"
+                        <StackLayout Orientation="Horizontal"
                                  HorizontalOptions="Center">
-                        <StackLayout Orientation="Vertical"
+                            <StackLayout Orientation="Vertical"
                                      Padding="0,0,5,0">
-                            <CheckBox x:Name="RunningCheckBoxOnline"
+                                <CheckBox x:Name="RunningCheckBoxOnline"
                                       Style="{StaticResource DefaultCheckBoxStyle}"
                                       CheckedChanged="ChooseDisciplineCheckBox" />
-                            <Label Text="Wirtualny"
+                                <Label Text="Wirtualny"
                                    HorizontalOptions="Center"
                                    TextColor="White"
                                    Margin="0,-10,0,0"
                                    FontSize="Caption" />
-                        </StackLayout>
-                        <StackLayout Orientation="Vertical"
+                            </StackLayout>
+                            <StackLayout Orientation="Vertical"
                                      Padding="5,0,0,0">
-                            <CheckBox x:Name="RunningCheckBoxOffline"
+                                <CheckBox x:Name="RunningCheckBoxOffline"
                                       Style="{StaticResource DefaultCheckBoxStyle}"
                                       CheckedChanged="ChooseDisciplineCheckBox" />
-                            <Label Text="Stacjonarny"
+                                <Label Text="Stacjonarny"
                                    HorizontalOptions="Center"
                                    TextColor="White"
                                    Margin="0,-10,0,0"
                                    FontSize="Caption" />
+                            </StackLayout>
                         </StackLayout>
-                    </StackLayout>
-                    <StackLayout Orientation="Horizontal"
+                        <StackLayout Orientation="Horizontal"
                                  HorizontalOptions="Center"
                                  Spacing="0">
-                        <CheckBox x:Name="CyclingCheckBox"
+                            <CheckBox x:Name="CyclingCheckBox"
                                   CheckedChanged="ChooseDisciplineCheckBox"
                                   HorizontalOptions="Center"
                                   VerticalOptions="Center" />
-                        <Label Text="Rowerem dla WOŚP"
+                            <Label Text="Rowerem dla WOŚP"
                                FontSize="Subtitle"
                                TextColor="White"
                                HorizontalOptions="Center"
                                VerticalOptions="Center" />
-                    </StackLayout>
-                    <StackLayout x:Name="HoursRadioButtons" 
+                        </StackLayout>
+                        <StackLayout x:Name="HoursRadioButtons" 
                                  Orientation="Horizontal"
                                  IsVisible="False">
-                        <StackLayout Orientation="Vertical" 
+                            <StackLayout Orientation="Vertical" 
                                      HorizontalOptions="CenterAndExpand">
-                            <Label Text="Wybierz godzinę biegu stacjonarnego"
+                                <Label Text="Wybierz godzinę biegu stacjonarnego"
                            TextColor="White"
                            HorizontalOptions="Center"
                            FontSize="Subtitle"/>
-                            <RadioButton x:Name="FirstOptionHourRadioButton" 
+                                <RadioButton x:Name="FirstOptionHourRadioButton" 
                                          Content="12:00 - 14:00" 
-                                         TextColor="White" 
-                                         FontSize="Subtitle"
-                                         HorizontalOptions="Center" />
-                            <RadioButton x:Name="SecondOptionHourRadioButton" 
+                                         CheckedChanged="ChooseHourRadioButton"
+                                         Style="{StaticResource DefaultRadioButtonStyle}" />
+                                <RadioButton x:Name="SecondOptionHourRadioButton" 
                                          Content="14:00 - 16:00" 
-                                         TextColor="White" 
-                                         FontSize="Subtitle"
-                                         HorizontalOptions="Center" />
-                            <RadioButton x:Name="ThirdOptionHourRadioButton" 
+                                         CheckedChanged="ChooseHourRadioButton"
+                                         Style="{StaticResource DefaultRadioButtonStyle}" />
+                                <RadioButton x:Name="ThirdOptionHourRadioButton" 
                                          Content="16:00 - 18:00" 
-                                         TextColor="White" 
-                                         FontSize="Subtitle"
-                                         HorizontalOptions="Center" />
+                                         CheckedChanged="ChooseHourRadioButton"
+                                         Style="{StaticResource DefaultRadioButtonStyle}" />
+                            </StackLayout>
                         </StackLayout>
                     </StackLayout>
-                </StackLayout>
-                <StackLayout>
-                    <Label Text="Podaj swoje dane: "
+                    <StackLayout>
+                        <Label Text="Podaj swoje dane: "
                            HorizontalOptions="Center"
                            TextColor="White"
                            FontAttributes="Bold"
                            FontSize="Title"
                            Padding="0,10,0,10" />
-                    <Entry x:Name="FirstName"
+                        <Entry x:Name="FirstName"
                            Style="{StaticResource DefaultEntryStyle}"
                            TextChanged="CheckCorrectnessTextEntryRegex"
                            Focused="RestoreDefaultStyleEntry"
                            MaxLength="15"
                            Keyboard="Text"
                            Placeholder="Imię" />
-                    <Entry x:Name="LastName"
+                        <Entry x:Name="LastName"
                            Style="{StaticResource DefaultEntryStyle}"
                            TextChanged="CheckCorrectnessTextEntryRegex"
                            MaxLength="35"
@@ -166,23 +178,23 @@
                            Placeholder="Miejscowość" />
                         <StackLayout x:Name="DataFormPageHiddenSection" 
                                      IsVisible="False">
-                        <Entry x:Name="Postcode"
+                            <Entry x:Name="Postcode"
                            Style="{StaticResource DefaultEntryStyle}"
                            TextChanged="CheckCorrectnessTextEntryRegex"
                            Focused="RestoreDefaultStyleEntry"
                            Keyboard="Numeric"
                            MaxLength="6"
                            Placeholder="Kod pocztowy">
-                        <Entry.Behaviors>
-                            <Behaviors:EntryBehaviorMask Mask="XX-XXX" />
-                        </Entry.Behaviors>
-                    </Entry>
-                    <Entry x:Name="Address"
+                                <Entry.Behaviors>
+                                    <Behaviors:EntryBehaviorMask Mask="XX-XXX" />
+                                </Entry.Behaviors>
+                            </Entry>
+                            <Entry x:Name="Address"
                            Style="{StaticResource DefaultEntryStyle}"
                            TextChanged="CheckCorrectnessTextEntryRegex"
                            Focused="RestoreDefaultStyleEntry"
                            Placeholder="Ulica" />
-                    <Entry x:Name="HouseNumber"
+                            <Entry x:Name="HouseNumber"
                            Style="{StaticResource DefaultEntryStyle}"
                            TextChanged="CheckCorrectnessTextEntryRegex"
                            Focused="RestoreDefaultStyleEntry"
@@ -190,7 +202,7 @@
                            TextTransform="Uppercase"
                            MaxLength="3"
                            Placeholder="Numer domu" />
-                        <Entry x:Name="ApartmentNumber"
+                            <Entry x:Name="ApartmentNumber"
                            Style="{StaticResource DefaultEntryStyle}"
                            TextChanged="CheckCorrectnessTextEntryRegex"
                            Focused="RestoreDefaultStyleEntry"
@@ -205,18 +217,18 @@
                            Keyboard="Telephone"
                            MaxLength="11"
                            Placeholder="Numer telefonu">
-                        <Entry.Behaviors>
-                            <Behaviors:EntryBehaviorMask Mask="XXX-XXX-XXX" />
-                        </Entry.Behaviors>
-                    </Entry>
-                    <Entry x:Name="Email"
+                            <Entry.Behaviors>
+                                <Behaviors:EntryBehaviorMask Mask="XXX-XXX-XXX" />
+                            </Entry.Behaviors>
+                        </Entry>
+                        <Entry x:Name="Email"
                            Style="{StaticResource DefaultEntryStyle}"
                            TextChanged="CheckCorrectnessTextEntryRegex"
                            Focused="RestoreDefaultStyleEntry"
                            MaxLength="32"
                            Keyboard="Email"
                            Placeholder="E-mail" />
-                    <Entry x:Name="Password"
+                        <Entry x:Name="Password"
                            Style="{StaticResource DefaultEntryStyle}"
                            TextChanged="CheckCorrectnessTextEntryRegex"
                            Focused="RestoreDefaultStyleEntry"
@@ -224,39 +236,39 @@
                            Keyboard="Text"
                            Placeholder="Hasło*"
                            IsPassword="True" />
-                    <Label Text="*Minimalna długość hasła to 8 znaków"
+                        <Label Text="*Minimalna długość hasła to 8 znaków"
                            FontSize="Caption"
                            TextColor="White"
                            HorizontalOptions="Center"
                            VerticalOptions="Center"
                            HorizontalTextAlignment="Center" />
-                    <StackLayout Orientation="Vertical"
+                        <StackLayout Orientation="Vertical"
                                  HorizontalOptions="Center">
-                        <Label x:Name="BirthDateLabel"
+                            <Label x:Name="BirthDateLabel"
                                Text="Data urodzenia"
                                FontSize="Subtitle"
                                Margin="0,10,0,0"
                                TextColor="LightGray"
                                HorizontalOptions="Center" />
-                        <controls:BorderlessDatePicker x:Name="DateDatePicker"
+                            <controls:BorderlessDatePicker x:Name="DateDatePicker"
                                                        MaximumDate="01.01.2018"
                                                        WidthRequest="200"
                                                        TextColor="White"
                                                        DateSelected="SelectDate" />
+                        </StackLayout>
                     </StackLayout>
-                </StackLayout>
-                <StackLayout HorizontalOptions="Center"
+                    <StackLayout HorizontalOptions="Center"
                              Orientation="Horizontal"
                              Spacing="0">
-                    <CheckBox x:Name="AcceptanceRegulationsCheckBox"
+                        <CheckBox x:Name="AcceptanceRegulationsCheckBox"
                               Style="{StaticResource DefaultCheckBoxStyle}"
                               CheckedChanged="RestoreDefaultStyleCheckBox" />
-                    <Label Text="Akceptuję warunki"
+                        <Label Text="Akceptuję warunki"
                            TextColor="White"
                            FontSize="Small"
                            HorizontalTextAlignment="Center"
                            VerticalOptions="Center" />
-                    <Button Text="regulaminu"
+                        <Button Text="regulaminu"
                             BackgroundColor="#0000"
                             FontAttributes="Bold"
                             TextColor="#E21912"
@@ -264,8 +276,8 @@
                             TextTransform="Lowercase"
                             Margin="-8,0,0,0"
                             Clicked="MoveToRegulations" />
-                </StackLayout>
-                <Button x:Name="ConfirmDataFormButton"
+                    </StackLayout>
+                    <Button x:Name="ConfirmDataFormButton"
                         Clicked="SendData"
                         Margin="0,10,0,20"
                         BackgroundColor="#E21912"
@@ -275,8 +287,8 @@
                         HeightRequest="50"
                         HorizontalOptions="Center"
                         CornerRadius="20" />
-            </StackLayout>
-        </ScrollView>
+                </StackLayout>
+            </ScrollView>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

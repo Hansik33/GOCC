@@ -32,8 +32,8 @@ namespace GOCC.View
         public string EmailValue;
         public string PasswordValue;
         public string BirthDateValue;
-        public string serveroption1;
         public string RunHourValue = "N/A";
+        public string serveroption1;
         //*
 
         public DataFormPage()
@@ -147,7 +147,7 @@ namespace GOCC.View
                 {
                     RunningCheckBoxOffline.Style = Resources["DefaultCheckBoxStyle"] as Style;
 
-                    DataFormPageHiddenSection.IsVisible= false;
+                    DataFormPageHiddenSection.IsVisible = false;
                     Postcode.Text = null;
                     Address.Text = null;
                     HouseNumber.Text = null;
@@ -162,13 +162,21 @@ namespace GOCC.View
                     RunningCheckBoxOnline.Style = Resources["DefaultCheckBoxStyle"] as Style;
                     if (RunningCheckBoxOnline.IsChecked) RunningCheckBoxOnline.IsChecked = false;
 
+                    DataFormPageHiddenSection.IsVisible = false;
+                    Postcode.Text = null;
+                    Address.Text = null;
+                    HouseNumber.Text = null;
+                    ApartmentNumber.Text = null;
 
                     HoursRadioButtons.IsVisible = true;
                 }
+
                 else
                 {
-
-                    HoursRadioButtons.IsVisible = false; 
+                    HoursRadioButtons.IsVisible = false;
+                    FirstOptionHourRadioButton.IsChecked = false;
+                    SecondOptionHourRadioButton.IsChecked = false;
+                    ThirdOptionHourRadioButton.IsChecked = false;
                 }
 
                 if (CyclingCheckBox.Style == Resources["EmptyCheckBoxStyle"])
@@ -187,6 +195,13 @@ namespace GOCC.View
 
             if (GivenObject.Style == Resources["EmptyCheckBoxStyle"])
                 GivenObject.Style = Resources["DefaultCheckBoxStyle"] as Style;
+        }
+
+        private void ChooseHourRadioButton(object sender, CheckedChangedEventArgs e)
+        {
+            FirstOptionHourRadioButton.Style = Resources["DefaultRadioButtonStyle"] as Style;
+            SecondOptionHourRadioButton.Style = Resources["DefaultRadioButtonStyle"] as Style;
+            ThirdOptionHourRadioButton.Style = Resources["DefaultRadioButtonStyle"] as Style;
         }
 
         private void RestoreDefaultStyleEntry(object sender, FocusEventArgs e)
@@ -288,7 +303,7 @@ namespace GOCC.View
             return isCorrect;
         }
 
-        public bool AreAllEntriesFilled()
+        public bool AreAllDataFilled()
         {
             bool Result = true;
 
@@ -301,6 +316,19 @@ namespace GOCC.View
                 RunningCheckBoxOnline.Style = Resources["EmptyCheckBoxStyle"] as Style;
                 RunningCheckBoxOffline.Style = Resources["EmptyCheckBoxStyle"] as Style;
                 CyclingCheckBox.Style = Resources["EmptyCheckBoxStyle"] as Style;
+            }
+
+            if (RunningCheckBoxOffline.IsChecked)
+            {
+                if (!(FirstOptionHourRadioButton.IsChecked)
+                    && !(SecondOptionHourRadioButton.IsChecked)
+                    && !(ThirdOptionHourRadioButton.IsChecked))
+                {
+                    Result = false;
+                    FirstOptionHourRadioButton.Style = Resources["EmptyRadioButtonStyle"] as Style;
+                    SecondOptionHourRadioButton.Style = Resources["EmptyRadioButtonStyle"] as Style;
+                    ThirdOptionHourRadioButton.Style = Resources["EmptyRadioButtonStyle"] as Style;
+                }
             }
 
             if (FirstName.Text == null)
@@ -412,14 +440,14 @@ namespace GOCC.View
                 FirstOptionHourRadioButton.IsChecked = false;
                 SecondOptionHourRadioButton.IsChecked = false;
                 ThirdOptionHourRadioButton.IsChecked = false;
-                FirstDisciplineValue = "2";
+                FirstDisciplineValue = "1";
                 RunHourValue = "0";
                 serveroption1 = "true";
                 if (CyclingCheckBox.IsChecked) SecondDisciplineValue = "true"; else SecondDisciplineValue = "false";
             }
             if (RunningCheckBoxOffline.IsChecked)
             {
-                FirstDisciplineValue = "1";
+                FirstDisciplineValue = "2";
                 serveroption1 = "true";
                 if (CyclingCheckBox.IsChecked) SecondDisciplineValue = "true"; else SecondDisciplineValue = "false";
                 if (FirstOptionHourRadioButton.IsChecked) RunHourValue = "1"; else if (SecondOptionHourRadioButton.IsChecked) RunHourValue = "2"; else if (ThirdOptionHourRadioButton.IsChecked) RunHourValue = "3";
@@ -448,31 +476,13 @@ namespace GOCC.View
 
         public async Task<bool> DisplayAlertWithUserData()
         {
-            string FirstDisciplineName, SecondDisciplineName, Hour;
-            if (FirstDisciplineValue == "1")
-            {
-                FirstDisciplineName = "Bieg Stacjonarny";
-            }
-            else
-            {
-                FirstDisciplineName = "Bieg Wirtualny";
-            }
-            if (SecondDisciplineValue == "true")
-            {
-                SecondDisciplineName = "Rajd Rowerowy";
-            }
-            else
-            {
-                SecondDisciplineName = "Nie wybrano";
-            }
-            if (FirstOptionHourRadioButton.IsChecked) Hour = "12:00 - 14:00"; else if (SecondOptionHourRadioButton.IsChecked) Hour = "14:00 - 16:00"; else if (ThirdOptionHourRadioButton.IsChecked) Hour = "16:00 - 18:00"; else Hour = "---------";
             var Contents =
                 "\nImię: " + FirstNameValue
                 + "\n\nNazwisko: " + LastNameValue
                 + "\n\nData urodzenia: " + BirthDateValue
-                + "\n\nPierwsza dyscyplina: " + FirstDisciplineName
-                + "\n\n Wybrana Godzina: " + Hour
-                + "\n\nDruga dyscyplina: " + SecondDisciplineName
+                + "\n\nPierwsza dyscyplina: " + FirstDisciplineValue
+                + "\n\n Wybrana Godzina: " + RunHourValue
+                + "\n\nDruga dyscyplina: " + SecondDisciplineValue
                 + "\n\nMiejscowość: " + PlaceValue
                 + "\n\nKod pocztowy: " + PostcodeValue
                 + "\n\nUlica: " + AddressValue
@@ -487,9 +497,8 @@ namespace GOCC.View
 
         private async void SendData(object sender, EventArgs e)
         {
-            if (AreAllEntriesFilled())
+            if (AreAllDataFilled())
             {
-
                 SetValuesToVariables();
 
                 Task<bool> Alert = DisplayAlertWithUserData();
