@@ -33,7 +33,7 @@ namespace GOCC.View
         public string PasswordValue;
         public string BirthDateValue;
         public string serveroption1;
-        public string RunHourOption;
+        public string RunHourValue = "N/A";
         //*
 
         public DataFormPage()
@@ -135,20 +135,11 @@ namespace GOCC.View
 
                     RunningCheckBoxOffline.Style = Resources["DefaultCheckBoxStyle"] as Style;
 
-                    if (Postcode.IsReadOnly)
-                        Postcode.Style = Resources["DefaultEntryStyle"] as Style;
-
-                    if (Address.IsReadOnly)
-                        Address.Style = Resources["DefaultEntryStyle"] as Style;
-
-                    if (HouseNumber.IsReadOnly)
-                        HouseNumber.Style = Resources["DefaultEntryStyle"] as Style;
-
-                    if (ApartmentNumber.IsReadOnly)
-                        ApartmentNumber.Style = Resources["DefaultEntryStyle"] as Style;
+                    DataFormPageHiddenSection.IsVisible = true;
 
                     if (CyclingCheckBox.Style == Resources["EmptyCheckBoxStyle"])
                         CyclingCheckBox.Style = Resources["DefaultCheckBoxStyle"] as Style;
+
                     HoursRadioButtons.IsVisible = false;
                 }
 
@@ -156,30 +147,11 @@ namespace GOCC.View
                 {
                     RunningCheckBoxOffline.Style = Resources["DefaultCheckBoxStyle"] as Style;
 
-                    if (!(Postcode.IsReadOnly))
-                    {
-                        Postcode.Text = null;
-                        Postcode.Style = Resources["DisabledEntryStyle"] as Style;
-                    }
-
-                    if (!(Address.IsReadOnly))
-                    {
-                        Address.Text = null;
-                        Address.Style = Resources["DisabledEntryStyle"] as Style;
-                    }
-
-                    if (!(HouseNumber.IsReadOnly))
-                    {
-                        HouseNumber.Text = null;
-                        HouseNumber.Style = Resources["DisabledEntryStyle"] as Style;
-                    }
-
-                    if (!(ApartmentNumber.IsReadOnly))
-                    {
-                        ApartmentNumber.Text = null;
-                        ApartmentNumber.Style = Resources["DisabledEntryStyle"] as Style;
-                    }
-                    HoursRadioButtons.IsVisible=true;
+                    DataFormPageHiddenSection.IsVisible= false;
+                    Postcode.Text = null;
+                    Address.Text = null;
+                    HouseNumber.Text = null;
+                    ApartmentNumber.Text = null;
                 }
             }
 
@@ -187,10 +159,17 @@ namespace GOCC.View
             {
                 if (RunningCheckBoxOffline.IsChecked)
                 {
-                    HoursRadioButtons.IsVisible = true;
                     RunningCheckBoxOnline.Style = Resources["DefaultCheckBoxStyle"] as Style;
                     if (RunningCheckBoxOnline.IsChecked) RunningCheckBoxOnline.IsChecked = false;
-                }else HoursRadioButtons.IsVisible = false;
+
+
+                    HoursRadioButtons.IsVisible = true;
+                }
+                else
+                {
+
+                    HoursRadioButtons.IsVisible = false; 
+                }
 
                 if (CyclingCheckBox.Style == Resources["EmptyCheckBoxStyle"])
                     CyclingCheckBox.Style = Resources["DefaultCheckBoxStyle"] as Style;
@@ -430,11 +409,11 @@ namespace GOCC.View
         {
             if (RunningCheckBoxOnline.IsChecked)
             {
-                hour12_radiobtn.IsChecked = false;
-                hour14_radiobtn.IsChecked = false;
-                hour16_radiobtn.IsChecked = false;
+                FirstOptionHourRadioButton.IsChecked = false;
+                SecondOptionHourRadioButton.IsChecked = false;
+                ThirdOptionHourRadioButton.IsChecked = false;
                 FirstDisciplineValue = "2";
-                RunHourOption = "0";
+                RunHourValue = "0";
                 serveroption1 = "true";
                 if (CyclingCheckBox.IsChecked) SecondDisciplineValue = "true"; else SecondDisciplineValue = "false";
             }
@@ -443,7 +422,7 @@ namespace GOCC.View
                 FirstDisciplineValue = "1";
                 serveroption1 = "true";
                 if (CyclingCheckBox.IsChecked) SecondDisciplineValue = "true"; else SecondDisciplineValue = "false";
-                if (hour12_radiobtn.IsChecked) RunHourOption = "1"; else if (hour14_radiobtn.IsChecked) RunHourOption = "2"; else if (hour16_radiobtn.IsChecked) RunHourOption = "3";
+                if (FirstOptionHourRadioButton.IsChecked) RunHourValue = "1"; else if (SecondOptionHourRadioButton.IsChecked) RunHourValue = "2"; else if (ThirdOptionHourRadioButton.IsChecked) RunHourValue = "3";
             }
             if (CyclingCheckBox.IsChecked
                 && !(RunningCheckBoxOnline.IsChecked)
@@ -469,8 +448,8 @@ namespace GOCC.View
 
         public async Task<bool> DisplayAlertWithUserData()
         {
-            string FirstDisciplineName, SecondDisciplineName,Hour;
-            if(FirstDisciplineValue == "1")
+            string FirstDisciplineName, SecondDisciplineName, Hour;
+            if (FirstDisciplineValue == "1")
             {
                 FirstDisciplineName = "Bieg Stacjonarny";
             }
@@ -486,7 +465,7 @@ namespace GOCC.View
             {
                 SecondDisciplineName = "Nie wybrano";
             }
-            if (hour12_radiobtn.IsChecked) Hour = "12:00 - 14:00"; else if (hour14_radiobtn.IsChecked) Hour = "14:00 - 16:00"; else if (hour16_radiobtn.IsChecked) Hour = "16:00 - 18:00"; else Hour = "---------";
+            if (FirstOptionHourRadioButton.IsChecked) Hour = "12:00 - 14:00"; else if (SecondOptionHourRadioButton.IsChecked) Hour = "14:00 - 16:00"; else if (ThirdOptionHourRadioButton.IsChecked) Hour = "16:00 - 18:00"; else Hour = "---------";
             var Contents =
                 "\nImię: " + FirstNameValue
                 + "\n\nNazwisko: " + LastNameValue
@@ -502,7 +481,7 @@ namespace GOCC.View
                 + "\n\nNumer telefonu: " + PhoneNumberValue
                 + "\n\nE-mail: " + EmailValue;
 
-            bool result = await DisplayAlert("Podane informacje użytkownika: ", Contents, "Ok","Anuluj");
+            bool result = await DisplayAlert("Podane informacje użytkownika: ", Contents, "Ok", "Anuluj");
             return result;
         }
 
@@ -517,18 +496,18 @@ namespace GOCC.View
                 bool result = await Alert;
                 if (result)
                 {
-                    if (Connector.Register(RunHourOption,FirstDisciplineValue,SecondDisciplineValue,FirstNameValue, LastNameValue, BirthDateValue, EmailValue, PasswordValue, PhoneNumberValue, PlaceValue, AddressValue + " " + HouseNumberValue + " " + ApartmentNumberValue + " " + PostcodeValue))
+                    if (Connector.Register(RunHourValue, FirstDisciplineValue, SecondDisciplineValue, FirstNameValue, LastNameValue, BirthDateValue, EmailValue, PasswordValue, PhoneNumberValue, PlaceValue, AddressValue + " " + HouseNumberValue + " " + ApartmentNumberValue + " " + PostcodeValue))
                     {
                         await Navigation.PopAsync();
                         await DisplayAlert("Brawo!", "Zostałeś zarejestrowany!", "OK");
                     }
-                    else if(Connector.lastError.ToString() == "1" || Connector.lastError.ToString() == "2")
+                    else if (Connector.lastError.ToString() == "1" || Connector.lastError.ToString() == "2")
                     {
                         await DisplayAlert("Błąd", "Jest już taki użytkownik", "OK");
                     }
                     else
                     {
-                        await DisplayAlert("Błąd",Connector.lastError.ToString(),"OK");
+                        await DisplayAlert("Błąd", Connector.lastError.ToString(), "OK");
                     }
                 }
             }

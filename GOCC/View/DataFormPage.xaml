@@ -26,16 +26,8 @@
                         Value="White" />
                 <Setter Property="FontSize"
                         Value="Medium" />
-                <Setter Property="Opacity"
-                        Value="1" />
-            </Style>
-            <Style x:Key="DisabledEntryStyle"
-                   BasedOn="{StaticResource DefaultEntryStyle}"
-                   TargetType="Entry">
-                <Setter Property="IsReadOnly"
+                <Setter Property="IsVisible"
                         Value="True" />
-                <Setter Property="Opacity"
-                        Value="0.3" />
             </Style>
             <Style x:Key="EmptyEntryStyle"
                    BasedOn="{StaticResource DefaultEntryStyle}"
@@ -65,11 +57,10 @@
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
-        <ScrollView Orientation="Vertical">
+        <StackLayout>
+        <ScrollView>
             <StackLayout>
                 <StackLayout>
-                    
-                    
                     <Label Text="Wybierz dyscypliny:"
                            HorizontalOptions="Center"
                            TextColor="White"
@@ -105,17 +96,6 @@
                                    FontSize="Caption" />
                         </StackLayout>
                     </StackLayout>
-                    <StackLayout Orientation="Horizontal" x:Name="HoursRadioButtons" IsVisible="false">
-                        <StackLayout Orientation="Vertical" HorizontalOptions="CenterAndExpand">
-                            <Label Text="Wybierz godzinę biegu stacjonarnego!"
-                           TextColor="White"
-                           HorizontalOptions="Center"
-                           FontSize="Subtitle"/>
-                            <RadioButton Content="12:00 - 14:00" TextColor="White" HorizontalOptions="CenterAndExpand" x:Name="hour12_radiobtn"/>
-                            <RadioButton Content="14:00 - 16:00" TextColor="White" HorizontalOptions="Center" x:Name="hour14_radiobtn"/>
-                            <RadioButton Content="16:00 - 18:00" TextColor="White" HorizontalOptions="Center" x:Name="hour16_radiobtn"/>
-                        </StackLayout>
-                    </StackLayout>
                     <StackLayout Orientation="Horizontal"
                                  HorizontalOptions="Center"
                                  Spacing="0">
@@ -128,6 +108,32 @@
                                TextColor="White"
                                HorizontalOptions="Center"
                                VerticalOptions="Center" />
+                    </StackLayout>
+                    <StackLayout x:Name="HoursRadioButtons" 
+                                 Orientation="Horizontal"
+                                 IsVisible="False">
+                        <StackLayout Orientation="Vertical" 
+                                     HorizontalOptions="CenterAndExpand">
+                            <Label Text="Wybierz godzinę biegu stacjonarnego"
+                           TextColor="White"
+                           HorizontalOptions="Center"
+                           FontSize="Subtitle"/>
+                            <RadioButton x:Name="FirstOptionHourRadioButton" 
+                                         Content="12:00 - 14:00" 
+                                         TextColor="White" 
+                                         FontSize="Subtitle"
+                                         HorizontalOptions="Center" />
+                            <RadioButton x:Name="SecondOptionHourRadioButton" 
+                                         Content="14:00 - 16:00" 
+                                         TextColor="White" 
+                                         FontSize="Subtitle"
+                                         HorizontalOptions="Center" />
+                            <RadioButton x:Name="ThirdOptionHourRadioButton" 
+                                         Content="16:00 - 18:00" 
+                                         TextColor="White" 
+                                         FontSize="Subtitle"
+                                         HorizontalOptions="Center" />
+                        </StackLayout>
                     </StackLayout>
                 </StackLayout>
                 <StackLayout>
@@ -151,15 +157,17 @@
                            Focused="RestoreDefaultStyleEntry"
                            Keyboard="Text"
                            Placeholder="Nazwisko" />
-                    <Entry x:Name="Place"
+                        <Entry x:Name="Place"
                            Style="{StaticResource DefaultEntryStyle}"
                            TextChanged="CheckCorrectnessTextEntryRegex"
                            Focused="RestoreDefaultStyleEntry"
                            MaxLength="30"
                            Keyboard="Text"
                            Placeholder="Miejscowość" />
-                    <Entry x:Name="Postcode"
-                           Style="{StaticResource DisabledEntryStyle}"
+                        <StackLayout x:Name="DataFormPageHiddenSection" 
+                                     IsVisible="False">
+                        <Entry x:Name="Postcode"
+                           Style="{StaticResource DefaultEntryStyle}"
                            TextChanged="CheckCorrectnessTextEntryRegex"
                            Focused="RestoreDefaultStyleEntry"
                            Keyboard="Numeric"
@@ -170,26 +178,27 @@
                         </Entry.Behaviors>
                     </Entry>
                     <Entry x:Name="Address"
-                           Style="{StaticResource DisabledEntryStyle}"
+                           Style="{StaticResource DefaultEntryStyle}"
                            TextChanged="CheckCorrectnessTextEntryRegex"
                            Focused="RestoreDefaultStyleEntry"
                            Placeholder="Ulica" />
                     <Entry x:Name="HouseNumber"
-                           Style="{StaticResource DisabledEntryStyle}"
+                           Style="{StaticResource DefaultEntryStyle}"
                            TextChanged="CheckCorrectnessTextEntryRegex"
                            Focused="RestoreDefaultStyleEntry"
                            Keyboard="Text"
                            TextTransform="Uppercase"
                            MaxLength="3"
                            Placeholder="Numer domu" />
-                    <Entry x:Name="ApartmentNumber"
-                           Style="{StaticResource DisabledEntryStyle}"
+                        <Entry x:Name="ApartmentNumber"
+                           Style="{StaticResource DefaultEntryStyle}"
                            TextChanged="CheckCorrectnessTextEntryRegex"
                            Focused="RestoreDefaultStyleEntry"
                            Keyboard="Numeric"
                            MaxLength="3"
                            Placeholder="Numer lokalu" />
-                    <Entry x:Name="PhoneNumber"
+                        </StackLayout>
+                        <Entry x:Name="PhoneNumber"
                            Style="{StaticResource DefaultEntryStyle}"
                            TextChanged="CheckCorrectnessTextEntryRegex"
                            Focused="RestoreDefaultStyleEntry"
@@ -258,8 +267,8 @@
                 </StackLayout>
                 <Button x:Name="ConfirmDataFormButton"
                         Clicked="SendData"
-                        BackgroundColor="#E21912"
                         Margin="0,10,0,20"
+                        BackgroundColor="#E21912"
                         TextColor="White"
                         Text="Zatwierdź"
                         WidthRequest="250"
@@ -268,5 +277,6 @@
                         CornerRadius="20" />
             </StackLayout>
         </ScrollView>
+        </StackLayout>
     </ContentPage.Content>
 </ContentPage>
