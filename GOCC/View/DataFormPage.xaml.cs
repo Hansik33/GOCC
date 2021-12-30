@@ -456,7 +456,7 @@ namespace GOCC.View
                     SecondDisciplineValueToDisplay = "Rowerem dla WOŚP";
                 }
                 else
-                { 
+                {
                     SecondDisciplineValue = "false";
                     SecondDisciplineValueToDisplay = "N/A";
                 }
@@ -481,19 +481,19 @@ namespace GOCC.View
                 }
 
                 if (FirstOptionHourRadioButton.IsChecked)
-                { 
+                {
                     RunHourValue = "1";
                     RunHourValueToDisplay = "12:00 - 14:00";
                 }
 
-                else if (SecondOptionHourRadioButton.IsChecked) 
-                { 
+                else if (SecondOptionHourRadioButton.IsChecked)
+                {
                     RunHourValue = "2";
                     RunHourValueToDisplay = "14:00 - 16:00";
                 }
 
                 else if (ThirdOptionHourRadioButton.IsChecked)
-                { 
+                {
                     RunHourValue = "3";
                     RunHourValueToDisplay = "16:00 - 18:00";
                 }
@@ -515,25 +515,49 @@ namespace GOCC.View
             FirstNameValue = FirstName.Text;
             LastNameValue = LastName.Text;
             PlaceValue = Place.Text;
-            if (Postcode.Text != null) PostcodeValue = Postcode.Text; 
+
+            if (Postcode.Text != null)
+            {
+                PostcodeValue = Postcode.Text;
+                PostcodeValueToDisplay = PostcodeValue;
+            }
+
             else
             {
                 PostcodeValue = String.Empty;
                 PostcodeValueToDisplay = "N/A";
             }
-            if (Address.Text != null) AddressValue = Address.Text;
+
+            if (Address.Text != null)
+            {
+                AddressValue = Address.Text;
+                AddressValueToDisplay = AddressValue;
+            }
+
             else
             {
                 AddressValue = String.Empty;
                 AddressValueToDisplay = "N/A";
             }
-            if (HouseNumber.Text != null) HouseNumberValue = HouseNumber.Text.ToString();
+
+            if (HouseNumber.Text != null)
+            {
+                HouseNumberValue = HouseNumber.Text.ToString();
+                HouseNumberValueToDisplay = HouseNumberValue;
+            }
+
             else
             {
                 HouseNumberValue = String.Empty;
                 HouseNumberValueToDisplay = "N/A";
             }
-            if (ApartmentNumber.Text != null) ApartmentNumberValue = ApartmentNumber.Text.ToString();
+
+            if (ApartmentNumber.Text != null)
+            {
+                ApartmentNumberValue = ApartmentNumber.Text.ToString();
+                ApartmentNumberValueToDisplay = ApartmentNumberValue;
+            }
+
             else
             {
                 ApartmentNumberValue = String.Empty;
@@ -555,7 +579,7 @@ namespace GOCC.View
                 + "\n\nWybrana Godzina: " + RunHourValueToDisplay
                 + "\n\nDruga dyscyplina: " + SecondDisciplineValueToDisplay
                 + "\n\nMiejscowość: " + PlaceValue
-                + "\n\nKod pocztowy: " + PostcodeValueToDisplay 
+                + "\n\nKod pocztowy: " + PostcodeValueToDisplay
                 + "\n\nUlica: " + AddressValueToDisplay
                 + "\n\nNumer domu: " + HouseNumberValueToDisplay
                 + "\n\nNumer lokalu: " + ApartmentNumberValueToDisplay
