@@ -20,20 +20,28 @@ namespace GOCC.View
 
         // DATA
         public string FirstDisciplineValue;
-        public string SecondDisciplineValue = "N/A";
+        public string FirstDisciplineValueToDisplay;
+        public string SecondDisciplineValue;
+        public string SecondDisciplineValueToDisplay;
         public string FirstNameValue;
         public string LastNameValue;
         public string PlaceValue;
-        public string PostcodeValue = "N/A";
-        public string AddressValue = "N/A";
-        public string HouseNumberValue = "N/A";
-        public string ApartmentNumberValue = "N/A";
+        public string PostcodeValue;
+        public string AddressValue;
+        public string HouseNumberValue;
+        public string ApartmentNumberValue;
+        public string PostcodeValueToDisplay;
+        public string AddressValueToDisplay;
+        public string HouseNumberValueToDisplay;
+        public string ApartmentNumberValueToDisplay;
         public string PhoneNumberValue;
         public string EmailValue;
         public string PasswordValue;
         public string BirthDateValue;
-        public string RunHourValue = "N/A";
-        public string serveroption1;
+        public string RunHourValue;
+        public string RunHourValueToDisplay;
+
+        public string ServerOption1;
         //*
 
         public DataFormPage()
@@ -437,37 +445,100 @@ namespace GOCC.View
         {
             if (RunningCheckBoxOnline.IsChecked)
             {
-                FirstOptionHourRadioButton.IsChecked = false;
-                SecondOptionHourRadioButton.IsChecked = false;
-                ThirdOptionHourRadioButton.IsChecked = false;
                 FirstDisciplineValue = "1";
+                FirstDisciplineValueToDisplay = "Bieg wirtualny";
                 RunHourValue = "0";
-                serveroption1 = "true";
-                if (CyclingCheckBox.IsChecked) SecondDisciplineValue = "true"; else SecondDisciplineValue = "false";
+                RunHourValueToDisplay = "N/A";
+                ServerOption1 = "true";
+                if (CyclingCheckBox.IsChecked)
+                {
+                    SecondDisciplineValue = "true";
+                    SecondDisciplineValueToDisplay = "Rowerem dla WOŚP";
+                }
+                else
+                { 
+                    SecondDisciplineValue = "false";
+                    SecondDisciplineValueToDisplay = "N/A";
+                }
             }
+
             if (RunningCheckBoxOffline.IsChecked)
             {
                 FirstDisciplineValue = "2";
-                serveroption1 = "true";
-                if (CyclingCheckBox.IsChecked) SecondDisciplineValue = "true"; else SecondDisciplineValue = "false";
-                if (FirstOptionHourRadioButton.IsChecked) RunHourValue = "1"; else if (SecondOptionHourRadioButton.IsChecked) RunHourValue = "2"; else if (ThirdOptionHourRadioButton.IsChecked) RunHourValue = "3";
+                FirstDisciplineValueToDisplay = "Bieg stacjonarny";
+                ServerOption1 = "true";
+
+                if (CyclingCheckBox.IsChecked)
+                {
+                    SecondDisciplineValue = "true";
+                    SecondDisciplineValueToDisplay = "Rowerem dla WOŚP";
+                }
+
+                else
+                {
+                    SecondDisciplineValue = "false";
+                    SecondDisciplineValueToDisplay = "N/A";
+                }
+
+                if (FirstOptionHourRadioButton.IsChecked)
+                { 
+                    RunHourValue = "1";
+                    RunHourValueToDisplay = "12:00 - 14:00";
+                }
+
+                else if (SecondOptionHourRadioButton.IsChecked) 
+                { 
+                    RunHourValue = "2";
+                    RunHourValueToDisplay = "14:00 - 16:00";
+                }
+
+                else if (ThirdOptionHourRadioButton.IsChecked)
+                { 
+                    RunHourValue = "3";
+                    RunHourValueToDisplay = "16:00 - 18:00";
+                }
             }
+
             if (CyclingCheckBox.IsChecked
                 && !(RunningCheckBoxOnline.IsChecked)
                 && !(RunningCheckBoxOffline.IsChecked))
             {
+                RunHourValue = "0";
+                RunHourValueToDisplay = "N/A";
                 FirstDisciplineValue = "0";
+                FirstDisciplineValueToDisplay = "Rowerem dla WOŚP";
                 SecondDisciplineValue = "true";
-                serveroption1 = "false";
+                SecondDisciplineValueToDisplay = "N/A";
+                ServerOption1 = "false";
             }
 
             FirstNameValue = FirstName.Text;
             LastNameValue = LastName.Text;
             PlaceValue = Place.Text;
-            if (Postcode.Text != null) PostcodeValue = Postcode.Text; else PostcodeValue = "";
-            if (Address.Text != null) AddressValue = Address.Text; else AddressValue = "";
-            if (HouseNumber.Text != null) HouseNumberValue = HouseNumber.Text.ToString(); else HouseNumberValue = "";
-            if (ApartmentNumber.Text != null) ApartmentNumberValue = ApartmentNumber.Text.ToString(); else ApartmentNumberValue = "";
+            if (Postcode.Text != null) PostcodeValue = Postcode.Text; 
+            else
+            {
+                PostcodeValue = String.Empty;
+                PostcodeValueToDisplay = "N/A";
+            }
+            if (Address.Text != null) AddressValue = Address.Text;
+            else
+            {
+                AddressValue = String.Empty;
+                AddressValueToDisplay = "N/A";
+            }
+            if (HouseNumber.Text != null) HouseNumberValue = HouseNumber.Text.ToString();
+            else
+            {
+                HouseNumberValue = String.Empty;
+                HouseNumberValueToDisplay = "N/A";
+            }
+            if (ApartmentNumber.Text != null) ApartmentNumberValue = ApartmentNumber.Text.ToString();
+            else
+            {
+                ApartmentNumberValue = String.Empty;
+                ApartmentNumberValueToDisplay = "N/A";
+            }
             PhoneNumberValue = PhoneNumber.Text;
             EmailValue = Email.Text;
             PasswordValue = Password.Text;
@@ -480,14 +551,14 @@ namespace GOCC.View
                 "\nImię: " + FirstNameValue
                 + "\n\nNazwisko: " + LastNameValue
                 + "\n\nData urodzenia: " + BirthDateValue
-                + "\n\nPierwsza dyscyplina: " + FirstDisciplineValue
-                + "\n\n Wybrana Godzina: " + RunHourValue
-                + "\n\nDruga dyscyplina: " + SecondDisciplineValue
+                + "\n\nPierwsza dyscyplina: " + FirstDisciplineValueToDisplay
+                + "\n\nWybrana Godzina: " + RunHourValueToDisplay
+                + "\n\nDruga dyscyplina: " + SecondDisciplineValueToDisplay
                 + "\n\nMiejscowość: " + PlaceValue
-                + "\n\nKod pocztowy: " + PostcodeValue
-                + "\n\nUlica: " + AddressValue
-                + "\n\nNumer domu: " + HouseNumberValue
-                + "\n\nNumer lokalu: " + ApartmentNumberValue
+                + "\n\nKod pocztowy: " + PostcodeValueToDisplay 
+                + "\n\nUlica: " + AddressValueToDisplay
+                + "\n\nNumer domu: " + HouseNumberValueToDisplay
+                + "\n\nNumer lokalu: " + ApartmentNumberValueToDisplay
                 + "\n\nNumer telefonu: " + PhoneNumberValue
                 + "\n\nE-mail: " + EmailValue;
 
@@ -512,7 +583,7 @@ namespace GOCC.View
                     }
                     else
                     {
-                        await DisplayAlert("Błąd", Connector.lastError.ToString(), "OK");
+                        await DisplayAlert("Błąd!", Connector.lastError.ToString(), "OK");
                     }
                 }
             }
