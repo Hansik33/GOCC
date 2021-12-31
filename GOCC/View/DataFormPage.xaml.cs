@@ -566,7 +566,7 @@ namespace GOCC.View
             PhoneNumberValue = PhoneNumber.Text;
             EmailValue = Email.Text;
             PasswordValue = Password.Text;
-            BirthDateValue = DateDatePicker.Date.ToString("d") + "r.";
+            BirthDateValue = DateDatePicker.Date.ToString("yyyy-MM-dd") + "r.";
         }
 
         public async Task<bool> DisplayAlertWithUserData()

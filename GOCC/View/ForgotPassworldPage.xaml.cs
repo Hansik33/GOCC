@@ -21,9 +21,9 @@ namespace GOCC.View
         private async void forgot_password_click(object sender, EventArgs e)
         {
             email = Email_entry.Text;
-            if (Connector.Reset("1",email))
+            if (Connector.Reset(email))
             {
-                await DisplayAlert("Uwaga!","Wysłano Kod","Ok");
+                await DisplayAlert("Uwaga!","Wysłano kod z linkiem resetującym hasło","Ok");
             }
             else
             {
