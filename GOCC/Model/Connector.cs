@@ -39,11 +39,10 @@ namespace GOCC
             
         }
         
-        public static bool Reset(string bieg, string email)
+        public static bool Reset(string email)
         {
         
-            var request = WebRequest.Create("http://wospchorzow.pl/aplikacjaResetHasla.php?bieg=" + bieg +
-               "&email=" + email) as HttpWebRequest;
+            var request = WebRequest.Create("http://wospchorzow.pl/aplikacjaResetHasla.php?email=" + email) as HttpWebRequest;
             // request.Method = "GET";
             request.Method = "GET";
             request.Headers.Add("Cache-Control: max-age=0");
