@@ -21,6 +21,7 @@ namespace GOCC.View
         double newdistance = 0;
         public RunningPage()
         {
+            PermissionsAccept();
             Thread TimeThread = new Thread(() => TimeCalculatorTask());
             Thread DistanceThread = new Thread(() => DistanceCalculatorTask());
             BindingContext = viewModel;
@@ -51,6 +52,10 @@ namespace GOCC.View
                 
             }
             
+        }
+        public async void PermissionsAccept()
+        {
+            Location Perrmisions = await Geolocation.GetLocationAsync(new GeolocationRequest(GeolocationAccuracy.Best, TimeSpan.FromMinutes(1)));
         }
         public async void DistanceCalculatorTask()
         {
