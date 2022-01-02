@@ -64,10 +64,12 @@
                             TextColor="Black"
                             FontFamily="RoadRage"/>
                         <Label Text="Programiści:"
+                               TextColor="Gray"
                                FontFamily="RoadRage"
                                HorizontalOptions="Center" 
                                FontSize="48"/>
                         <Label Text="Adam Franz" 
+                               TextColor="Gray"
                                FontSize="32" 
                                HorizontalOptions="Center"/>
                         <Label HorizontalOptions="Center"
@@ -86,6 +88,7 @@
                             </Label.FormattedText>
                         </Label>
                         <Label Text="Artur Rudzik"
+                               TextColor="Gray"
                                FontSize="32" 
                                HorizontalOptions="Center"/>
                         <Label HorizontalOptions="Center"
@@ -123,6 +126,7 @@
                             </Label.FormattedText>
                         </Label>
                         <Label Text="Grafik:"
+                               TextColor="Gray"
                                FontFamily="RoadRage"
                                HorizontalOptions="Center"
                                FontSize="48"/>
@@ -171,8 +175,6 @@
                         </Label>
                     </StackLayout>
                 </Frame>
-
-
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>
