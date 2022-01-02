@@ -5,49 +5,50 @@
              BackgroundImageSource="background.png"
              Title="Bieg">
     <ContentPage.Content>
-        <StackLayout Orientation="Vertical"
+        <ScrollView>
+            <StackLayout Orientation="Vertical"
                      VerticalOptions="Center">
-            <Frame BackgroundColor="#1C001C"
+                <Frame BackgroundColor="#1C001C"
                    CornerRadius="30"
                    BorderColor="White"
                    Margin="40">
-                <StackLayout VerticalOptions="CenterAndExpand">
-                    <StackLayout>
-                        <Label Text="Czas:"
+                    <StackLayout VerticalOptions="CenterAndExpand">
+                        <StackLayout>
+                            <Label Text="Czas:"
                    HorizontalTextAlignment="Center"
                    TextColor="White"
                    FontSize="48" 
                    Margin="0,10,0,0" />
-                        <Label x:Name="TimeLabel"
+                            <Label x:Name="TimeLabel"
                    Text="{Binding Time}" 
                    FontAttributes="Bold"
                    HorizontalTextAlignment="Center"
                    TextColor="White"
                    FontSize="64" />
-                        <Label Text="Dystans:" 
+                            <Label Text="Dystans:" 
                    HorizontalTextAlignment="Center"
                    TextColor="White"
                    FontSize="48" />
-                        <StackLayout Orientation="Horizontal"
+                            <StackLayout Orientation="Horizontal"
                          HorizontalOptions="Center">
-                            <Label x:Name="DistanceLabel"
+                                <Label x:Name="DistanceLabel"
                    Text="{Binding Distance}"
                    FontAttributes="Bold"
                    HorizontalTextAlignment="Center"
                    TextColor="White"
                    FontSize="64"
                    Margin="50,0,0,0"/>
-                            <Label Text="{Binding Unit}" 
+                                <Label Text="{Binding Unit}" 
                    HorizontalTextAlignment="Center"
                    VerticalTextAlignment="Center"
                                    x:Name="lbl_unit"
                    TextColor="White"
                    FontSize="32" />
+                            </StackLayout>
                         </StackLayout>
                     </StackLayout>
-                </StackLayout>
-            </Frame>
-            <Button x:Name="StopRunningButton"
+                </Frame>
+                <Button x:Name="StopRunningButton"
                     BackgroundColor="#E21912"
                     CornerRadius="100"
                     TextColor="White"
@@ -59,6 +60,7 @@
                     FontAttributes="Bold"
                     Clicked="Stop_clicked"
                     />
-        </StackLayout>
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

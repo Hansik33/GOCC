@@ -29,7 +29,7 @@ namespace GOCC.View
             }
             else
             {
-                await DisplayAlert("BLĄD",Connector.lastError.ToString(),"OK");
+                await DisplayAlert("Błąd",Connector.lastError.ToString(),"Ok");
             }
             }
 

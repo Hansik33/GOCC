@@ -105,6 +105,7 @@
                         </Label>
                         <Label Text="Mateusz Piłat"
                                FontSize="32" 
+                               TextColor="Gray"
                                HorizontalOptions="Center"/>
                         <Label HorizontalOptions="Center"
                                VerticalOptions="Center">
@@ -127,6 +128,7 @@
                                FontSize="48"/>
                         <Label Text="Daniel Kowalski"
                                FontSize="32" 
+                               TextColor="Gray"
                                HorizontalOptions="Center"/>
                         <Label HorizontalOptions="Center"
                                VerticalOptions="Center">
@@ -145,10 +147,12 @@
                         </Label>
                         <Label Text="Devops:"
                                FontFamily="RoadRage"
+                               TextColor="Gray"
                                HorizontalOptions="Center"
                                FontSize="48"/>
                         <Label Text="Bartosz Holeczek"
                                HorizontalOptions="Center"
+                               TextColor="Gray"
                                FontSize="32"/>
                         <Label HorizontalOptions="Center"
                                VerticalOptions="Center">
