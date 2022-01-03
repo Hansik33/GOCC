@@ -6,12 +6,12 @@
     <ContentPage.Content>
         <ScrollView Orientation="Vertical">
             <StackLayout Orientation="Vertical">
-                <Frame Margin="50,20,50,0"
+                <Frame Margin="20"
                        CornerRadius="40">
                     <StackLayout>
                         <Label Text="Organizatorzy" 
                        HorizontalOptions="Center" 
-                       FontSize="64"
+                       FontSize="48"
                        TextColor="Black"
                        FontFamily="RoadRage"/>
                         <Image Source="logosztabu.png"
@@ -24,11 +24,11 @@
 
                 </Frame>
                 <Frame CornerRadius="40"
-                       Margin="50,20,50,20">
+                       Margin="20">
                     <StackLayout>
                         <Label Text="Współorganizatorzy" 
                        HorizontalOptions="Center"
-                       FontSize="50"
+                       FontSize="48"
                        TextColor="Black"
                        FontFamily="RoadRage"/>
                         <Image Source="CHCK.png"
@@ -42,11 +42,11 @@
                     </StackLayout>
                 </Frame>
                 <Frame CornerRadius="40"
-                       Margin="50,0,50,20">
+                       Margin="20">
                     <StackLayout>
                         <Label Text="Partnerzy" 
                        HorizontalOptions="Center"
-                       FontSize="64"
+                       FontSize="48"
                        TextColor="Black"
                        FontFamily="RoadRage"/>
                         <Image Source="zstio2.png"
@@ -56,11 +56,11 @@
                     </StackLayout>
                 </Frame>
                 <Frame CornerRadius="40"
-                       Margin="50,0,50,20">
+                       Margin="20">
                     <StackLayout>
                         <Label Text="Twórcy aplikacji" 
                             HorizontalOptions="Center"
-                            FontSize="52"
+                            FontSize="48"
                             TextColor="Black"
                             FontFamily="RoadRage"/>
                         <Label Text="Programiści:"

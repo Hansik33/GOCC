@@ -36,42 +36,43 @@
         </Style>
     </ContentPage.Resources>
     <ContentPage.Content>
-        <StackLayout Orientation="Vertical"
+        <StackLayout>
+            <ScrollView>
+                <StackLayout Orientation="Vertical"
                      VerticalOptions="Center">
-            <Image Source="logoeye01.png"
+                    <Image Source="logoeye01.png"
                    WidthRequest="200"
+                           Margin="0,20,0,10"
                    HorizontalOptions="Center"
                    VerticalOptions="Start"/>
-            <Frame Margin="46,5,46,0"
+                    <Frame Margin="46,5,46,0"
                    CornerRadius="30"
                    BackgroundColor="#1C001C"
                    BorderColor="White">
-                <StackLayout>
-                    <Label VerticalOptions="CenterAndExpand"
+                        <StackLayout>
+                            <Label VerticalOptions="CenterAndExpand"
                            Text="Wypełnij dane podane podczas rejestracji!"
                            HorizontalOptions="Center"
                            TextColor="White"
                            FontSize="20"
                            HorizontalTextAlignment="Center" />
-                    <Entry VerticalOptions="Center"
+                            <Entry VerticalOptions="Center"
                            Placeholder="Email"
                            Style="{StaticResource DefaultEntryStyle}" 
                            x:Name="Email_entry"/>
-                    <Entry VerticalOptions="Center"
+                            <Entry VerticalOptions="Center"
                            Placeholder="Hasło"
                            Style="{StaticResource DefaultEntryStyle}" 
                            x:Name="Passworld_entry"
                            IsPassword="True"/>
-                    <Button Text="zapomniałem hasła"
+                            <Button Text="zapomniałem hasła"
                             BackgroundColor="#1C001C"
                             TextColor="#8E8E8E"
                             FontAttributes="Italic"
-                            HeightRequest="35"
-                            Margin="0,-19,0,0"
-                            WidthRequest="1000" 
+                            HeightRequest="35" 
                             x:Name="Forgot_passworld_btn"
                             Clicked="Forgot_passworld_clicked"/>
-                    <Button x:Name="ConfirmDataFormButton"
+                            <Button x:Name="ConfirmDataFormButton"
                             BackgroundColor="#E21912"
                             Margin="0,10,0,20"
                             TextColor="White"
@@ -81,13 +82,15 @@
                             HorizontalOptions="Center"
                             CornerRadius="20" 
                             Clicked="Login_btn_click"/>
-                </StackLayout>
-            </Frame>
-            <Image VerticalOptions="End"
+                        </StackLayout>
+                    </Frame>
+                    <Image VerticalOptions="End"
                    HorizontalOptions="Center"
                    Source="oczkonogi.png"
                    WidthRequest="230"
                    Margin="0,0,0,0" />
+                </StackLayout>
+            </ScrollView>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
