@@ -63,6 +63,8 @@ namespace GOCC.View
             await Task.Delay(500);
             while (isdoing)
             {
+                try
+                {
                 Location newlocation = await Geolocation.GetLocationAsync(new GeolocationRequest(GeolocationAccuracy.Best, TimeSpan.FromMinutes(1)));//pobranie danych
                 newdistance = Location.CalculateDistance(newlocation, prevlocation, DistanceUnits.Kilometers);//obliczenie dystansu
                 distanceToCheck = newdistance * 1000;
@@ -99,6 +101,11 @@ namespace GOCC.View
 
                 prevlocation = newlocation;
                 await Task.Delay(500);
+                }
+                catch
+                {
+
+                }  
             }
         }
         async void TimeCalculatorTask()
