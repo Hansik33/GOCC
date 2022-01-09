@@ -73,6 +73,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controls\BorderlessDatePickerRenderer.cs" />
+<<<<<<< Updated upstream
+=======
+    <Compile Include="Helpers\INotification.cs" />
+    <Compile Include="Helpers\NotificationHelper.cs" />
+    <Compile Include="LocationConsent.cs" />
+>>>>>>> Stashed changes
     <Compile Include="MainActivity.cs" />
     <Compile Include="PDFviewRenderer.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
