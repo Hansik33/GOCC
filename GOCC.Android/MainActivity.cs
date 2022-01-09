@@ -23,7 +23,7 @@ namespace GOCC.Droid
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
 
-            
+            ToggleScreenLock();
             serviceintent = new Intent(this, typeof(LocationService));
             serviceintent2 = new Intent(this, typeof(TimeService));
             WireUpLongRuningTasks();
@@ -63,6 +63,10 @@ namespace GOCC.Droid
                     StopService(serviceintent);
                     StopService(serviceintent2);
               });
+        }
+        public void ToggleScreenLock()
+        {
+            DeviceDisplay.KeepScreenOn = true;
         }
         protected override void OnActivityResult(int requestCode, Result resultCode, Intent data)
         {

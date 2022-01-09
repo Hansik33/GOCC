@@ -29,9 +29,7 @@ namespace GOCC.Droid.Services
                 _cts = new CancellationTokenSource();
                 Notification notif = DependencyService.Get<INotification>().ReturnNotif();
                 StartForeground(SERVICE_RUNNING_NOTIFICATION_ID, notif);
-                var DistanceTask = new LocalizationTask();
-                DistanceTask.Run().Wait();
-                /*Task.Run(() =>
+                Task.Run(() =>
                 {
                     try
                     {
@@ -53,7 +51,7 @@ namespace GOCC.Droid.Services
                             });
                         }
                     }
-                }, _cts.Token);*/
+                }, _cts.Token);
             return StartCommandResult.Sticky;
         }
         public override void OnDestroy()
@@ -65,10 +63,5 @@ namespace GOCC.Droid.Services
             }
             base.OnDestroy();
         }
-        public override bool StopService(Intent name)
-        {
-            return base.StopService(name);
-        }
-
     }
 }
