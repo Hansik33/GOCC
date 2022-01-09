@@ -9,6 +9,7 @@ using GOCC.Services;
 using GOCC.Messages;
 using GOCC.Droid.Helpers;
 using Android.Util;
+using System;
 
 namespace GOCC.Droid.Services
 {
@@ -25,33 +26,34 @@ namespace GOCC.Droid.Services
         [return: GeneratedEnum]
         public override StartCommandResult OnStartCommand(Intent intent,StartCommandFlags flags, int startId)
         {
-
                 _cts = new CancellationTokenSource();
                 Notification notif = DependencyService.Get<INotification>().ReturnNotif();
                 StartForeground(SERVICE_RUNNING_NOTIFICATION_ID, notif);
-                
-                Task.Run(() =>
+                var DistanceTask = new LocalizationTask();
+                DistanceTask.Run().Wait();
+                /*Task.Run(() =>
                 {
                     try
                     {
                         var DistanceTask = new LocalizationTask();
                         DistanceTask.Run(_cts.Token).Wait();
                     }
-                    catch (OperationCanceledException)
+                    catch (Android.Accounts.OperationCanceledException)
                     {
-                        
+
                     }
                     finally
                     {
                         if (_cts.IsCancellationRequested)
                         {
                             var message = new StopServiceMessage();
-                            Device.BeginInvokeOnMainThread(
-                              () =>  MessagingCenter.Send(message, "ServiceStoped")
-                            );
+                            Device.BeginInvokeOnMainThread(() =>
+                            {
+                                MessagingCenter.Send(message, "ServiceStopped");
+                            });
                         }
                     }
-                }, _cts.Token);
+                }, _cts.Token);*/
             return StartCommandResult.Sticky;
         }
         public override void OnDestroy()
@@ -61,8 +63,12 @@ namespace GOCC.Droid.Services
                 _cts.Token.ThrowIfCancellationRequested();
                 _cts.Cancel();
             }
-
             base.OnDestroy();
         }
+        public override bool StopService(Intent name)
+        {
+            return base.StopService(name);
+        }
+
     }
 }

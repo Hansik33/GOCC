@@ -6,8 +6,7 @@ using System.Diagnostics;
 using Xamarin.Essentials;
 using System.Threading.Tasks;
 using System.Threading;
-using Android.Views;
-using GOCC.Messages;
+
 
 namespace GOCC.View
 {
@@ -18,49 +17,23 @@ namespace GOCC.View
         RunningPageViewModel viewModel = new RunningPageViewModel();
         public double totaldistance = 0;
         public bool isdoing = true;
-
+        double distanceToCheck = 0;
+        double newdistance = 0;
         public RunningPage()
         {
             PermissionsAccept();
-<<<<<<< Updated upstream
-            Thread TimeThread = new Thread(() => TimeCalculatorTask());
-            Thread DistanceThread = new Thread(() => DistanceCalculatorTask());
-=======
->>>>>>> Stashed changes
+            //Thread TimeThread = new Thread(() => TimeCalculatorTask());
+            //Thread DistanceThread = new Thread(() => DistanceCalculatorTask());
+            //TimeThread.Start();
+            //DistanceThread.Start();
             BindingContext = viewModel;
-            TimeThread.Start();
-            DistanceThread.Start();
             InitializeComponent();
-        }
-
-        private async void Stop_clicked(object sender, EventArgs e)
-        {
-            bool result = await DisplayAlert("UWAGA","Czy napewno chcesz już zakończyć bieg i wysłać wynik?","Ok","Anuluj");
-            if (result == true)
-            {
-                isdoing = false;
-                totaldistance = Math.Round(totaldistance,2);
-                if (Connector.Send($"{stopwatch.Elapsed.Hours.ToString()}:{stopwatch.Elapsed.Minutes.ToString()}:{stopwatch.Elapsed.Seconds.ToString()} ", totaldistance.ToString()))
-                {
-                    await DisplayAlert("Gratulacje!",$"Udało ci się przejść: {totaldistance} km","Ok");
-                    Application.Current.MainPage = new MainFlyoutPage();
-                }
-                else
-                {
-                    await DisplayAlert("Błąd", Connector.lastError.ToString(), "OK");
-                }
-            }
-            else
-            {
-                
-            }
-            
         }
         public async void PermissionsAccept()
         {
             Location Perrmisions = await Geolocation.GetLocationAsync(new GeolocationRequest(GeolocationAccuracy.Best, TimeSpan.FromMinutes(1)));
         }
-        public async void DistanceCalculatorTask()
+        /*public async void DistanceCalculatorTask()
         {
             Location prevlocation = await Geolocation.GetLocationAsync(new GeolocationRequest(GeolocationAccuracy.Best, TimeSpan.FromMinutes(1)));
             await Task.Delay(500);
@@ -110,7 +83,7 @@ namespace GOCC.View
 
                 }  
             }
-        }
+        }*/
         async void TimeCalculatorTask()
         {
             stopwatch.Start();
@@ -119,26 +92,6 @@ namespace GOCC.View
                 viewModel.Time = $"{stopwatch.Elapsed.Hours.ToString()}:{stopwatch.Elapsed.Minutes.ToString()}:{stopwatch.Elapsed.Seconds.ToString()}";
                 await Task.Delay(1000);
             }
-        }
-
-        private async void StopRunningButton_Clicked(object sender, EventArgs e)
-        {
-            bool result = await DisplayAlert("Uwaga!", "Czy chcesz zakończyć już bieg? Nie będziesz mógł już go powtórzyć!", "Zakończ bieg", "Anuluj");
-            if (result)
-            {
-                if (Connector.Send(viewModel.Time.ToString(), viewModel.Distance.ToString()))
-                {
-                    var message = new StopServiceMessage();
-                    MessagingCenter.Send(message, "ServiceStoped");
-                    await DisplayAlert("Brawo!",$"Udało ci się przebiec {viewModel.Distance}, wynik został zapisany!","Ok");
-                    Application.Current.MainPage = new MainFlyoutPage();
-                }
-                else
-                {
-                    await DisplayAlert("Błąd",Connector.lastError,"ok");
-                }
-            }
-            
         }
     }
 }

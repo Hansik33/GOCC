@@ -43,9 +43,10 @@ namespace GOCC.Droid.Services
                     if (_cts.IsCancellationRequested)
                     {
                         var message = new StopServiceMessage();
-                        Device.BeginInvokeOnMainThread(
-                            () => MessagingCenter.Send(message, "ServiceStoped")
-                       );
+                        Device.BeginInvokeOnMainThread(() =>
+                        {
+                            MessagingCenter.Send(message, "ServiceStopped");
+                        });
                     }
                 }
             }, _cts.Token);

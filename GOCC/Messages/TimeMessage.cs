@@ -4,8 +4,8 @@ using System.Text;
 
 namespace GOCC.Messages
 {
-    public class LocalizationMessage
+    internal class TimeMessage
     {
-        public double Distance { get; set; }
+        public string Time { get; set; }
     }
 }

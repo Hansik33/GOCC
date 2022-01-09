@@ -11,7 +11,7 @@ using System.Text;
 
 namespace GOCC.Droid
 {
-    [BroadcastReceiver(Name = "com.locationservice.app.BootBroadcastReceiver", Enabled = true)]
+    [BroadcastReceiver(Name = "com.gocc.app.BootBroadcastReceiver", Enabled = true)]
     [IntentFilter(new[] { Intent.ActionBootCompleted })]
     public class BootBroadcastReceiver : BroadcastReceiver
     {

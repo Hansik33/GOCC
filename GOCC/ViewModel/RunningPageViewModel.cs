@@ -3,13 +3,9 @@ using System.Collections.Generic;
 using System.Text;
 using Xamarin.Forms;
 using Xamarin.Essentials;
-<<<<<<< Updated upstream
-=======
 using GOCC.Messages;
 using GOCC.Utils;
 using Android.OS;
-using Xamarin.Forms.Xaml;
->>>>>>> Stashed changes
 
 namespace GOCC.ViewModel
 {
@@ -17,20 +13,16 @@ namespace GOCC.ViewModel
     {
         private string _time;
         private string _distance;
-<<<<<<< Updated upstream
-        private string _unit;
-=======
+        public Command StopCommand { get; }
         readonly ILocationConsent locationConsent;
->>>>>>> Stashed changes
         public RunningPageViewModel()
         {
+            locationConsent = DependencyService.Get<ILocationConsent>();
             _time = "00:00:00";
             _distance = "0000";
-<<<<<<< Updated upstream
-            _unit = "km";
-=======
             Start();
             HandleReceivedMassages();
+            StopCommand = new Command(() => OnStopClick());
             ValidateStatus();
         }
         void Start()
@@ -39,6 +31,11 @@ namespace GOCC.ViewModel
             MessagingCenter.Send(message, "ServiceStarted");
             SecureStorage.SetAsync(Constants.SERVICE_STATUS_KEY, "1");
         }
+        public void OnStopClick()
+        {
+            var message = new StopServiceMessage();
+            MessagingCenter.Send(message, "ServiceStoped");
+        }
         public void ValidateStatus()
         {
             var status = SecureStorage.GetAsync(Constants.SERVICE_STATUS_KEY).Result;
@@ -46,7 +43,6 @@ namespace GOCC.ViewModel
             {
                 Start();
             }
->>>>>>> Stashed changes
         }
         public string Time
         {
@@ -58,21 +54,17 @@ namespace GOCC.ViewModel
             get { return _distance; }
             set { _distance = value; OnPropertyChanged("Distance"); }
         }
-        public string Unit
+        void HandleReceivedMassages()
         {
-<<<<<<< Updated upstream
-            get { return _unit; }
-            set { _unit = value; OnPropertyChanged("Unit"); }
-=======
             MessagingCenter.Subscribe<LocalizationMessage>(this, "Distance", message => {
                 Device.BeginInvokeOnMainThread(() => {
-                    if (message.Distance > 1)
+                    if (message.Distance >= 1)
                     {
-                        Distance = $"{Math.Round(message.Distance,2)} km";
+                        Distance = $"{message.Distance} m";
                     }
                     else
                     {
-                        Distance = $"{Math.Round(message.Distance * 1000)} m";
+                        Distance = $"{message.Distance} km";
                     }
                 });
             });
@@ -83,7 +75,6 @@ namespace GOCC.ViewModel
                       Time = message.Time;
                   });
               });
->>>>>>> Stashed changes
         }
     }
 }

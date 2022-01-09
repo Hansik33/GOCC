@@ -37,13 +37,7 @@
                    HorizontalTextAlignment="Center"
                    TextColor="White"
                    FontSize="64"
-                   Margin="50,0,0,0"/>
-                                <Label Text="{Binding Unit}" 
-                   HorizontalTextAlignment="Center"
-                   VerticalTextAlignment="Center"
-                                   x:Name="lbl_unit"
-                   TextColor="White"
-                   FontSize="32" />
+                   Margin="0,0,0,0"/>
                             </StackLayout>
                         </StackLayout>
                     </StackLayout>
@@ -58,12 +52,8 @@
                     HeightRequest="150"
                     WidthRequest="150"
                     FontAttributes="Bold"
-<<<<<<< Updated upstream
-                    Clicked="Stop_clicked"
+                    Command="{Binding StopCommand}"
                     />
-=======
-                    Clicked="StopRunningButton_Clicked"/>
->>>>>>> Stashed changes
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>
