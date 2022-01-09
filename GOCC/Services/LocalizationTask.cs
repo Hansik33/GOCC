@@ -5,6 +5,7 @@ using Xamarin.Forms;
 using Xamarin.Essentials;
 using System.Threading;
 using System.Threading.Tasks;
+using GOCC.Messages;
 
 namespace GOCC.Services
 {
@@ -13,65 +14,87 @@ namespace GOCC.Services
         public double totaldistance = 0;
         double distanceToCheck = 0;
         double newdistance = 0;
-        public bool Stopping;
+
+        public readonly bool Stopping = true;
 
         public LocalizationTask()
         {
-            
+
         }
 
         public async Task Run(CancellationToken token)
         {
-            await Task.Run( async () =>
-            {
-                Location prevlocation = await Geolocation.GetLocationAsync(new GeolocationRequest(GeolocationAccuracy.Best, TimeSpan.FromMinutes(1)));
-                await Task.Delay(500);
+            await Task.Run(async () =>
+           {
+               Location prevlocation = await Geolocation.GetLocationAsync(new GeolocationRequest(GeolocationAccuracy.Best, TimeSpan.FromMinutes(1)));
+               await Task.Delay(500);
 
-                while (Stopping)
-                {
-                    token.ThrowIfCancellationRequested();
+               while (Stopping)
+               {
+                   try
+                   {
+                       token.ThrowIfCancellationRequested();
+                       Location newlocation = await Geolocation.GetLocationAsync(new GeolocationRequest(GeolocationAccuracy.Best, TimeSpan.FromMinutes(1)));//pobranie danych
+                       newdistance = Location.CalculateDistance(newlocation, prevlocation, DistanceUnits.Kilometers);//obliczenie dystansu
+                       distanceToCheck = newdistance * 1000;
 
-                    try
-                    {
-                        Location newlocation = await Geolocation.GetLocationAsync(new GeolocationRequest(GeolocationAccuracy.Best, TimeSpan.FromMinutes(1)));//pobranie danych
-                        newdistance = Location.CalculateDistance(newlocation, prevlocation, DistanceUnits.Kilometers);//obliczenie dystansu
-                        distanceToCheck = newdistance * 1000;
+                       if (distanceToCheck >= 6)//sprawdza czy nie ma błędu wynikającego z GPS
+                       {//dodanie wartości poprawiającej po GPS ERROR
+                           totaldistance += 0.002;
 
-                        if (distanceToCheck >= 10)//sprawdza czy nie ma błędu wynikającego z GPS
-                        {
-                            totaldistance += 0.002;
+                           var massage = new LocalizationMessage { Distance = totaldistance };
+                           Device.BeginInvokeOnMainThread(() =>
+                           {
+                               MessagingCenter.Send<LocalizationMessage>(massage, "Distance");
+                               Console.WriteLine(massage.Distance);
+                           });
 
-                            if (totaldistance < 1)
-                            {
+                       }
+                       else//poprawne dodawanie wyniku
+                       {
+                           totaldistance = totaldistance + newdistance;//dodanie do wyniku
+                           
+                           var massage = new LocalizationMessage { Distance = totaldistance };
+                           Device.BeginInvokeOnMainThread(() =>
+                           {
+                               MessagingCenter.Send<LocalizationMessage>(massage, "Distance");
+                           });
+                       }
 
-                            }
-                            else
-                            {
+                       prevlocation = newlocation;
+                       await Task.Delay(500);
+                   }
+                   catch
+                   {
 
-                            }
+                   }
+               }
 
-                        }
-                        else
-                        {
-                            totaldistance = totaldistance + newdistance;//dodanie do wyniku
-                            if (totaldistance < 1)
-                            {
+               /*try
+               {
+                   await Task.Delay(2000);
 
-                            }
-                            else
-                            {
+                   var request = new GeolocationRequest(GeolocationAccuracy.Best,TimeSpan.FromMinutes(1));
+                   var location = await Geolocation.GetLocationAsync(request);
+                   if (location != null)
+                   {
+                       var message = new LocalizationMessage
+                       {
+                           Latitude = location.Latitude,
+                           Longitude = location.Longitude
+                       };
 
-                            }
-
-                        }
-
-                        prevlocation = newlocation;
-                        await Task.Delay(500);
-                    }
-                }
-            }
-        }
-
-        
+                       Device.BeginInvokeOnMainThread(() =>
+                       {
+                           MessagingCenter.Send<LocalizationMessage>(message, "Location");
+                       });
+                   }
+               }
+               catch
+               {
+                   return;
+               }*/
+           },token);
+        }   
     }
 }

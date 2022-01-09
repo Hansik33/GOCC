@@ -18,9 +18,9 @@ namespace GOCC.View
             InitializeComponent();
         }
 
-        private async void Login_btn_click(object sender, EventArgs e)
+        private void Login_btn_click(object sender, EventArgs e)
         {
-            bool result = await DisplayAlert("Uwaga!", "Zamierzasz rozpocząć bieg. Udział w biegu jest możliwy tylko raz. Jesteś pewien?", "Zacznij bieg","Anuluj");
+            /*bool result = await DisplayAlert("Uwaga!", "Zamierzasz rozpocząć bieg. Udział w biegu jest możliwy tylko raz. Jesteś pewien?", "Zacznij bieg","Anuluj");
             if (result)
             {
             if (Connector.LogIn(Email_entry.Text,Passworld_entry.Text))
@@ -31,8 +31,8 @@ namespace GOCC.View
             {
                 await DisplayAlert("Błąd",Connector.lastError.ToString(),"Ok");
             }
-            }
-
+            }*/
+            Application.Current.MainPage = new RunningPage();
         }
 
         private void Forgot_passworld_clicked(object sender, EventArgs e)

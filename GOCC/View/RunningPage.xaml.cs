@@ -22,42 +22,18 @@ namespace GOCC.View
         public RunningPage()
         {
             PermissionsAccept();
-            Thread TimeThread = new Thread(() => TimeCalculatorTask());
-            Thread DistanceThread = new Thread(() => DistanceCalculatorTask());
+            //Thread TimeThread = new Thread(() => TimeCalculatorTask());
+            //Thread DistanceThread = new Thread(() => DistanceCalculatorTask());
+            //TimeThread.Start();
+            //DistanceThread.Start();
             BindingContext = viewModel;
-            TimeThread.Start();
-            DistanceThread.Start();
             InitializeComponent();
-        }
-
-        private async void Stop_clicked(object sender, EventArgs e)
-        {
-            bool result = await DisplayAlert("UWAGA","Czy napewno chcesz już zakończyć bieg i wysłać wynik?","Ok","Anuluj");
-            if (result == true)
-            {
-                isdoing = false;
-                totaldistance = Math.Round(totaldistance,2);
-                if (Connector.Send($"{stopwatch.Elapsed.Hours.ToString()}:{stopwatch.Elapsed.Minutes.ToString()}:{stopwatch.Elapsed.Seconds.ToString()} ", totaldistance.ToString()))
-                {
-                    await DisplayAlert("Gratulacje!",$"Udało ci się przejść: {totaldistance} km","Ok");
-                    Application.Current.MainPage = new MainFlyoutPage();
-                }
-                else
-                {
-                    await DisplayAlert("Błąd", Connector.lastError.ToString(), "OK");
-                }
-            }
-            else
-            {
-                
-            }
-            
         }
         public async void PermissionsAccept()
         {
             Location Perrmisions = await Geolocation.GetLocationAsync(new GeolocationRequest(GeolocationAccuracy.Best, TimeSpan.FromMinutes(1)));
         }
-        public async void DistanceCalculatorTask()
+        /*public async void DistanceCalculatorTask()
         {
             Location prevlocation = await Geolocation.GetLocationAsync(new GeolocationRequest(GeolocationAccuracy.Best, TimeSpan.FromMinutes(1)));
             await Task.Delay(500);
@@ -107,7 +83,7 @@ namespace GOCC.View
 
                 }  
             }
-        }
+        }*/
         async void TimeCalculatorTask()
         {
             stopwatch.Start();
