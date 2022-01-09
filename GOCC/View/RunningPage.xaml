@@ -58,8 +58,12 @@
                     HeightRequest="150"
                     WidthRequest="150"
                     FontAttributes="Bold"
+<<<<<<< Updated upstream
                     Clicked="Stop_clicked"
                     />
+=======
+                    Clicked="StopRunningButton_Clicked"/>
+>>>>>>> Stashed changes
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>
