@@ -22,7 +22,6 @@ namespace GOCC.ViewModel
             _distance = "0000";
             Start();
             HandleReceivedMassages();
-            StopCommand = new Command(() => OnStopClick());
             ValidateStatus();
         }
         void Start()
@@ -30,11 +29,6 @@ namespace GOCC.ViewModel
             var message = new StartServiceMessage();
             MessagingCenter.Send(message, "ServiceStarted");
             SecureStorage.SetAsync(Constants.SERVICE_STATUS_KEY, "1");
-        }
-        public void OnStopClick()
-        {
-            var message = new StopServiceMessage();
-            MessagingCenter.Send(message, "ServiceStoped");
         }
         public void ValidateStatus()
         {
@@ -56,15 +50,17 @@ namespace GOCC.ViewModel
         }
         void HandleReceivedMassages()
         {
-            MessagingCenter.Subscribe<LocalizationMessage>(this, "Distance", message => {
-                Device.BeginInvokeOnMainThread(() => {
+            MessagingCenter.Subscribe<LocalizationMessage>(this, "Distance", message =>
+            {
+                Device.BeginInvokeOnMainThread(() =>
+                {
                     if (message.Distance >= 1)
                     {
-                        Distance = $"{message.Distance} m";
+                        Distance = $"{Math.Round(message.Distance,2)} km";
                     }
                     else
                     {
-                        Distance = $"{message.Distance} km";
+                        Distance = $"{Math.Round(message.Distance * 1000)} m";
                     }
                 });
             });

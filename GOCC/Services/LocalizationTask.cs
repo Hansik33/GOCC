@@ -27,7 +27,7 @@ namespace GOCC.Services
             await Task.Run(async () =>
            {
                Location prevlocation = await Geolocation.GetLocationAsync(new GeolocationRequest(GeolocationAccuracy.Best, TimeSpan.FromMinutes(1)));
-               await Task.Delay(500);
+               await Task.Delay(1000);
 
                while (Stopping)
                {
@@ -38,9 +38,9 @@ namespace GOCC.Services
                        newdistance = Location.CalculateDistance(newlocation, prevlocation, DistanceUnits.Kilometers);//obliczenie dystansu
                        distanceToCheck = newdistance * 1000;
 
-                       if (distanceToCheck >= 6)//sprawdza czy nie ma błędu wynikającego z GPS
+                       if (distanceToCheck >= 10)//sprawdza czy nie ma błędu wynikającego z GPS
                        {//dodanie wartości poprawiającej po GPS ERROR
-                           totaldistance += 0.002;
+                           totaldistance += 0.003;
 
                            var massage = new LocalizationMessage { Distance = totaldistance };
                            Device.BeginInvokeOnMainThread(() =>
@@ -62,7 +62,7 @@ namespace GOCC.Services
                        }
 
                        prevlocation = newlocation;
-                       await Task.Delay(500);
+                       await Task.Delay(1000);
                    }
                    catch
                    {

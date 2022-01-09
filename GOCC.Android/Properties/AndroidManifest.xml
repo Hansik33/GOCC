@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="4" android:versionName="1.0" package="com.wosp.gocc" android:installLocation="auto">
 	<uses-sdk android:minSdkVersion="21" android:targetSdkVersion="30" />
 	<application android:label="GOCC.Android" android:theme="@style/MainTheme">
-		<receiver android:name="com.gocc.app.BootBroadcastReceiver"
+		<receiver android:name="com.locationservice.app.BootBroadcastReceiver"
 					android:enabled="true"
 					android:exported="true"
 					android:permission="android.permission.RECEIVE_BOOT_COMPLETED">

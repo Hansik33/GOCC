@@ -52,8 +52,7 @@
                     HeightRequest="150"
                     WidthRequest="150"
                     FontAttributes="Bold"
-                    Command="{Binding StopCommand}"
-                    />
+                    Clicked="StopRunningButton_Clicked"/>
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>
