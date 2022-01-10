@@ -2,7 +2,6 @@
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using GOCC.View;
-using Android.OS;
 
 namespace GOCC
 {
@@ -26,7 +25,6 @@ namespace GOCC
 
         protected override void OnResume()
         {
-
         }
     }
 }
