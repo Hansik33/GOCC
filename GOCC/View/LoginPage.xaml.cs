@@ -25,14 +25,14 @@ namespace GOCC.View
             {
             if (Connector.LogIn(Email_entry.Text,Passworld_entry.Text))
             {
-                Application.Current.MainPage = new RunningPage();
+                    await DisplayAlert("Kilka dodatkowych informacji:", "Aplikacja nie działa w tle, dlatego bardzo prosimy nie gasić telefonu, oraz nie opuszczać aplikacji","Zrozumiałem i zaczynam bieg");
+                    Application.Current.MainPage = new RunningPage();
             }
             else
             {
                 await DisplayAlert("Błąd",Connector.lastError.ToString(),"Ok");
             }
             }
-
         }
 
         private void Forgot_passworld_clicked(object sender, EventArgs e)

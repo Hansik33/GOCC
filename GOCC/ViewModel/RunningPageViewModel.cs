@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Text;
 using Xamarin.Forms;
 using Xamarin.Essentials;
+using GOCC.Messages;
+using GOCC.Utils;
+using Android.OS;
 
 namespace GOCC.ViewModel
 {
@@ -10,12 +13,30 @@ namespace GOCC.ViewModel
     {
         private string _time;
         private string _distance;
-        private string _unit;
+        public Command StopCommand { get; }
+        readonly ILocationConsent locationConsent;
         public RunningPageViewModel()
         {
+            locationConsent = DependencyService.Get<ILocationConsent>();
             _time = "00:00:00";
             _distance = "0000";
-            _unit = "km";
+            Start();
+            HandleReceivedMassages();
+            ValidateStatus();
+        }
+        void Start()
+        {
+            var message = new StartServiceMessage();
+            MessagingCenter.Send(message, "ServiceStarted");
+            SecureStorage.SetAsync(Constants.SERVICE_STATUS_KEY, "1");
+        }
+        public void ValidateStatus()
+        {
+            var status = SecureStorage.GetAsync(Constants.SERVICE_STATUS_KEY).Result;
+            if(status != null && status.Equals("1"))
+            {
+                Start();
+            }
         }
         public string Time
         {
@@ -27,10 +48,29 @@ namespace GOCC.ViewModel
             get { return _distance; }
             set { _distance = value; OnPropertyChanged("Distance"); }
         }
-        public string Unit
+        void HandleReceivedMassages()
         {
-            get { return _unit; }
-            set { _unit = value; OnPropertyChanged("Unit"); }
+            MessagingCenter.Subscribe<LocalizationMessage>(this, "Distance", message =>
+            {
+                Device.BeginInvokeOnMainThread(() =>
+                {
+                    if (message.Distance >= 1)
+                    {
+                        Distance = $"{Math.Round(message.Distance,2)} km";
+                    }
+                    else
+                    {
+                        Distance = $"{Math.Round(message.Distance * 1000)} m";
+                    }
+                });
+            });
+            MessagingCenter.Subscribe<TimeMessage>(this, "Time", message =>
+              {
+                  Device.BeginInvokeOnMainThread(() =>
+                  {
+                      Time = message.Time;
+                  });
+              });
         }
     }
 }
