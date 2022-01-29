@@ -17,12 +17,12 @@
                            FontSize="30"
                            HorizontalOptions="Start"
                            TextColor="#E21912"/>
-                            <Label Text="30.01.2022 - Pływamy dla WOŚP!&#10;Gdzie: Plac Powstańców Śląskich 1, Chorzów&#10;Godzina: 10:00 - 18:00"  
+                            <Label Text="29.01.2022 - Pływamy dla WOŚP!&#10;Gdzie: Plac Powstańców Śląskich 1, Chorzów&#10;Godzina: 10:00 - 18:00"  
                            FontFamily="RoadRage"
                            FontSize="30"
                            HorizontalOptions="Start"
                            TextColor="Black"/>
-                            <Label Text="29.01.2022 - VII. Bieg z sercem WOŚP&#10;Gdzie: ul. Lompy 10 A, Chorzów&#10;Godzina: 12:00 - 18:00"  
+                            <Label Text="30.01.2022 - VII. Bieg z sercem WOŚP&#10;Gdzie: ul. Lompy 10 A, Chorzów&#10;Godzina: 12:00 - 18:00"  
                            FontFamily="RoadRage"
                            FontSize="30"
                            HorizontalOptions="Start"
@@ -32,7 +32,7 @@
                            FontSize="30"
                            HorizontalOptions="Start"
                            TextColor="Black"/>
-                            <Label Text="20.12.2021 - 30.01.2022 - VII Bieg z sercem WOŚP i Nordic Walking edycja wirtualna&#10;Gdzie: ul. Lompy 10 A, Chorzów&#10;Godzina: 9:00 - 12:00"  
+                            <Label Text="20.12.2021 - 30.01.2022 - VII Bieg z sercem WOŚP i Nordic Walking edycja wirtualna"  
                            FontFamily="RoadRage"
                            FontSize="30"
                            HorizontalOptions="Start"

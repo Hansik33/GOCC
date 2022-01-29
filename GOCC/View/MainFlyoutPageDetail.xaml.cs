@@ -28,9 +28,10 @@ namespace GOCC.View
             }
         }
 
-        private void register_btn_Clicked(object sender, EventArgs e)
+        private async void register_btn_Clicked(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new DataFormPage());
+            await DisplayAlert("Uwaga", "Rejestracja się zakończyła","OK");
+            //Navigation.PushAsync(new DataFormPage());
         }
 
         private void start_btn_Clicked(object sender, EventArgs e)
