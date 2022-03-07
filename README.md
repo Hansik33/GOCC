@@ -12,10 +12,10 @@ Back-end: &nbsp;[@mati20101](https://github.com/mati20101)
 - https://play.google.com/store/apps/details?id=com.wosp.gocc
 ## Screenshots
 <div>
-<img src="https://i.imgur.com/rqNqqcx.png" alt="screenshot" width="333"/>
-<img src="https://i.imgur.com/MXTYonj.png" alt="screenshot" width="333"/>
-<img src="https://i.imgur.com/yglcbAa.png" alt="screenshot" width="333"/>
-<img src="https://i.imgur.com/TcUxKaM.png" alt="screenshot" width="333"/>
-<img src="https://i.imgur.com/MtO0GiD.png" alt="screenshot" width="333"/>
-<img src="https://i.imgur.com/KLAUvo2.png" alt="screenshot" width="333"/>
+<img src="https://i.imgur.com/rqNqqcx.png" alt="screenshot" width="400"/>
+<img src="https://i.imgur.com/MXTYonj.png" alt="screenshot" width="400"/>
+<img src="https://i.imgur.com/yglcbAa.png" alt="screenshot" width="400"/>
+<img src="https://i.imgur.com/TcUxKaM.png" alt="screenshot" width="400"/>
+<img src="https://i.imgur.com/MtO0GiD.png" alt="screenshot" width="400"/>
+<img src="https://i.imgur.com/KLAUvo2.png" alt="screenshot" width="400"/>
 </div>
